@@ -7,10 +7,10 @@ src = "src"
 multilingual = false
 
 [build]
-build-dir = "./docs"
+build-dir = "docs"
 
 [output.html]
-theme = "./theme"
+theme = "theme"
 # default-theme = "rust"
 curly-quotes = true
 mathjax-support = true
