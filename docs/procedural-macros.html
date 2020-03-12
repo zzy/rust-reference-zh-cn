@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Procedural Macros - Rust 参考手册 - The Rust Language Reference</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Rust 参考手册, Rust 编程手册, Rust 编程语言, Rust 开发手册, Rust 开发指南">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="introduction.html">Introduction</a></li><li class="expanded "><a href="notation.html"><strong aria-hidden="true">1.</strong> Notation</a></li><li class="expanded "><a href="lexical-structure.html"><strong aria-hidden="true">2.</strong> Lexical structure</a></li><li><ol class="section"><li class="expanded "><a href="input-format.html"><strong aria-hidden="true">2.1.</strong> Input format</a></li><li class="expanded "><a href="keywords.html"><strong aria-hidden="true">2.2.</strong> Keywords</a></li><li class="expanded "><a href="identifiers.html"><strong aria-hidden="true">2.3.</strong> Identifiers</a></li><li class="expanded "><a href="comments.html"><strong aria-hidden="true">2.4.</strong> Comments</a></li><li class="expanded "><a href="whitespace.html"><strong aria-hidden="true">2.5.</strong> Whitespace</a></li><li class="expanded "><a href="tokens.html"><strong aria-hidden="true">2.6.</strong> Tokens</a></li><li class="expanded "><a href="paths.html"><strong aria-hidden="true">2.7.</strong> Paths</a></li></ol></li><li class="expanded "><a href="macros.html"><strong aria-hidden="true">3.</strong> Macros</a></li><li><ol class="section"><li class="expanded "><a href="macros-by-example.html"><strong aria-hidden="true">3.1.</strong> Macros By Example</a></li><li class="expanded "><a href="procedural-macros.html" class="active"><strong aria-hidden="true">3.2.</strong> Procedural Macros</a></li></ol></li><li class="expanded "><a href="crates-and-source-files.html"><strong aria-hidden="true">4.</strong> Crates and source files</a></li><li class="expanded "><a href="conditional-compilation.html"><strong aria-hidden="true">5.</strong> Conditional compilation</a></li><li class="expanded "><a href="items.html"><strong aria-hidden="true">6.</strong> Items</a></li><li><ol class="section"><li class="expanded "><a href="items/modules.html"><strong aria-hidden="true">6.1.</strong> Modules</a></li><li class="expanded "><a href="items/extern-crates.html"><strong aria-hidden="true">6.2.</strong> Extern crates</a></li><li class="expanded "><a href="items/use-declarations.html"><strong aria-hidden="true">6.3.</strong> Use declarations</a></li><li class="expanded "><a href="items/functions.html"><strong aria-hidden="true">6.4.</strong> Functions</a></li><li class="expanded "><a href="items/type-aliases.html"><strong aria-hidden="true">6.5.</strong> Type aliases</a></li><li class="expanded "><a href="items/structs.html"><strong aria-hidden="true">6.6.</strong> Structs</a></li><li class="expanded "><a href="items/enumerations.html"><strong aria-hidden="true">6.7.</strong> Enumerations</a></li><li class="expanded "><a href="items/unions.html"><strong aria-hidden="true">6.8.</strong> Unions</a></li><li class="expanded "><a href="items/constant-items.html"><strong aria-hidden="true">6.9.</strong> Constant items</a></li><li class="expanded "><a href="items/static-items.html"><strong aria-hidden="true">6.10.</strong> Static items</a></li><li class="expanded "><a href="items/traits.html"><strong aria-hidden="true">6.11.</strong> Traits</a></li><li class="expanded "><a href="items/implementations.html"><strong aria-hidden="true">6.12.</strong> Implementations</a></li><li class="expanded "><a href="items/external-blocks.html"><strong aria-hidden="true">6.13.</strong> External blocks</a></li><li class="expanded "><a href="items/generics.html"><strong aria-hidden="true">6.14.</strong> Type and lifetime parameters</a></li><li class="expanded "><a href="items/associated-items.html"><strong aria-hidden="true">6.15.</strong> Associated Items</a></li><li class="expanded "><a href="visibility-and-privacy.html"><strong aria-hidden="true">6.16.</strong> Visibility and Privacy</a></li></ol></li><li class="expanded "><a href="attributes.html"><strong aria-hidden="true">7.</strong> Attributes</a></li><li><ol class="section"><li class="expanded "><a href="attributes/testing.html"><strong aria-hidden="true">7.1.</strong> Testing</a></li><li class="expanded "><a href="attributes/derive.html"><strong aria-hidden="true">7.2.</strong> Derive</a></li><li class="expanded "><a href="attributes/diagnostics.html"><strong aria-hidden="true">7.3.</strong> Diagnostics</a></li><li class="expanded "><a href="attributes/codegen.html"><strong aria-hidden="true">7.4.</strong> Code generation</a></li><li class="expanded "><a href="attributes/limits.html"><strong aria-hidden="true">7.5.</strong> Limits</a></li><li class="expanded "><a href="attributes/type_system.html"><strong aria-hidden="true">7.6.</strong> Type System</a></li></ol></li><li class="expanded "><a href="statements-and-expressions.html"><strong aria-hidden="true">8.</strong> Statements and expressions</a></li><li><ol class="section"><li class="expanded "><a href="statements.html"><strong aria-hidden="true">8.1.</strong> Statements</a></li><li class="expanded "><a href="expressions.html"><strong aria-hidden="true">8.2.</strong> Expressions</a></li><li><ol class="section"><li class="expanded "><a href="expressions/literal-expr.html"><strong aria-hidden="true">8.2.1.</strong> Literal expressions</a></li><li class="expanded "><a href="expressions/path-expr.html"><strong aria-hidden="true">8.2.2.</strong> Path expressions</a></li><li class="expanded "><a href="expressions/block-expr.html"><strong aria-hidden="true">8.2.3.</strong> Block expressions</a></li><li class="expanded "><a href="expressions/operator-expr.html"><strong aria-hidden="true">8.2.4.</strong> Operator expressions</a></li><li class="expanded "><a href="expressions/grouped-expr.html"><strong aria-hidden="true">8.2.5.</strong> Grouped expressions</a></li><li class="expanded "><a href="expressions/array-expr.html"><strong aria-hidden="true">8.2.6.</strong> Array and index expressions</a></li><li class="expanded "><a href="expressions/tuple-expr.html"><strong aria-hidden="true">8.2.7.</strong> Tuple and index expressions</a></li><li class="expanded "><a href="expressions/struct-expr.html"><strong aria-hidden="true">8.2.8.</strong> Struct expressions</a></li><li class="expanded "><a href="expressions/enum-variant-expr.html"><strong aria-hidden="true">8.2.9.</strong> Enum variant expressions</a></li><li class="expanded "><a href="expressions/call-expr.html"><strong aria-hidden="true">8.2.10.</strong> Call expressions</a></li><li class="expanded "><a href="expressions/method-call-expr.html"><strong aria-hidden="true">8.2.11.</strong> Method call expressions</a></li><li class="expanded "><a href="expressions/field-expr.html"><strong aria-hidden="true">8.2.12.</strong> Field access expressions</a></li><li class="expanded "><a href="expressions/closure-expr.html"><strong aria-hidden="true">8.2.13.</strong> Closure expressions</a></li><li class="expanded "><a href="expressions/loop-expr.html"><strong aria-hidden="true">8.2.14.</strong> Loop expressions</a></li><li class="expanded "><a href="expressions/range-expr.html"><strong aria-hidden="true">8.2.15.</strong> Range expressions</a></li><li class="expanded "><a href="expressions/if-expr.html"><strong aria-hidden="true">8.2.16.</strong> If and if let expressions</a></li><li class="expanded "><a href="expressions/match-expr.html"><strong aria-hidden="true">8.2.17.</strong> Match expressions</a></li><li class="expanded "><a href="expressions/return-expr.html"><strong aria-hidden="true">8.2.18.</strong> Return expressions</a></li><li class="expanded "><a href="expressions/await-expr.html"><strong aria-hidden="true">8.2.19.</strong> Await expressions</a></li></ol></li></ol></li><li class="expanded "><a href="patterns.html"><strong aria-hidden="true">9.</strong> Patterns</a></li><li class="expanded "><a href="type-system.html"><strong aria-hidden="true">10.</strong> Type system</a></li><li><ol class="section"><li class="expanded "><a href="types.html"><strong aria-hidden="true">10.1.</strong> Types</a></li><li><ol class="section"><li class="expanded "><a href="types/boolean.html"><strong aria-hidden="true">10.1.1.</strong> Boolean type</a></li><li class="expanded "><a href="types/numeric.html"><strong aria-hidden="true">10.1.2.</strong> Numeric types</a></li><li class="expanded "><a href="types/textual.html"><strong aria-hidden="true">10.1.3.</strong> Textual types</a></li><li class="expanded "><a href="types/never.html"><strong aria-hidden="true">10.1.4.</strong> Never type</a></li><li class="expanded "><a href="types/tuple.html"><strong aria-hidden="true">10.1.5.</strong> Tuple types</a></li><li class="expanded "><a href="types/array.html"><strong aria-hidden="true">10.1.6.</strong> Array types</a></li><li class="expanded "><a href="types/slice.html"><strong aria-hidden="true">10.1.7.</strong> Slice types</a></li><li class="expanded "><a href="types/struct.html"><strong aria-hidden="true">10.1.8.</strong> Struct types</a></li><li class="expanded "><a href="types/enum.html"><strong aria-hidden="true">10.1.9.</strong> Enumerated types</a></li><li class="expanded "><a href="types/union.html"><strong aria-hidden="true">10.1.10.</strong> Union types</a></li><li class="expanded "><a href="types/function-item.html"><strong aria-hidden="true">10.1.11.</strong> Function item types</a></li><li class="expanded "><a href="types/closure.html"><strong aria-hidden="true">10.1.12.</strong> Closure types</a></li><li class="expanded "><a href="types/pointer.html"><strong aria-hidden="true">10.1.13.</strong> Pointer types</a></li><li class="expanded "><a href="types/function-pointer.html"><strong aria-hidden="true">10.1.14.</strong> Function pointer types</a></li><li class="expanded "><a href="types/trait-object.html"><strong aria-hidden="true">10.1.15.</strong> Trait object types</a></li><li class="expanded "><a href="types/impl-trait.html"><strong aria-hidden="true">10.1.16.</strong> Impl trait type</a></li><li class="expanded "><a href="types/parameters.html"><strong aria-hidden="true">10.1.17.</strong> Type parameters</a></li><li class="expanded "><a href="types/inferred.html"><strong aria-hidden="true">10.1.18.</strong> Inferred type</a></li></ol></li><li class="expanded "><a href="dynamically-sized-types.html"><strong aria-hidden="true">10.2.</strong> Dynamically Sized Types</a></li><li class="expanded "><a href="type-layout.html"><strong aria-hidden="true">10.3.</strong> Type layout</a></li><li class="expanded "><a href="interior-mutability.html"><strong aria-hidden="true">10.4.</strong> Interior mutability</a></li><li class="expanded "><a href="subtyping.html"><strong aria-hidden="true">10.5.</strong> Subtyping and Variance</a></li><li class="expanded "><a href="trait-bounds.html"><strong aria-hidden="true">10.6.</strong> Trait and lifetime bounds</a></li><li class="expanded "><a href="type-coercions.html"><strong aria-hidden="true">10.7.</strong> Type coercions</a></li><li class="expanded "><a href="destructors.html"><strong aria-hidden="true">10.8.</strong> Destructors</a></li><li class="expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">10.9.</strong> Lifetime elision</a></li></ol></li><li class="expanded "><a href="special-types-and-traits.html"><strong aria-hidden="true">11.</strong> Special types and traits</a></li><li class="expanded "><a href="memory-model.html"><strong aria-hidden="true">12.</strong> Memory model</a></li><li><ol class="section"><li class="expanded "><a href="memory-allocation-and-lifetime.html"><strong aria-hidden="true">12.1.</strong> Memory allocation and lifetime</a></li><li class="expanded "><a href="memory-ownership.html"><strong aria-hidden="true">12.2.</strong> Memory ownership</a></li><li class="expanded "><a href="variables.html"><strong aria-hidden="true">12.3.</strong> Variables</a></li></ol></li><li class="expanded "><a href="linkage.html"><strong aria-hidden="true">13.</strong> Linkage</a></li><li class="expanded "><a href="unsafety.html"><strong aria-hidden="true">14.</strong> Unsafety</a></li><li><ol class="section"><li class="expanded "><a href="unsafe-functions.html"><strong aria-hidden="true">14.1.</strong> Unsafe functions</a></li><li class="expanded "><a href="unsafe-blocks.html"><strong aria-hidden="true">14.2.</strong> Unsafe blocks</a></li><li class="expanded "><a href="behavior-considered-undefined.html"><strong aria-hidden="true">14.3.</strong> Behavior considered undefined</a></li><li class="expanded "><a href="behavior-not-considered-unsafe.html"><strong aria-hidden="true">14.4.</strong> Behavior not considered unsafe</a></li></ol></li><li class="expanded "><a href="const_eval.html"><strong aria-hidden="true">15.</strong> Constant Evaluation</a></li><li class="expanded "><a href="abi.html"><strong aria-hidden="true">16.</strong> Application Binary Interface</a></li><li class="expanded "><a href="runtime.html"><strong aria-hidden="true">17.</strong> The Rust runtime</a></li><li class="expanded "><a href="appendices.html"><strong aria-hidden="true">18.</strong> Appendices</a></li><li><ol class="section"><li class="expanded "><a href="macro-ambiguity.html"><strong aria-hidden="true">18.1.</strong> Macro Follow-Set Ambiguity Formal Specification</a></li><li class="expanded "><a href="influences.html"><strong aria-hidden="true">18.2.</strong> Influences</a></li><li class="expanded "><a href="glossary.html"><strong aria-hidden="true">18.3.</strong> Glossary</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rust 参考手册 - The Rust Language Reference</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                            <a href="https://github.com/zzy/rust-reference-zh" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#procedural-macros" id="procedural-macros">Procedural Macros</a></h2>
+<p><em>Procedural macros</em> allow creating syntax extensions as execution of a function.
+Procedural macros come in one of three flavors:</p>
+<ul>
+<li><a href="#function-like-procedural-macros">Function-like macros</a> - <code>custom!(...)</code></li>
+<li><a href="#derive-macros">Derive macros</a> - <code>#[derive(CustomDerive)]</code></li>
+<li><a href="#attribute-macros">Attribute macros</a> - <code>#[CustomAttribute]</code></li>
+</ul>
+<p>Procedural macros allow you to run code at compile time that operates over Rust
+syntax, both consuming and producing Rust syntax. You can sort of think of
+procedural macros as functions from an AST to another AST.</p>
+<p>Procedural macros must be defined in a crate with the <a href="linkage.html">crate type</a> of
+<code>proc-macro</code>.</p>
+<blockquote>
+<p><strong>Note</strong>: When using Cargo, Procedural macro crates are defined with the
+<code>proc-macro</code> key in your manifest:</p>
+<pre><code class="language-toml">[lib]
+proc-macro = true
+</code></pre>
+</blockquote>
+<p>As functions, they must either return syntax, panic, or loop endlessly. Returned
+syntax either replaces or adds the syntax depending on the kind of procedural
+macro. Panics are caught by the compiler and are turned into a compiler error.
+Endless loops are not caught by the compiler which hangs the compiler.</p>
+<p>Procedural macros run during compilation, and thus have the same resources that
+the compiler has. For example, standard input, error, and output are the same
+that the compiler has access to. Similarly, file access is the same. Because
+of this, procedural macros have the same security concerns that <a href="../cargo/reference/build-scripts.html">Cargo’s
+build scripts</a> have.</p>
+<p>Procedural macros have two ways of reporting errors. The first is to panic. The
+second is to emit a <a href="../std/macro.compile_error.html"><code>compile_error</code></a> macro invocation.</p>
+<h3><a class="header" href="#the-proc_macro-crate" id="the-proc_macro-crate">The <code>proc_macro</code> crate</a></h3>
+<p>Procedural macro crates almost always will link to the compiler-provided
+<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>. The <code>proc_macro</code> crate provides types required for
+writing procedural macros and facilities to make it easier.</p>
+<p>This crate primarily contains a <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> type. Procedural macros operate
+over <em>token streams</em> instead of AST nodes, which is a far more stable interface
+over time for both the compiler and for procedural macros to target. A
+<em>token stream</em> is roughly equivalent to <code>Vec&lt;TokenTree&gt;</code> where a <code>TokenTree</code>
+can roughly be thought of as lexical token. For example <code>foo</code> is an <code>Ident</code>
+token, <code>.</code> is a <code>Punct</code> token, and <code>1.2</code> is a <code>Literal</code> token. The <code>TokenStream</code>
+type, unlike <code>Vec&lt;TokenTree&gt;</code>, is cheap to clone.</p>
+<p>All tokens have an associated <code>Span</code>. A <code>Span</code> is an opaque value that cannot
+be modified but can be manufactured. <code>Span</code>s represent an extent of source
+code within a program and are primarily used for error reporting. You can modify
+the <code>Span</code> of any token.</p>
+<h3><a class="header" href="#procedural-macro-hygiene" id="procedural-macro-hygiene">Procedural macro hygiene</a></h3>
+<p>Procedural macros are <em>unhygienic</em>. This means they behave as if the output
+token stream was simply written inline to the code it’s next to. This means that
+it’s affected by external items and also affects external imports.</p>
+<p>Macro authors need to be careful to ensure their macros work in as many contexts
+as possible given this limitation. This often includes using absolute paths to
+items in libraries (for example, <code>::std::option::Option</code> instead of <code>Option</code>) or
+by ensuring that generated functions have names that are unlikely to clash with
+other functions (like <code>__internal_foo</code> instead of <code>foo</code>).</p>
+<h3><a class="header" href="#function-like-procedural-macros" id="function-like-procedural-macros">Function-like procedural macros</a></h3>
+<p><em>Function-like procedural macros</em> are procedural macros that are invoked using
+the macro invocation operator (<code>!</code>).</p>
+<p>These macros are defined by a <a href="visibility-and-privacy.html">public</a> <a href="items/functions.html">function</a> with the <code>proc_macro</code>
+<a href="attributes.html">attribute</a> and a signature of <code>(TokenStream) -&gt; TokenStream</code>. The input
+<a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is what is inside the delimiters of the macro invocation and the
+output <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> replaces the entire macro invocation.</p>
+<p>For example, the following macro definition ignores its input and outputs a
+function <code>answer</code> into its scope.</p>
+<!-- ignore: test doesn't support proc-macro -->
+<pre><code class="language-rust ignore"><span class="boring">#![crate_type = &quot;proc-macro&quot;]
+</span>extern crate proc_macro;
+use proc_macro::TokenStream;
+
+#[proc_macro]
+pub fn make_answer(_item: TokenStream) -&gt; TokenStream {
+    &quot;fn answer() -&gt; u32 { 42 }&quot;.parse().unwrap()
+}
+</code></pre>
+<p>And then we use it a binary crate to print “42” to standard output.</p>
+<!-- ignore: requires external crates -->
+<pre><code class="language-rust ignore">extern crate proc_macro_examples;
+use proc_macro_examples::make_answer;
+
+make_answer!();
+
+fn main() {
+    println!(&quot;{}&quot;, answer());
+}
+</code></pre>
+<p>Function-like procedural macros may expand to a <a href="types.html">type</a> or any number of
+<a href="items.html">items</a>, including <a href="macros-by-example.html"><code>macro_rules</code></a> definitions. They may be invoked in a <a href="types.html#type-expressions">type
+expression</a>, <a href="items.html">item</a> position (except as a <a href="statements.html">statement</a>), including items in
+<a href="items/external-blocks.html"><code>extern</code> blocks</a>, inherent and trait <a href="items/implementations.html">implementations</a>, and <a href="items/traits.html">trait
+definitions</a>. They cannot be used in a <a href="statements.html">statement</a>, <a href="expressions.html">expression</a>, or
+<a href="patterns.html">pattern</a>.</p>
+<h3><a class="header" href="#derive-macros" id="derive-macros">Derive macros</a></h3>
+<p><em>Derive macros</em> define new inputs for the <a href="attributes/derive.html"><code>derive</code> attribute</a>. These macros
+can create new <a href="items.html">items</a> given the token stream of a <a href="items/structs.html">struct</a>, <a href="items/enumerations.html">enum</a>, or <a href="items/unions.html">union</a>.
+They can also define <a href="#derive-macro-helper-attributes">derive macro helper attributes</a>.</p>
+<p>Custom derive macros are defined by a <a href="visibility-and-privacy.html">public</a> <a href="items/functions.html">function</a> with the
+<code>proc_macro_derive</code> attribute and a signature of <code>(TokenStream) -&gt; TokenStream</code>.</p>
+<p>The input <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is the token stream of the item that has the <code>derive</code>
+attribute on it. The output <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> must be a set of items that are
+then appended to the <a href="items/modules.html">module</a> or <a href="expressions/block-expr.html">block</a> that the item from the input
+<a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is in.</p>
+<p>The following is an example of a derive macro. Instead of doing anything
+useful with its input, it just appends a function <code>answer</code>.</p>
+<!-- ignore: test doesn't support proc-macro -->
+<pre><code class="language-rust ignore"><span class="boring">#![crate_type = &quot;proc-macro&quot;]
+</span>extern crate proc_macro;
+use proc_macro::TokenStream;
+
+#[proc_macro_derive(AnswerFn)]
+pub fn derive_answer_fn(_item: TokenStream) -&gt; TokenStream {
+    &quot;fn answer() -&gt; u32 { 42 }&quot;.parse().unwrap()
+}
+</code></pre>
+<p>And then using said derive macro:</p>
+<!-- ignore: requires external crates -->
+<pre><code class="language-rust ignore">extern crate proc_macro_examples;
+use proc_macro_examples::AnswerFn;
+
+#[derive(AnswerFn)]
+struct Struct;
+
+fn main() {
+    assert_eq!(42, answer());
+}
+</code></pre>
+<h4><a class="header" href="#derive-macro-helper-attributes" id="derive-macro-helper-attributes">Derive macro helper attributes</a></h4>
+<p>Derive macros can add additional <a href="attributes.html">attributes</a> into the scope of the <a href="items.html">item</a>
+they are on. Said attributes are called <em>derive macro helper attributes</em>. These
+attributes are <a href="attributes.html#active-and-inert-attributes">inert</a>, and their only purpose is to be fed into the derive
+macro that defined them. That said, they can be seen by all macros.</p>
+<p>The way to define helper attributes is to put an <code>attributes</code> key in the
+<code>proc_macro_derive</code> macro with a comma separated list of identifiers that are
+the names of the helper attributes.</p>
+<p>For example, the following derive macro defines a helper attribute
+<code>helper</code>, but ultimately doesn’t do anything with it.</p>
+<!-- ignore: test doesn't support proc-macro -->
+<pre><code class="language-rust ignore"><span class="boring">#![crate_type=&quot;proc-macro&quot;]
+</span><span class="boring">extern crate proc_macro;
+</span><span class="boring">use proc_macro::TokenStream;
+</span>
+#[proc_macro_derive(HelperAttr, attributes(helper))]
+pub fn derive_helper_attr(_item: TokenStream) -&gt; TokenStream {
+    TokenStream::new()
+}
+</code></pre>
+<p>And then usage on the derive macro on a struct:</p>
+<!-- ignore: requires external crates -->
+<pre><code class="language-rust ignore">#[derive(HelperAttr)]
+struct Struct {
+    #[helper] field: ()
+}
+</code></pre>
+<h3><a class="header" href="#attribute-macros" id="attribute-macros">Attribute macros</a></h3>
+<p><em>Attribute macros</em> define new <a href="attributes.html">outer attributes</a> which can be
+attached to <a href="items.html">items</a>, including items in <a href="items/external-blocks.html"><code>extern</code> blocks</a>, inherent and trait
+<a href="items/implementations.html">implementations</a>, and <a href="items/traits.html">trait definitions</a>.</p>
+<p>Attribute macros are defined by a <a href="visibility-and-privacy.html">public</a> <a href="items/functions.html">function</a> with the
+<code>proc_macro_attribute</code> <a href="attributes.html">attribute</a> that has a signature of <code>(TokenStream, TokenStream) -&gt; TokenStream</code>. The first <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is the delimited token
+tree following the attribute’s name, not including the outer delimiters. If
+the attribute is written as a bare attribute name, the attribute
+<a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is empty. The second <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is the rest of the <a href="items.html">item</a>
+including other <a href="attributes.html">attributes</a> on the <a href="items.html">item</a>. The returned <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a>
+replaces the <a href="items.html">item</a> with an arbitrary number of <a href="items.html">items</a>.</p>
+<p>For example, this attribute macro takes the input stream and returns it as is,
+effectively being the no-op of attributes.</p>
+<!-- ignore: test doesn't support proc-macro -->
+<pre><code class="language-rust ignore"><span class="boring">#![crate_type = &quot;proc-macro&quot;]
+</span><span class="boring">extern crate proc_macro;
+</span><span class="boring">use proc_macro::TokenStream;
+</span>
+#[proc_macro_attribute]
+pub fn return_as_is(_attr: TokenStream, item: TokenStream) -&gt; TokenStream {
+    item
+}
+</code></pre>
+<p>This following example shows the stringified <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code>s</a> that the attribute
+macros see. The output will show in the output of the compiler. The output is
+shown in the comments after the function prefixed with “out:”.</p>
+<!-- ignore: test doesn't support proc-macro -->
+<pre><code class="language-rust ignore">// my-macro/src/lib.rs
+<span class="boring">extern crate proc_macro;
+</span><span class="boring">use proc_macro::TokenStream;
+</span>
+#[proc_macro_attribute]
+pub fn show_streams(attr: TokenStream, item: TokenStream) -&gt; TokenStream {
+    println!(&quot;attr: \&quot;{}\&quot;&quot;, attr.to_string());
+    println!(&quot;item: \&quot;{}\&quot;&quot;, item.to_string());
+    item
+}
+</code></pre>
+<!-- ignore: requires external crates -->
+<pre><code class="language-rust ignore">// src/lib.rs
+extern crate my_macro;
+
+use my_macro::show_streams;
+
+// Example: Basic function
+#[show_streams]
+fn invoke1() {}
+// out: attr: &quot;&quot;
+// out: item: &quot;fn invoke1() { }&quot;
+
+// Example: Attribute with input
+#[show_streams(bar)]
+fn invoke2() {}
+// out: attr: &quot;bar&quot;
+// out: item: &quot;fn invoke2() {}&quot;
+
+// Example: Multiple tokens in the input
+#[show_streams(multiple =&gt; tokens)]
+fn invoke3() {}
+// out: attr: &quot;multiple =&gt; tokens&quot;
+// out: item: &quot;fn invoke3() {}&quot;
+
+// Example:
+#[show_streams { delimiters }]
+fn invoke4() {}
+// out: attr: &quot;delimiters&quot;
+// out: item: &quot;fn invoke4() {}&quot;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="macros-by-example.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="crates-and-source-files.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="macros-by-example.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="crates-and-source-files.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
