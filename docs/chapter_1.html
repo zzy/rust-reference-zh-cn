@@ -7,7 +7,7 @@
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Rust 参考手册, Rust 编程语言, Rust 开发指南">
+        <meta name="description" content="Rust 参考手册, Rust 编程手册, Rust 编程语言, Rust 开发手册, Rust 开发指南">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
@@ -123,6 +123,10 @@
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
                             
+                            <a href="https://github.com/zzy/rust-reference-zh" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -174,6 +178,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

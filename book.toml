@@ -2,7 +2,7 @@
 title = "Rust 参考手册 - The Rust Language Reference"
 authors = ["zzy"]
 language = "zh"
-description = "Rust 参考手册, Rust 编程语言, Rust 开发指南"
+description = "Rust 参考手册, Rust 编程手册, Rust 编程语言, Rust 开发手册, Rust 开发指南"
 src = "src"
 multilingual = false
 
@@ -11,11 +11,10 @@ build-dir = "docs"
 
 [output.html]
 theme = "theme"
+git-repository-url = "https://github.com/zzy/rust-reference-zh"
 # default-theme = "rust"
 curly-quotes = true
 mathjax-support = true
-# git_repository_url = "https://github.com/zzy/markdown-guide"
-# git-repository-icon = "fa-code-fork"
 
 [output.html.playpen]
 editable = true
