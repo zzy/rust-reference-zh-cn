@@ -1,0 +1,9 @@
+[book]
+authors = ["zzy"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Rust 参考手册"
+
+[output.html]
+theme = "./theme"
