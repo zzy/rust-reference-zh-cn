@@ -1,9 +1,32 @@
 [book]
+title = "Rust 参考手册 - The Rust Language Reference"
 authors = ["zzy"]
-language = "en"
-multilingual = false
+language = "zh"
+description = "Rust 参考手册, Rust 编程语言, Rust 开发指南"
 src = "src"
-title = "Rust 参考手册"
+multilingual = false
+
+[build]
+build-dir = "./docs"
 
 [output.html]
 theme = "./theme"
+# default-theme = "rust"
+curly-quotes = true
+mathjax-support = true
+# git_repository_url = "https://github.com/zzy/markdown-guide"
+# git-repository-icon = "fa-code-fork"
+
+[output.html.playpen]
+editable = true
+copy-js = true
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+copy-js = true
