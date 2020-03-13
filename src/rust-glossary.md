@@ -1,5 +1,7 @@
 # Rust 语言术语中英文对照表
 
+> 引用自 [Rust 中文翻译项目组 - Rust 语言术语中英文对照表](https://github.com/rust-lang-cn/english-chinese-glossary-of-rust/blob/master/rust-glossary.md)。
+
 English 英文                     | Chinese 中文                  | Note 备注
 -------------------------------  |-----------------------------  |----------
 **A**                            |                               |
@@ -201,7 +203,6 @@ link                             | 链接                          |
 linked-list                      | 链表                          |
 lint                             | （不译）                      | lint 英文本义是“纱布，绒毛”，此词在<br>计算机领域中表示程序代码中可疑和<br>不具结构性的片段，参见 [Wikipedia](https://en.wikipedia.org/wiki/Lint_%28software%29) |
 list                             | 表                            |
-listener                         | 监听器                        |
 literal                          | 数据，常量数据，字面值，字面量，<br>字面常量，字面上的 | 英文意思：字面意义的（内容）
 LLVM                             | （不译）                      | Low Level Virtual Machine 的缩写，<br>是构建编译器的系统
 loop                             | 循环                          | 作关键字时不译
