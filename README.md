@@ -1,6 +1,6 @@
 # Rust 参考手册
 
-此文档是 Rust 编程语言的主要参考资料（电子档发布在 https://rust-reference.budshome.com）。
+此文档是 Rust 编程语言的主要参考资料（电子档发布在 https://rust-reference.budshome.com/）。
 
 此文档并非 Rust 语言规范：可能包含特定于 `rustc` 自身的细节，因此不应作为 Rust 语言规范。Rust 语言开发团队计划在未来拿出规范文件，但目前只有本文档所述。
 
