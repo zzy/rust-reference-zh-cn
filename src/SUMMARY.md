@@ -1,43 +1,43 @@
-# The Rust Reference
+# Rust 参考手册
 
-[Introduction](introduction.md)
+[介绍](introduction.md)
 
-- [Notation](notation.md)
+- [标记法](notation.md)
 
-- [Lexical structure](lexical-structure.md)
-    - [Input format](input-format.md)
-    - [Keywords](keywords.md)
-    - [Identifiers](identifiers.md)
-    - [Comments](comments.md)
-    - [Whitespace](whitespace.md)
-    - [Tokens](tokens.md)
-    - [Paths](paths.md)
+- [词法结构](lexical-structure.md)
+    - [输入格式](input-format.md)
+    - [关键字](keywords.md)
+    - [标识符](identifiers.md)
+    - [注释](comments.md)
+    - [空白](whitespace.md)
+    - [记号](tokens.md)
+    - [路径](paths.md)
 
-- [Macros](macros.md)
-    - [Macros By Example](macros-by-example.md)
-    - [Procedural Macros](procedural-macros.md)
+- [宏](macros.md)
+    - [声明宏](macros-by-example.md)
+    - [过程宏](procedural-macros.md)
 
-- [Crates and source files](crates-and-source-files.md)
+- [crate 和源文件](crates-and-source-files.md)
 
-- [Conditional compilation](conditional-compilation.md)
+- [条件编译](conditional-compilation.md)
 
-- [Items](items.md)
-    - [Modules](items/modules.md)
-    - [Extern crates](items/extern-crates.md)
-    - [Use declarations](items/use-declarations.md)
-    - [Functions](items/functions.md)
-    - [Type aliases](items/type-aliases.md)
-    - [Structs](items/structs.md)
-    - [Enumerations](items/enumerations.md)
-    - [Unions](items/unions.md)
-    - [Constant items](items/constant-items.md)
-    - [Static items](items/static-items.md)
-    - [Traits](items/traits.md)
-    - [Implementations](items/implementations.md)
-    - [External blocks](items/external-blocks.md)
-    - [Type and lifetime parameters](items/generics.md)
-    - [Associated Items](items/associated-items.md)
-    - [Visibility and Privacy](visibility-and-privacy.md)
+- [项](items.md)
+    - [模块](items/modules.md)
+    - [extern crate 声明](items/extern-crates.md)
+    - [use 声明](items/use-declarations.md)
+    - [函数](items/functions.md)
+    - [类型别名](items/type-aliases.md)
+    - [结构体](items/structs.md)
+    - [枚举](items/enumerations.md)
+    - [联合体](items/unions.md)
+    - [常量项](items/constant-items.md)
+    - [静态项](items/static-items.md)
+    - [trait](items/traits.md)
+    - [实现](items/implementations.md)
+    - [外部块](items/external-blocks.md)
+    - [泛型：类型和生命周期参数](items/generics.md)
+    - [关联项](items/associated-items.md)
+    - [可见性和私有性](visibility-and-privacy.md)
 
 - [Attributes](attributes.md)
     - [Testing](attributes/testing.md)
@@ -126,3 +126,9 @@
     - [Macro Follow-Set Ambiguity Formal Specification](macro-ambiguity.md)
     - [Influences](influences.md)
     - [Glossary](glossary.md)
+
+------
+
+[Rust 语言术语中英文对照表](rust-glossary.md)
+
+------
