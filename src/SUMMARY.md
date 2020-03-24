@@ -1,5 +1,11 @@
 # Rust 参考手册
 
+<!--
+[SUMMARY.md](https://github.com/rust-lang/reference/blob/master/src/SUMMARY.md)
+> <br />
+> commit 363a64a939bf246d7373776826e14065e912131f
+-->
+
 [介绍](introduction.md)
 
 - [标记法](notation.md)
@@ -103,28 +109,28 @@
 
 - [特殊类型及其 trait](special-types-and-traits.md)
 
-- [Memory model](memory-model.md)
-    - [Memory allocation and lifetime](memory-allocation-and-lifetime.md)
-    - [Memory ownership](memory-ownership.md)
-    - [Variables](variables.md)
+- [内存模型](memory-model.md)
+    - [内存分配和其生命周期](memory-allocation-and-lifetime.md)
+    - [内存所有权](memory-ownership.md)
+    - [变量](variables.md)
 
-- [Linkage](linkage.md)
+- [链接](linkage.md)
 
-- [Unsafety](unsafety.md)
-    - [Unsafe functions](unsafe-functions.md)
-    - [Unsafe blocks](unsafe-blocks.md)
-    - [Behavior considered undefined](behavior-considered-undefined.md)
-    - [Behavior not considered unsafe](behavior-not-considered-unsafe.md)
+- [不安全性](unsafety.md)
+    - [不安全函数](unsafe-functions.md)
+    - [不安全块](unsafe-blocks.md)
+    - [未定义行为](behavior-considered-undefined.md)
+    - [不安全行为](behavior-not-considered-unsafe.md)
 
-- [Constant Evaluation](const_eval.md)
+- [常量计算](const_eval.md)
 
-- [Application Binary Interface](abi.md)
+- [ABI](abi.md)
 
-- [The Rust runtime](runtime.md)
+- [Rust 运行时](runtime.md)
 
-- [Appendices](appendices.md)
-    - [Macro Follow-Set Ambiguity Formal Specification](macro-ambiguity.md)
-    - [Influences](influences.md)
-    - [Glossary](glossary.md)
+- [附录](appendices.md)
+    - [宏定义规范](macro-ambiguity.md)
+    - [受其它语言的影响](influences.md)
+    - [术语](glossary.md)
 
 [Rust 语言术语中英文对照表](rust-glossary.md)
