@@ -1,26 +1,24 @@
 # Introduction
 
-This book is the primary reference for the Rust programming language. It
-provides three kinds of material:
+> [introduction.md](https://github.com/rust-lang/reference/blob/master/src/introduction.md)
+> <br />
+> commit 1995d18b04a59368f4a91c600876ad987521d833
 
-  - Chapters that informally describe each language construct and their use.
-  - Chapters that informally describe the memory model, concurrency model,
-    runtime services, linkage model, and debugging facilities.
-  - Appendix chapters providing rationale and references to languages that
-    influenced the design.
+本书是 Rust 编程语言的主要参考，提供了3类资料：
+
+  - 一些章节非正式地介绍了每种语言结构及其用法。
+  - 一些章节非正式地介绍了内存模型、并发模型、运行时服务、链接模型，以及调试工具。
+  - 附录章节提供了影响设计的 Rust 语言基础原理和其参考资料。
 
 <div class="warning">
 
-Warning: This book is incomplete. Documenting everything takes a while. See
-the [GitHub issues] for what is not documented in this book.
+注：此书暂未完成，每条参考的记录都需要花一些时间。有关本书未记录的部分，请参阅[GitHub issues]。
 
 </div>
 
-## What *The Reference* is Not
+## *参考手册*并非——
 
-This book does not serve as an introduction to the language. Background
-familiarity with the language is assumed. A separate [book] is available to
-help acquire such background familiarity.
+本书不充当 Rust 语言入门，假设你已熟悉 Rust 语言基础。若你需要熟悉语言基础，请阅读 [Rust 程序设计语言]。
 
 This book also does not serve as a reference to the [standard library]
 included in the language distribution. Those libraries are documented
@@ -131,7 +129,7 @@ hesitate to file an issue or ask about it in the `#docs` channels on
 [Discord]. Knowing what people use this book for the most helps direct our
 attention to making those sections the best that they can be.
 
-[book]: ../book/index.html
+[Rust 程序设计语言]: https://rust-lang.budshome.com
 [github issues]: https://github.com/rust-lang/reference/issues
 [standard library]: ../std/index.html
 [the Rust Reference repository]: https://github.com/rust-lang/reference/

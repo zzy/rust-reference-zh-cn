@@ -1,7 +1,7 @@
 # Rust 参考手册
 
 <!--
-[SUMMARY.md](https://github.com/rust-lang/reference/blob/master/src/SUMMARY.md)
+> [SUMMARY.md](https://github.com/rust-lang/reference/blob/master/src/SUMMARY.md)
 > <br />
 > commit 363a64a939bf246d7373776826e14065e912131f
 -->
