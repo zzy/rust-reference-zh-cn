@@ -11,6 +11,7 @@ build-dir = "docs"
 
 [output.html]
 theme = "theme"
+additional-css = ["theme/css/reference.css"]
 git-repository-url = "https://github.com/zzy/rust-reference-zh"
 # default-theme = "rust"
 curly-quotes = true
