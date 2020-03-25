@@ -18,13 +18,9 @@
 
 ## *参考手册*并非——
 
-本书不充当 Rust 语言入门，假设你已熟悉 Rust 语言基础。若你需要熟悉语言基础，请阅读 [Rust 程序设计语言]。
+本书并非 Rust 语言入门，阅读它需要有一定的 Rust 语言基础。若你需要学习语言基础，请阅读 [Rust 程序设计语言]。
 
-This book also does not serve as a reference to the [standard library]
-included in the language distribution. Those libraries are documented
-separately by extracting documentation attributes from their source code. Many
-of the features that one might expect to be language features are library
-features in Rust, so what you're looking for may be there, not here.
+本书也非 Rust 语言发行版所包含的[标准库]的参考资料，[标准库]文档来源于从源码中抽取的文档属性。许多你期待是 Rust 语言特性的部分，可能属于 [Rust 标准库][标准库]特性。所以你应该在库文档中查阅，而非此书。
 
 Similarly, this book does not usually document the specifics of `rustc` as a
 tool or of Cargo. `rustc` has its own [book][rustc book]. Cargo has a
@@ -131,7 +127,7 @@ attention to making those sections the best that they can be.
 
 [Rust 程序设计语言]: https://rust-lang.budshome.com
 [github issues]: https://github.com/rust-lang/reference/issues
-[standard library]: ../std/index.html
+[标准库]: https://doc.rust-lang.org/std
 [the Rust Reference repository]: https://github.com/rust-lang/reference/
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
