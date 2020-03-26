@@ -30,11 +30,9 @@
 
 ## 如何使用此书
 
-This book does not assume you are reading this book sequentially. Each
-chapter generally can be read standalone, but will cross-link to other chapters
-for facets of the language they refer to, but do not discuss.
+本书无需按章节顺序阅读。每章节都可以独立阅读，但会交叉连接到其他章节，以了解所提到的 Rust 语言的各方面内容——但不详述。
 
-There are two main ways to read this document.
+阅读本书有两种主要方式。
 
 The first is to answer a specific question. If you know which chapter answers
 that question, you can jump to that chapter in the table of contents. Otherwise,
