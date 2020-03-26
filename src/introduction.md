@@ -34,27 +34,15 @@
 
 阅读本书有两种主要方式。
 
-The first is to answer a specific question. If you know which chapter answers
-that question, you can jump to that chapter in the table of contents. Otherwise,
-you can press `s` or the click the magnifying glass on the top bar to search for
-keywords related to your question. For example, say you wanted to know when a
-temporary value created in a let statement is dropped. If you didn't already
-know that the [lifetime of temporaries] is defined in the [expressions chapter],
-you could search "temporary let" and the first search result will take you to
-that section.
+第一，寻找特定问题的答案。如果你知道回答问题的章节，你可以直接从目录跳入章节进行阅读。否则，你可以按 `s` 键或单击顶部栏上的放大镜来搜索与问题相关的关键字（译者注：暂不能搜索非英文）。例如：假设你想知道 `let` 语句创建的临时值什么时候会被删除；同时，假设你还不知道[表达式][expressions chapter]一章中定义了[临时对象的生命周期][lifetime of temporaries]。那么，你可以搜索 `temporary let`，第一个搜索结果将带你阅读该部分。 
 
-The second is to generally improve your knowledge of a facet of the language.
-In that case, just browse the table of contents until you see something you
-want to know more about, and just start reading. If a link looks interesting,
-click it, and read about that section.
+第二，概括地提高你对 Rust 语言某一方面的认知。这种情况下，只要你浏览目录时看到了想了解的内容，就去开始阅读。如果某个链接看起来挺有趣，点击并阅读该部分。
 
-That said, there is no wrong way to read this book. Read it however you feel
-helps you best.
+综上所述，本书没有错误的阅读方式，按照你感觉最有帮助的方式去读它吧。
 
-### Conventions
+### 约定
 
-Like all technical books, this book has certain conventions in how it displays
-information. These conventions are documented here.
+像所有技术书籍一样，在信息的展示方面，本书有一些约定。
 
 * Statements that define a term contain that term in *italics*. Whenever that
   term is used outside of that chapter, it is usually a link to the section that
