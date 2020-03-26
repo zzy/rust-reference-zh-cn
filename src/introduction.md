@@ -67,7 +67,7 @@
 
   <div class="warning">
 
-  Warning: This is an example warning.
+  警告：示例警告。
 
   </div>
 
