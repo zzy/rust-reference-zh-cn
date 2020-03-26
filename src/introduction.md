@@ -16,26 +16,19 @@
 
 </div>
 
-## *参考手册*并非——
+## *参考手册* 并非——
 
 本书并非 Rust 语言入门，阅读它需要有一定的 Rust 语言基础。若你需要学习语言基础，请阅读 [Rust 程序设计语言]。
 
 本书也非 Rust 语言发行版所包含的[标准库]的参考资料，[标准库]文档来源于从源码中抽取的文档属性。许多你期待是 Rust 语言特性的部分，可能属于 [Rust 标准库][标准库]特性。所以你应该在库文档中查阅，而非此书。
 
-Similarly, this book does not usually document the specifics of `rustc` as a
-tool or of Cargo. `rustc` has its own [book][rustc book]. Cargo has a
-[book][cargo book] that contains a [reference][cargo reference]. There are a few
-pages such as [linkage] that still describe how `rustc` works.
+类似地，本书通常不能作为记录 `rustc` 或者 `Cargo` 细节的工具书。`rustc` 有自己的[书籍][rustc book]，`Cargo` 有一本包含[参考资料][cargo reference]的[书籍][cargo book]。本书中，包含一些诸如[链接][linkage]的章节，介绍了 `rustc` 是如何工作的。
 
-This book also only serves as a reference to what is available in stable
-Rust. For unstable features being worked on, see the [Unstable Book].
+本书也仅作为 Rust 稳定版的参考资料，关于尚在完善的非稳定特性，请阅读[非稳定版书籍][Unstable Book]。
 
-Finally, this book is not normative. It may include details that are
-specific to `rustc` itself, and should not be taken as a specification for
-the Rust language. We intend to produce such a book someday, and until then,
-the reference is the closest thing we have to one.
+最后一点，本书并非标准。其包含的一些细节是 `rustc` 自身规范，不应作为 Rust 语言规范。我们计划以后写一本关于 Rust 语言规范的书籍，但目前，此参考手册是最接近 Rust 语言规范的资料。
 
-## How to Use This Book
+## 如何使用此书
 
 This book does not assume you are reading this book sequentially. Each
 chapter generally can be read standalone, but will cross-link to other chapters
@@ -131,11 +124,11 @@ attention to making those sections the best that they can be.
 [the Rust Reference repository]: https://github.com/rust-lang/reference/
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
-[cargo book]: ../cargo/index.html
-[cargo reference]: ../cargo/reference/index.html
+[cargo book]: https://cargo.budshome.com
+[cargo reference]: https://cargo.budshome.com/reference
 [expressions chapter]: expressions.md
 [lifetime of temporaries]: expressions.md#temporary-lifetimes
 [linkage]: linkage.md
-[rustc book]: ../rustc/index.html
+[rustc book]: https://doc.rust-lang.org/nightly/rustc/index.html
 [Notation]: notation.md
 [Discord]: https://discord.gg/rust-lang
