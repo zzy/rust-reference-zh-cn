@@ -23,17 +23,11 @@
 
 ## 字符串表组合
 
-Some rules in the grammar &mdash; notably [unary operators], [binary
-operators], and [keywords] &mdash; are given in a simplified form: as a listing
-of printable strings. These cases form a subset of the rules regarding the
-[token][tokens] rule, and are assumed to be the result of a lexical-analysis
-phase feeding the parser, driven by a <abbr title="Deterministic Finite
-Automaton">DFA</abbr>, operating over the disjunction of all such string table
-entries.
+语法中的一些规则&mdash;尤其是[单目运算符][unary operators]，[双目运算符][binary
+operators]和[关键字][keywords]&mdash;以一种简单的形式表现：可打印的字符串表。这些规则是[记号][tokens]相关规则的子集，并且被假定为词法分析阶段的结果。该阶段由一个 DFA（Deterministic Finite
+Automaton，确定有限状态自动机）驱动，通过分离所有这些字符串表入口执行。
 
-When such a string in `monospace` font occurs inside the grammar,
-it is an implicit reference to a single member of such a string table
-production. See [tokens] for more information.
+当语法中出现如 `monospace` 这样的字符串时（译者注：半角双引号 `"` 中的字符串），它是对字符串表组合中的单个成员的隐式引用。查阅[记号][tokens]以获取更多信息。
 
 [binary operators]: expressions/operator-expr.md#arithmetic-and-logical-binary-operators
 [keywords]: keywords.md
