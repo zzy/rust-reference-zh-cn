@@ -1,5 +1,9 @@
 # 标记法
 
+> [notation.md](https://github.com/rust-lang/reference/blob/master/src/notation.md)
+> <br />
+> commit b0e0ad6490d6517c19546b1023948986578fc378
+
 ## 语法
 
 下表符号被用于 *Lexer* 和 *Syntax* 的语法片段：
