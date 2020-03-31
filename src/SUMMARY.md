@@ -133,4 +133,4 @@
     - [受其它语言的影响](influences.md)
     - [术语](glossary.md)
 
-[Rust 语言术语中英文对照表](rust-glossary.md)
+
