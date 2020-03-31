@@ -44,26 +44,19 @@
 
 像所有技术书籍一样，在信息的展示方面，本书有一些约定。
 
-* Statements that define a term contain that term in *italics*. Whenever that
-  term is used outside of that chapter, it is usually a link to the section that
-  has this definition.
+* 定义术语的语句中，术语写为*斜体*。当术语在其定义章节之外使用时，通常会有一个链接指向术语定义的片段。
 
-  An *example term* is an example of a term being defined.
+  *示例术语*是一个定义术语的示例。
 
-* Differences in the language by which edition the crate is compiled under are
-  in a blockquote that start with the words "Edition Differences:" in **bold**.
+* 编译 crate 的 Rust 语言版本的差异，以**版本差异**开始，记录在块引用中。
 
-  > **Edition Differences**: In the 2015 edition, this syntax is valid that is
-  > disallowed as of the 2018 edition.
+  > **版本差异**：此语法 2015 版本有效，2018 版本起不允许使用。
 
-* Notes that contain useful information about the state of the book or point out
-  useful, but mostly out of scope, information are in blockquotes that start
-  with the word "Note:" in **bold**.
+* 有关书籍状态的，或者大部分超出本书范围的有用资料，以**注**开始，记录在块引用中。
 
-  > **Note**: This is an example note.
+  > **注**：这是一个注释示例。
 
-* Warnings that show unsound behavior in the language or possibly confusing
-  interactions of language features are in a special warning box.
+* 有关对语言的不健全行为，或者易于混淆的语言特性的警告，记录在特殊的警告框里。
 
   <div class="warning">
 
@@ -71,43 +64,36 @@
 
   </div>
 
-* Code snippets inline in the text are inside `<code>` tags.
+* 代码片段内联在 `<code>` 标签里。
 
-  Longer code examples are in a syntax highlighted box that has controls for
-  copying, executing, and showing hidden lines in the top right corner.
+  较长的示例代码放在语法高亮的代码框内，其右上角有用于复制、运行和显示隐藏行的控件。
 
   ```rust
-  # // This is a hidden line.
+  # // 这是隐藏行
   fn main() {
-      println!("This is a code example");
+      println!("这是示例代码");
   }
   ```
 
-* The grammar and lexical structure is in blockquotes with either "Lexer" or
-  "Syntax" in <sup>**bold superscript**</sup> as the first line.
+* 语法和词法结构，放在块引用中，第一行为粗体上标 <sup>**词法**</sup> 或 <sup>**语法**</sup>。
 
-  > **<sup>Syntax</sup>**\
-  > _ExampleGrammar_:\
-  > &nbsp;&nbsp; &nbsp;&nbsp; `~` [_Expression_]\
-  > &nbsp;&nbsp; | `box` [_Expression_]
+  > **<sup>语法</sup>**\
+  > _示例语法_：\
+  > &nbsp;&nbsp; &nbsp;&nbsp; `~` [ _表达式_ ]\
+  > &nbsp;&nbsp; | `box` [ _表达式_ ]
 
-  See [Notation] for more detail.
+  更多细节见[标记法][Notation]。
 
-## Contributing
+## 做贡献
 
-We welcome contributions of all kinds.
+我们欢迎各类贡献。
 
-You can contribute to this book by opening an issue or sending a pull
-request to [the Rust Reference repository]. If this book does not answer
-your question, and you think its answer is in scope of it, please do not
-hesitate to file an issue or ask about it in the `#docs` channels on
-[Discord]. Knowing what people use this book for the most helps direct our
-attention to making those sections the best that they can be.
+欢迎 fork [Rust 参考手册中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
 
 [Rust 程序设计语言]: https://rust-lang.budshome.com
 [github issues]: https://github.com/rust-lang/reference/issues
 [标准库]: https://doc.rust-lang.org/std
-[the Rust Reference repository]: https://github.com/rust-lang/reference/
+[Rust 参考手册中文翻译仓库]: https://github.com/zzy/rust-reference-zh
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
 [cargo book]: https://cargo.budshome.com
@@ -117,4 +103,3 @@ attention to making those sections the best that they can be.
 [linkage]: linkage.md
 [rustc book]: https://doc.rust-lang.org/nightly/rustc/index.html
 [Notation]: notation.md
-[Discord]: https://discord.gg/rust-lang
