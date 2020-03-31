@@ -7,23 +7,22 @@
 Rust 将关键字分为三类：
 
 - [关键字](#%e5%85%b3%e9%94%ae%e5%ad%97)
-  - [Strict keywords](#strict-keywords)
-  - [Reserved keywords](#reserved-keywords)
-  - [Weak keywords](#weak-keywords)
+  - [严格关键字](#%e4%b8%a5%e6%a0%bc%e5%85%b3%e9%94%ae%e5%ad%97)
+  - [保留关键字](#%e4%bf%9d%e7%95%99%e5%85%b3%e9%94%ae%e5%ad%97)
+  - [Weak<sup>待译</sup>关键字](#weaksup%e5%be%85%e8%af%91sup%e5%85%b3%e9%94%ae%e5%ad%97)
 
-## Strict keywords
+## 严格关键字
 
-These keywords can only be used in their correct contexts. They cannot
-be used as the names of:
+严格关键字仅能在正确的上下文中使用。它们不能用作：
 
-* [Items]
-* [Variables] and function parameters
-* Fields and [variants]
-* [Type parameters]
-* Lifetime parameters or [loop labels]
-* [Macros] or [attributes]
-* [Macro placeholders]
-* [Crates]
+* [项][Items]
+* [变量][Variables]和函数参数
+* 字段和[枚举][enumerations]
+* [类型参数][Type parameters]
+* 生命周期参数或者[循环标签][loop labels]
+* [宏][Macros]或[属性][attributes]
+* [宏占位符][Macro placeholders]
+* [crate 和源文件][Crates]
 
 > **<sup>Lexer:<sup>**\
 > KW_AS             : `as`\
@@ -62,19 +61,16 @@ be used as the names of:
 > KW_WHERE          : `where`\
 > KW_WHILE          : `while`
 
-The following keywords were added beginning in the 2018 edition.
+2018 版本增加了下述严格关键字。
 
 > **<sup>Lexer 2018+</sup>**\
 > KW_ASYNC          : `async`\
 > KW_AWAIT          : `await`\
 > KW_DYN            : `dyn`
 
-## Reserved keywords
+## 保留关键字
 
-These keywords aren't used yet, but they are reserved for future use. They have
-the same restrictions as strict keywords. The reasoning behind this is to make
-current programs forward compatible with future versions of Rust by forbidding
-them to use these keywords.
+保留关键字尚未使用，但已保留供将来使用。它们与严格的关键字有相同的限制。其背后的原因是，禁止当前程序使用这些关键字，从而使当前程序与未来版本的 Rust 兼容。
 
 > **<sup>Lexer</sup>**\
 > KW_ABSTRACT       : `abstract`\
@@ -90,29 +86,25 @@ them to use these keywords.
 > KW_VIRTUAL        : `virtual`\
 > KW_YIELD          : `yield`
 
-The following keywords are reserved beginning in the 2018 edition.
+2018 版本增加了下述保留关键字。
 
 > **<sup>Lexer 2018+</sup>**\
 > KW_TRY   : `try`
 
-## Weak keywords
+## Weak<sup>待译</sup>关键字
 
-These keywords have special meaning only in certain contexts. For example, it
-is possible to declare a variable or method with the name `union`.
+Weak<sup>待译</sup>关键字仅在特定的上下文中才有特殊的含义。例如，可以声明一个名为 `union` 的变量或方法。
 
-* `union` is used to declare a [union] and is only a keyword when used in a
-  union declaration.
-* `'static` is used for the static lifetime and cannot be used as a generic
-  lifetime parameter
+* `union` 用来声明一个[联合体][union]，且仅在联合体声明中是关键字。 
+* `'static` 用于静态生命周期，且不能用作泛型生命周期参数。
 
   ```compile_fail
   // error[E0262]: invalid lifetime parameter name: `'static`
   fn invalid_lifetime_parameter<'static>(s: &'static str) -> &'static str { s }
   ```
-* In the 2015 edition, [`dyn`] is a keyword when used in a type position
-  followed by a path that does not start with `::`.
+* 2015 版本中，[`dyn`] 是一个关键字，当在类型位置使用时，其后跟随的路径不能以 `::` 开头。
 
-  Beginning in the 2018 edition, `dyn` has been promoted to a strict keyword.
+  自 2018 版本开始，`dyn` 被提升为严格关键字。
 
 > **<sup>Lexer</sup>**\
 > KW_UNION          : `union`\
@@ -130,5 +122,5 @@ is possible to declare a variable or method with the name `union`.
 [Macro placeholders]: macros-by-example.md
 [Crates]: crates-and-source-files.md
 [union]: items/unions.md
-[variants]: items/enumerations.md
+[enumerations]: items/enumerations.md
 [`dyn`]: types/trait-object.md
