@@ -1,4 +1,4 @@
-# Introduction
+# 介绍
 
 > [introduction.md](https://github.com/rust-lang/reference/blob/master/src/introduction.md)
 > <br />
