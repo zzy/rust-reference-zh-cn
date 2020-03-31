@@ -1,10 +1,10 @@
-# Notation
+# 标记法
 
-## Grammar
+## 语法
 
-The following notations are used by the *Lexer* and *Syntax* grammar snippets:
+下表符号被用于 *Lexer* 和 *Syntax* 的语法片段：
 
-| Notation          | Examples                      | Meaning                                   |
+| 符号          | 示例                      | 释义                                   |
 |-------------------|-------------------------------|-------------------------------------------|
 | CAPITAL           | KW_IF, INTEGER_LITERAL        | A token produced by the lexer             |
 | _ItalicCamelCase_ | _LetStatement_, _Item_        | A syntactical production                  |
@@ -21,7 +21,7 @@ The following notations are used by the *Lexer* and *Syntax* grammar snippets:
 | ~`string`         | ~`\n`, ~`*/`                  | Any characters, except this sequence      |
 | ( )               | (`,` _Parameter_)<sup>?</sup> | Groups items                              |
 
-## String table productions
+## 字符串表组合
 
 Some rules in the grammar &mdash; notably [unary operators], [binary
 operators], and [keywords] &mdash; are given in a simplified form: as a listing

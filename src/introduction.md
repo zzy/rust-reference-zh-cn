@@ -75,12 +75,12 @@
   }
   ```
 
-* 语法和词法结构，放在块引用中，第一行为粗体上标 <sup>**词法**</sup> 或 <sup>**语法**</sup>。
+* 语法和词法结构，放在块引用中，第一行为粗体上标 <sup>**Lexer**</sup> 或 <sup>**Syntax**</sup>。
 
-  > **<sup>语法</sup>**\
-  > _示例语法_：\
-  > &nbsp;&nbsp; &nbsp;&nbsp; `~` [ _表达式_ ]\
-  > &nbsp;&nbsp; | `box` [ _表达式_ ]
+  > **<sup>Syntax</sup>**\
+  > _语法示例_：\
+  > &nbsp;&nbsp; &nbsp;&nbsp; `~` [_Expression_]\
+  > &nbsp;&nbsp; | `box` [_Expression_]
 
   更多细节见[标记法][Notation]。
 
