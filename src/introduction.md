@@ -82,7 +82,7 @@
   > &nbsp;&nbsp; &nbsp;&nbsp; `~` [_Expression_]\
   > &nbsp;&nbsp; | `box` [_Expression_]
 
-  更多细节见[标记法][Notation]。
+  查阅[标记法][Notation]以获取更多细节。
 
 ## 做贡献
 
