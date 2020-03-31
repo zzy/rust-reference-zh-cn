@@ -1,10 +1,15 @@
-# Keywords
+# 关键字
 
-Rust divides keywords into three categories:
+> [keywords.md](https://github.com/rust-lang/reference/blob/master/src/keywords.md)
+> <br />
+> commit 64923185890763048d190ce92cb668b58acbc49a
 
-* [strict](#strict-keywords)
-* [reserved](#reserved-keywords)
-* [weak](#weak-keywords)
+Rust 将关键字分为三类：
+
+- [关键字](#%e5%85%b3%e9%94%ae%e5%ad%97)
+  - [Strict keywords](#strict-keywords)
+  - [Reserved keywords](#reserved-keywords)
+  - [Weak keywords](#weak-keywords)
 
 ## Strict keywords
 
