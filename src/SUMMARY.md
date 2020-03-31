@@ -132,5 +132,3 @@
     - [宏定义规范](macro-ambiguity.md)
     - [受其它语言的影响](influences.md)
     - [术语](glossary.md)
-
-
