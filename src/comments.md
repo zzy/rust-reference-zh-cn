@@ -1,11 +1,15 @@
-# Comments
+# 注释
+
+> [comments.md](https://github.com/rust-lang/reference/blob/master/src/comments.md)
+> <br />
+> commit 993393d362cae51584d580f86c4f38d43ae76efc
 
 > **<sup>Lexer</sup>**\
-> LINE_COMMENT :\
+> 行注释：\
 > &nbsp;&nbsp; &nbsp;&nbsp; `//` (~[`/` `!`] | `//`) ~`\n`<sup>\*</sup>\
 > &nbsp;&nbsp; | `//`
 >
-> BLOCK_COMMENT :\
+> 块注释：\
 > &nbsp;&nbsp; &nbsp;&nbsp; `/*` (~[`*` `!`] | `**` | _BlockCommentOrDoc_)
 >      (_BlockCommentOrDoc_ | ~`*/`)<sup>\*</sup> `*/`\
 > &nbsp;&nbsp; | `/**/`\
@@ -17,7 +21,7 @@
 > INNER_BLOCK_DOC :\
 > &nbsp;&nbsp; `/*!` ( _BlockCommentOrDoc_ | ~[`*/` _IsolatedCR_] )<sup>\*</sup> `*/`
 >
-> OUTER_LINE_DOC :\
+> 文档注释：\
 > &nbsp;&nbsp; `///` (~`/` ~[`\n` _IsolatedCR_]<sup>\*</sup>)<sup>?</sup>
 >
 > OUTER_BLOCK_DOC :\
@@ -32,14 +36,13 @@
 > _IsolatedCR_ :\
 > &nbsp;&nbsp; _A `\r` not followed by a `\n`_
 
-## Non-doc comments
+## 非文档注释
 
-Comments in Rust code follow the general C++ style of line (`//`) and
-block (`/* ... */`) comment forms. Nested block comments are supported.
+Rust 代码中的注释大体上遵循 C++ 风格的行（`//`）和块（`/* ... */`）注释形式，嵌套块注释也被支持。
 
-Non-doc comments are interpreted as a form of whitespace.
+非文档注释被当作空白的形式解析。
 
-## Doc comments
+## 文档注释
 
 Line doc comments beginning with exactly _three_ slashes (`///`), and block
 doc comments (`/** ... */`), both inner doc comments, are interpreted as a
@@ -56,7 +59,7 @@ modules that occupy a source file.
 Isolated CRs (`\r`), i.e. not followed by LF (`\n`), are not allowed in doc
 comments.
 
-## Examples
+## 示例
 
 ```rust
 //! A doc comment that applies to the implicit anonymous module of this crate
