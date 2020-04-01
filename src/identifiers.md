@@ -9,12 +9,12 @@
 > &nbsp;&nbsp; &nbsp;&nbsp; [`a`-`z` `A`-`Z`]&nbsp;[`a`-`z` `A`-`Z` `0`-`9` `_`]<sup>\*</sup>\
 > &nbsp;&nbsp; | `_` [`a`-`z` `A`-`Z` `0`-`9` `_`]<sup>+</sup>
 >
-> RAW_IDENTIFIER : `r#` IDENTIFIER_OR_KEYWORD <sub>*除外：`crate`, `self`, `super`, `Self`*</sub>
+> RAW_IDENTIFIER <sup><strong>译否？</strong></sup> : `r#` IDENTIFIER_OR_KEYWORD <sup><strong>译否？</strong></sup> <sub>*除外：`crate`, `self`, `super`, `Self`*</sub>
 >
-> NON_KEYWORD_IDENTIFIER : IDENTIFIER_OR_KEYWORD <sub>*除外：[规定关键字]或[保留关键字]*</sub>
+> NON_KEYWORD_IDENTIFIER <sup><strong>译否？</strong></sup> : IDENTIFIER_OR_KEYWORD <sup><strong>译否？</strong></sup> <sub>*除外：[规定关键字]或[保留关键字]*</sub>
 >
-> IDENTIFIER :\
-> NON_KEYWORD_IDENTIFIER | RAW_IDENTIFIER
+> IDENTIFIER <sup><strong>译否？</strong></sup> :\
+> NON_KEYWORD_IDENTIFIER <sup><strong>译否？</strong></sup> | RAW_IDENTIFIER <sup><strong>译否？</strong></sup>
 
 标识符是如下形式的任何非空 ASCII 字符串：
 
