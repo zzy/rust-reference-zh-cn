@@ -43,37 +43,37 @@ mdbook build
   <tr>
     <td align="center">
       <a href="https://budshome.com">
-        <img src="imgs/contributors/zzy.jpg" width="100px;" alt=""/>
+        <img src="src/imgs/contributors/zzy.jpg" width="100px;" alt=""/>
         <br /><sub><b>Zhang Zhongyu</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/zzy/rust-reference-zh">
-        <img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
+        <img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
         <br /><sub><b>欢迎您</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/zzy/rust-reference-zh">
-        <img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
+        <img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
         <br /><sub><b>欢迎您</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/zzy/rust-reference-zh">
-        <img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
+        <img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
         <br /><sub><b>欢迎您</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/zzy/rust-reference-zh">
-        <img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
+        <img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
         <br /><sub><b>欢迎您</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/zzy/rust-reference-zh">
-        <img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
+        <img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/>
         <br /><sub><b>欢迎您</b></sub>
       </a>
     </td>
