@@ -11,7 +11,7 @@
 | 符号              | 示例                           | 释义                          |
 |-------------------|-------------------------------|-------------------------------|
 | CAPITAL           | KW_IF, INTEGER_LITERAL        | 词法相关记号（符号）<sup><strong>待修正</strong></sup> |
-| _ItalicCamelCase_ | _LetStatement_, _Item_        | 语法相关定义<sup><strong>待修正</strong></sup> |
+| _ItalicCamelCase_ | _LetStatement_, _Item_        | 语法相关定义 <sup><strong>待修正</strong></sup> |
 | `string`          | `x`, `while`, `*`             | 字符（串） |
 | \\x               | \\n, \\r, \\t, \\0            | 转义字符 |
 | x<sup>?</sup>     | `pub`<sup>?</sup>             | 可选项 |
@@ -23,7 +23,7 @@
 | [ - ]             | [`a`-`z`]                     | a -> z 范围内的任意字符 |
 | ~[ ]              | ~[`b` `B`]                    | 除列举范围外的任意字符 |
 | ~`string`         | ~`\n`, ~`*/`                  | 除此字符序列外的任意字符 |
-| ( )               | (`,` _Parameter_)<sup>?</sup> | 分组项<sup><strong>待修正</strong></sup> |
+| ( )               | (`,` _Parameter_)<sup>?</sup> | 分组项 <sup><strong>待修正</strong></sup> |
 
 ## 字符串表组合
 
