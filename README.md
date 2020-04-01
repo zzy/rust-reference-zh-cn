@@ -36,3 +36,15 @@ mdbook build
 ```
 
 默认生成 `HTML` 文档，存放在 `docs` 文件夹中。
+
+## 做贡献
+
+我们欢迎各类贡献。
+
+欢迎 fork[《Rust 参考手册》中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
+
+## 贡献者
+
+
+
+[《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh

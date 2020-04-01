@@ -88,12 +88,12 @@
 
 我们欢迎各类贡献。
 
-欢迎 fork [Rust 参考手册中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
+欢迎 fork[《Rust 参考手册》中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
 
 [Rust 程序设计语言]: https://rust-lang.budshome.com
 [github issues]: https://github.com/rust-lang/reference/issues
 [标准库]: https://doc.rust-lang.org/std
-[Rust 参考手册中文翻译仓库]: https://github.com/zzy/rust-reference-zh
+[《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
 [cargo book]: https://cargo.budshome.com
