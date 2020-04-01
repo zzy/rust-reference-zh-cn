@@ -5,34 +5,31 @@
 > commit 34d27fe8bc8b89b55da690484d1e17fbd0f25055
 
 > **<sup>Lexer:<sup>**\
-> IDENTIFIER_OR_KEYWORD :\
+> 标识符_或_关键字：\
 > &nbsp;&nbsp; &nbsp;&nbsp; [`a`-`z` `A`-`Z`]&nbsp;[`a`-`z` `A`-`Z` `0`-`9` `_`]<sup>\*</sup>\
 > &nbsp;&nbsp; | `_` [`a`-`z` `A`-`Z` `0`-`9` `_`]<sup>+</sup>
 >
-> RAW_IDENTIFIER : `r#` IDENTIFIER_OR_KEYWORD <sub>*Except `crate`, `self`, `super`, `Self`*</sub>
+> RAW_IDENTIFIER : `r#` IDENTIFIER_OR_KEYWORD <sub>*除外：`crate`, `self`, `super`, `Self`*</sub>
 >
-> NON_KEYWORD_IDENTIFIER : IDENTIFIER_OR_KEYWORD <sub>*Except a [strict] or [reserved] keyword*</sub>
+> NON_KEYWORD_IDENTIFIER : IDENTIFIER_OR_KEYWORD <sub>*除外：[规定关键字]或[保留关键字]*</sub>
 >
 > IDENTIFIER :\
 > NON_KEYWORD_IDENTIFIER | RAW_IDENTIFIER
 
-An identifier is any nonempty ASCII string of the following form:
+标识符是如下形式的任何非空 ASCII 字符串：
 
-Either
+要么是——
 
-* The first character is a letter.
-* The remaining characters are alphanumeric or `_`.
+* 首字符是字母。
+* 其余字符是字母、数字，或 `_`。
 
-Or
+要么是——
 
-* The first character is `_`.
-* The identifier is more than one character. `_` alone is not an identifier.
-* The remaining characters are alphanumeric or `_`.
+* 首字符是 `_`。
+* 标识符由多个字符组成，单个 `_` 不是有效标识符。
+* 其余字符是字母、数字，或 `_`。
 
-A raw identifier is like a normal identifier, but prefixed by `r#`. (Note that
-the `r#` prefix is not included as part of the actual identifier.)
-Unlike a normal identifier, a raw identifier may be any strict or reserved
-keyword except the ones listed above for `RAW_IDENTIFIER`.
+原生标识符类似于普通标识符，但前缀是 `r#`（注意 `r#` 不包括在实际标识符中）。原生标识符与普通标识符的区别是：原生标识符可以是除上述列举的 `RAW_IDENTIFIER` 外的任何规定关键字或保留关键字。
 
-[strict]: keywords.md#strict-keywords
-[reserved]: keywords.md#reserved-keywords
+[规定关键字]: keywords.md#strict-keywords
+[保留关键字]: keywords.md#reserved-keywords
