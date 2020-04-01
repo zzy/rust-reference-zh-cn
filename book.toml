@@ -10,10 +10,9 @@ multilingual = true
 build-dir = "docs"
 
 [output.html]
-git-repository-url = "https://github.com/zzy/rust-reference-zh"
 theme = "theme"
 # default-theme = "rust"
-additional-css = ["theme/css/reference.css"]
+git-repository-url = "https://github.com/zzy/rust-reference-zh"
 curly-quotes = true
 mathjax-support = true
 
