@@ -84,6 +84,49 @@
 
   查阅[标记法][Notation]以获取更多细节。
 
+## 贡献者
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://budshome.com">
+        <img src="https://avatars3.githubusercontent.com/u/1492400?v=4" width="100px;" alt=""/>
+        <br /><sub><b>Zhang Zhongyu</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/zzy/rust-reference-zh">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585715564821&di=db5efb01d4d052f4bbcbd9b6658e2365&imgtype=0&src=http%3A%2F%2Fimg.jk51.com%2Fimg_jk51%2F305008090.jpeg" width="100px;" alt=""/>
+        <br /><sub><b>欢迎您</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/zzy/rust-reference-zh">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585715564821&di=db5efb01d4d052f4bbcbd9b6658e2365&imgtype=0&src=http%3A%2F%2Fimg.jk51.com%2Fimg_jk51%2F305008090.jpeg" width="100px;" alt=""/>
+        <br /><sub><b>欢迎您</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/zzy/rust-reference-zh">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585715564821&di=db5efb01d4d052f4bbcbd9b6658e2365&imgtype=0&src=http%3A%2F%2Fimg.jk51.com%2Fimg_jk51%2F305008090.jpeg" width="100px;" alt=""/>
+        <br /><sub><b>欢迎您</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/zzy/rust-reference-zh">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585715564821&di=db5efb01d4d052f4bbcbd9b6658e2365&imgtype=0&src=http%3A%2F%2Fimg.jk51.com%2Fimg_jk51%2F305008090.jpeg" width="100px;" alt=""/>
+        <br /><sub><b>欢迎您</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/zzy/rust-reference-zh">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585715564821&di=db5efb01d4d052f4bbcbd9b6658e2365&imgtype=0&src=http%3A%2F%2Fimg.jk51.com%2Fimg_jk51%2F305008090.jpeg" width="100px;" alt=""/>
+        <br /><sub><b>欢迎您</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
 ## 做贡献
 
 我们欢迎各类贡献。
