@@ -8,22 +8,22 @@
 
 下表符号被用于 *Lexer* 和 *Syntax* 的语法片段：
 
-| 符号          | 示例                      | 释义                                   |
-|-------------------|-------------------------------|-------------------------------------------|
-| CAPITAL           | KW_IF, INTEGER_LITERAL        | A token produced by the lexer             |
-| _ItalicCamelCase_ | _LetStatement_, _Item_        | A syntactical production                  |
-| `string`          | `x`, `while`, `*`             | The exact character(s)                    |
-| \\x               | \\n, \\r, \\t, \\0            | The character represented by this escape  |
-| x<sup>?</sup>     | `pub`<sup>?</sup>             | An optional item                          |
-| x<sup>\*</sup>    | _OuterAttribute_<sup>\*</sup> | 0 or more of x                            |
-| x<sup>+</sup>     |  _MacroMatch_<sup>+</sup>     | 1 or more of x                            |
-| x<sup>a..b</sup>  | HEX_DIGIT<sup>1..6</sup>      | a to b repetitions of x                   |
-| \|                | `u8` \| `u16`, Block \| Item  | Either one or another                     |
-| [ ]               | [`b` `B`]                     | Any of the characters listed              |
-| [ - ]             | [`a`-`z`]                     | Any of the characters in the range        |
-| ~[ ]              | ~[`b` `B`]                    | Any characters, except those listed       |
-| ~`string`         | ~`\n`, ~`*/`                  | Any characters, except this sequence      |
-| ( )               | (`,` _Parameter_)<sup>?</sup> | Groups items                              |
+| 符号              | 示例                           | 释义                          |
+|-------------------|-------------------------------|-------------------------------|
+| CAPITAL           | KW_IF, INTEGER_LITERAL        | 词法相关记号（符号）<sup><strong>待修正</strong></sup> |
+| _ItalicCamelCase_ | _LetStatement_, _Item_        | 语法相关定义<sup><strong>待修正</strong></sup> |
+| `string`          | `x`, `while`, `*`             | 字符（串） |
+| \\x               | \\n, \\r, \\t, \\0            | 转义字符 |
+| x<sup>?</sup>     | `pub`<sup>?</sup>             | 可选项 |
+| x<sup>\*</sup>    | _OuterAttribute_<sup>\*</sup> | x 零次或多次重复 |
+| x<sup>+</sup>     |  _MacroMatch_<sup>+</sup>     | x 一次或多次重复 |
+| x<sup>a..b</sup>  | HEX_DIGIT<sup>1..6</sup>      | x 在 a -> b 范围内重复 |
+| \|                | `u8` \| `u16`, Block \| Item  | 或 |
+| [ ]               | [`b` `B`]                     | 列举的任意字符 |
+| [ - ]             | [`a`-`z`]                     | a -> z 范围内的任意字符 |
+| ~[ ]              | ~[`b` `B`]                    | 除列举范围外的任意字符 |
+| ~`string`         | ~`\n`, ~`*/`                  | 除此字符序列外的任意字符 |
+| ( )               | (`,` _Parameter_)<sup>?</sup> | 分组项<sup><strong>待修正</strong></sup> |
 
 ## 字符串表组合
 
