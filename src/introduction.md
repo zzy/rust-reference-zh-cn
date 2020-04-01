@@ -79,8 +79,8 @@
 
   > **<sup>Syntax</sup>**\
   > _语法示例_：\
-  > &nbsp;&nbsp; &nbsp;&nbsp; `~` [_Expression_]\
-  > &nbsp;&nbsp; | `box` [_Expression_]
+  > &nbsp;&nbsp; &nbsp;&nbsp; `~` [ _表达式_ ]\
+  > &nbsp;&nbsp; | `box` [ _表达式_ ]
 
   查阅[标记法][Notation]以获取更多细节。
 
