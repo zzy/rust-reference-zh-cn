@@ -1,45 +1,43 @@
-# Tokens
+# 记号
 
-Tokens are primitive productions in the grammar defined by regular
-(non-recursive) languages.  Rust source input can be broken down
-into the following kinds of tokens:
+> [tokens.md](https://github.com/rust-lang/reference/blob/master/src/tokens.md)
+> <br />
+> commit d69a6d13c917856aa7da839647dcdbde6d9dde46
 
-* [Keywords]
-* [Identifiers][identifier]
-* [Literals](#literals)
-* [Lifetimes](#lifetimes-and-loop-labels)
-* [Punctuation](#punctuation)
-* [Delimiters](#delimiters)
+记号是语法中的主要组合，使用正则（非递归）语言定义。Rust 源输入可以被分解为下述类型的记号：
 
-Within this documentation's grammar, "simple" tokens are given in [string
-table production] form, and appear in `monospace` font.
+* [关键字][Keywords]
+* [标识符][identifier]
+* [字面量](#字面量)
+* [生命周期](#lifetimes-and-loop-labels)
+* [标点符号](#punctuation)
+* [分隔符](#delimiters)
+
+本书语法中，“简单”记号采用[字符串表组合][string
+table production]形式，并以`等宽（monospace）`字体显示。
 
 [string table production]: notation.md#string-table-productions
 
-## Literals
+## 字面量
 
-A literal is an expression consisting of a single token, rather than a sequence
-of tokens, that immediately and directly denotes the value it evaluates to,
-rather than referring to it by name or some other evaluation rule. A literal is
-a form of [constant expression](const_eval.md#constant-expressions), so is
-evaluated (primarily) at compile time.
+字面量是一个包含单独记号（而不是一串记号）的表达式，它立即且直接的表示了它所赋的值，而不是通过名字或其它赋值规则引用它。字面量是[常量表达式](const_eval.md#constant-expressions)的一种形式，所以它（主要）在编译时赋值。
 
-### Examples
+### 实例
 
-#### Characters and strings
+#### 字符和字符串
 
-|                                              | Example         | `#` sets   | Characters  | Escapes             |
+|                                              | 示例         | `#` 集合   | 字符集  | 转义             |
 |----------------------------------------------|-----------------|-------------|-------------|---------------------|
-| [Character](#character-literals)             | `'H'`           | 0           | All Unicode | [Quote](#quote-escapes) & [ASCII](#ascii-escapes) & [Unicode](#unicode-escapes) |
-| [String](#string-literals)                   | `"hello"`       | 0           | All Unicode | [Quote](#quote-escapes) & [ASCII](#ascii-escapes) & [Unicode](#unicode-escapes) |
-| [Raw string](#raw-string-literals)           | `r#"hello"#`    | 0 or more\* | All Unicode | `N/A`                                                      |
-| [Byte](#byte-literals)                       | `b'H'`          | 0           | All ASCII   | [Quote](#quote-escapes) & [Byte](#byte-escapes)                               |
-| [Byte string](#byte-string-literals)         | `b"hello"`      | 0           | All ASCII   | [Quote](#quote-escapes) & [Byte](#byte-escapes)                               |
-| [Raw byte string](#raw-byte-string-literals) | `br#"hello"#`   | 0 or more\* | All ASCII   | `N/A`                                                      |
+| [字符](#character-literals)                 | `'H'` | 0           | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
+| [字符串](#string-literals)                   | `"hello"`       | 0           | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
+| [原声字符串](#raw-string-literals)           | `r#"hello"#`    | 0 ... | 全部 Unicode | `N/A`                                                      |
+| [字节](#byte-literals)                       | `b'H'`          | 0           | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)                               |
+| [字节串](#byte-string-literals)         | `b"hello"`      | 0           | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)                               |
+| [原生字节串](#raw-byte-string-literals) | `br#"hello"#`   | 0 ... | 全部 ASCII   | `N/A`                                                      |
 
-\* The number of `#`s on each side of the same literal must be equivalent
+\* 字面量两侧的 `#` 数量必须相同。
 
-#### ASCII escapes
+#### ASCII 转义
 
 |   | Name |
 |---|------|
@@ -50,7 +48,7 @@ evaluated (primarily) at compile time.
 | `\\` | Backslash |
 | `\0` | Null |
 
-#### Byte escapes
+#### 字节转义
 
 |   | Name |
 |---|------|
@@ -61,20 +59,20 @@ evaluated (primarily) at compile time.
 | `\\` | Backslash |
 | `\0` | Null |
 
-#### Unicode escapes
+#### Unicode 转义
 
 |   | Name |
 |---|------|
 | `\u{7FFF}` | 24-bit Unicode character code (up to 6 digits) |
 
-#### Quote escapes
+#### 引号转义
 
 |   | Name |
 |---|------|
 | `\'` | Single quote |
 | `\"` | Double quote |
 
-#### Numbers
+#### 数字
 
 | [Number literals](#number-literals)`*` | Example | Exponentiation | Suffixes |
 |----------------------------------------|---------|----------------|----------|
@@ -86,7 +84,7 @@ evaluated (primarily) at compile time.
 
 `*` All number literals allow `_` as a visual separator: `1_234.0E+18f64`
 
-#### Suffixes
+#### 后缀
 
 A suffix is a non-raw identifier immediately (without whitespace)
 following the primary part of a literal.
