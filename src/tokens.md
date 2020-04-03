@@ -26,63 +26,63 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 #### 字符和字符串
 
-|                                              | 示例         | `#` 集合   | 字符集  | 转义             |
-|----------------------------------------------|-----------------|-------------|-------------|---------------------|
-| [字符](#character-literals)                 | `'H'` | 0           | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
-| [字符串](#string-literals)                   | `"hello"`       | 0           | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
-| [原声字符串](#raw-string-literals)           | `r#"hello"#`    | 0 ... | 全部 Unicode | `N/A`                                                      |
-| [字节](#byte-literals)                       | `b'H'`          | 0           | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)                               |
-| [字节串](#byte-string-literals)         | `b"hello"`      | 0           | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)                               |
-| [原生字节串](#raw-byte-string-literals) | `br#"hello"#`   | 0 ... | 全部 ASCII   | `N/A`                                                      |
+| | 实例 | `#` 集合 | 字符集 | 转义 |
+|-|------|---------|--------|-----|
+| [字符](#character-literals) | `'H'` | 0  | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
+| [字符串](#string-literals) | `"hello"` | 0 | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
+| [原声字符串](#raw-string-literals) | `r#"hello"#` | 0 ... | 全部 Unicode | `N/A` |
+| [字节](#byte-literals) | `b'H'` | 0 | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)  |
+| [字节串](#byte-string-literals) | `b"hello"` | 0 | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义) |
+| [原生字节串](#raw-byte-string-literals) | `br#"hello"#` | 0 ... | 全部 ASCII   | `N/A` |
 
 \* 字面量两侧的 `#` 数量必须相同。
 
 #### ASCII 转义
 
-|   | Name |
+|   | 名称 |
 |---|------|
-| `\x41` | 7-bit character code (exactly 2 digits, up to 0x7F) |
-| `\n` | Newline |
-| `\r` | Carriage return |
-| `\t` | Tab |
-| `\\` | Backslash |
-| `\0` | Null |
+| `\x41` | 7 位字符编码（精确到2位，最大为 `0x7F`） |
+| `\n` | 换行符 |
+| `\r` | 回车符 |
+| `\t` | 制表符 |
+| `\\` | 反斜线 |
+| `\0` | 零值（译注：Rust 中没有 Null） |
 
 #### 字节转义
 
-|   | Name |
+|   | 名称 |
 |---|------|
-| `\x7F` | 8-bit character code (exactly 2 digits) |
-| `\n` | Newline |
-| `\r` | Carriage return |
-| `\t` | Tab |
-| `\\` | Backslash |
-| `\0` | Null |
+| `\x7F` | 8 位字符编码（精确到2位） |
+| `\n` | 换行符 |
+| `\r` | 回车符 |
+| `\t` | 制表符 |
+| `\\` | 反斜线 |
+| `\0` | 零值（译注：Rust 中没有 Null） |
 
 #### Unicode 转义
 
-|   | Name |
+|   | 名称 |
 |---|------|
-| `\u{7FFF}` | 24-bit Unicode character code (up to 6 digits) |
+| `\u{7FFF}` | 24 位 Unicode 字符编码（最多6个数字） |
 
 #### 引号转义
 
 |   | Name |
 |---|------|
-| `\'` | Single quote |
-| `\"` | Double quote |
+| `\'` | 单引号 |
+| `\"` | 双引号 |
 
-#### 数字
+#### 数值
 
-| [Number literals](#number-literals)`*` | Example | Exponentiation | Suffixes |
-|----------------------------------------|---------|----------------|----------|
-| Decimal integer | `98_222` | `N/A` | Integer suffixes |
-| Hex integer | `0xff` | `N/A` | Integer suffixes |
-| Octal integer | `0o77` | `N/A` | Integer suffixes |
-| Binary integer | `0b1111_0000` | `N/A` | Integer suffixes |
-| Floating-point | `123.0E+77` | `Optional` | Floating-point suffixes |
+| [数值字面量](#数值字面量)`*` | 实例 | 幂 | 后缀 |
+|---------------------------|-------|----|-----|
+| 十进制整数 | `98_222` | `N/A` | 整数后缀 |
+| 十六进制整数 | `0xff` | `N/A` | 整数后缀 |
+| 二进制整数 | `0o77` | `N/A` | 整数后缀 |
+| 二进制整数 | `0b1111_0000` | `N/A` | 整数后缀 |
+| 浮点数 | `123.0E+77` | `Optional` | 浮点数后缀 |
 
-`*` All number literals allow `_` as a visual separator: `1_234.0E+18f64`
+`*` 所有数值字面量允许 `_` 作为可视分隔符：`1_234.0E+18f64`
 
 #### 后缀
 
@@ -312,7 +312,7 @@ b"\x52"; b"R"; br"R";                // R
 b"\\x52"; br"\x52";                  // \x52
 ```
 
-### Number literals
+### 数值字面量
 
 A _number literal_ is either an _integer literal_ or a _floating-point
 literal_. The grammar for recognizing the two kinds of literals is mixed.
