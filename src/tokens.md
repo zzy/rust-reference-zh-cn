@@ -28,12 +28,12 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 | | 实例 | `#` 集合 | 字符集 | 转义 |
 |-|------|---------|--------|-----|
-| [字符](#character-literals) | `'H'` | 0  | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
-| [字符串](#string-literals) | `"hello"` | 0 | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
-| [原声字符串](#raw-string-literals) | `r#"hello"#` | 0 ... | 全部 Unicode | `N/A` |
-| [字节](#byte-literals) | `b'H'` | 0 | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)  |
-| [字节串](#byte-string-literals) | `b"hello"` | 0 | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义) |
-| [原生字节串](#raw-byte-string-literals) | `br#"hello"#` | 0 ... | 全部 ASCII   | `N/A` |
+| [字符](#字符字面量) | `'H'` | 0  | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
+| [字符串](#字符串字面量) | `"hello"` | 0 | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
+| [原生字符串](#原生字符串字面量) | `r#"hello"#` | 0 ... | 全部 Unicode | `N/A` |
+| [字节](#字节字面量) | `b'H'` | 0 | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义)  |
+| [字节串](#字节串字面量) | `b"hello"` | 0 | 全部 ASCII   | [引号](#引号转义) & [字节](#字节转义) |
+| [原生字节串](#原生字节串字面量) | `br#"hello"#` | 0 ... | 全部 ASCII   | `N/A` |
 
 \* 字面量两侧的 `#` 数量必须相同。
 
@@ -41,23 +41,23 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 |   | 名称 |
 |---|------|
-| `\x41` | 7 位字符编码（精确到2位，最大为 `0x7F`） |
+| `\x41` | 7 位字符编码（2位，最大值为 `0x7F`） |
 | `\n` | 换行符 |
 | `\r` | 回车符 |
 | `\t` | 制表符 |
 | `\\` | 反斜线 |
-| `\0` | 零值（译注：Rust 中没有 Null） |
+| `\0` | Null/空/零值（译注：Rust 中没有 Null） |
 
 #### 字节转义
 
 |   | 名称 |
 |---|------|
-| `\x7F` | 8 位字符编码（精确到2位） |
+| `\x7F` | 8 位字符编码（2位） |
 | `\n` | 换行符 |
 | `\r` | 回车符 |
 | `\t` | 制表符 |
 | `\\` | 反斜线 |
-| `\0` | 零值（译注：Rust 中没有 Null） |
+| `\0` | Null/空/零值（译注：Rust 中没有 Null） |
 
 #### Unicode 转义
 
@@ -86,30 +86,25 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 #### 后缀
 
-A suffix is a non-raw identifier immediately (without whitespace)
-following the primary part of a literal.
+后缀是紧跟（无空格）字面量主体部分之后的非原生标识符。
 
-Any kind of literal (string, integer, etc) with any suffix is valid as a token,
-and can be passed to a macro without producing an error.
-The macro itself will decide how to interpret such a token and whether to produce an error or not.
+具有任意后缀的任何类型的字面量（如字符串、整数等）都是合法记号，可以传递给宏而不会产生错误。宏本身将决定如何诠释此类记号，以及是否产生错误。
 
 ```rust
 macro_rules! blackhole { ($tt:tt) => () }
 
-blackhole!("string"suffix); // OK
+blackhole!("string"suffix); // 没毛病 :-)
 ```
 
-However, suffixes on literal tokens parsed as Rust code are restricted.
-Any suffixes are rejected on non-numeric literal tokens,
-and numeric literal tokens are accepted only with suffixes from the list below.
+但是，解析为 Rust 代码的字面量记号，其后缀是受限制的。对于非数字字面量记号，将拒绝任何后缀；而对于数字字面量，仅接受具有下表中的后缀。
 
-| Integer | Floating-point |
-|---------|----------------|
+| 整型 | 浮点型 |
+|------|-------|
 | `u8`, `i8`, `u16`, `i16`, `u32`, `i32`, `u64`, `i64`, `u128`, `i128`, `usize`, `isize` | `f32`, `f64` |
 
-### Character and string literals
+### 字符和字符串字面量
 
-#### Character literals
+#### 字符字面量
 
 > **<sup>Lexer</sup>**\
 > CHAR_LITERAL :\
@@ -125,11 +120,9 @@ and numeric literal tokens are accepted only with suffixes from the list below.
 > UNICODE_ESCAPE :\
 > &nbsp;&nbsp; `\u{` ( HEX_DIGIT `_`<sup>\*</sup> )<sup>1..6</sup> `}`
 
-A _character literal_ is a single Unicode character enclosed within two
-`U+0027` (single-quote) characters, with the exception of `U+0027` itself,
-which must be _escaped_ by a preceding `U+005C` character (`\`).
+_字符字面量_ 是位于两个 `U+0027`（单引号）字符内的单个 Unicode 字符。当它是 `U+0027` 自身时，须前置 _转义_ 字符 `U+005C`（`\`）。
 
-#### String literals
+#### 字符串字面量
 
 > **<sup>Lexer</sup>**\
 > STRING_LITERAL :\
@@ -144,16 +137,9 @@ which must be _escaped_ by a preceding `U+005C` character (`\`).
 > STRING_CONTINUE :\
 > &nbsp;&nbsp; `\` _followed by_ \\n
 
-A _string literal_ is a sequence of any Unicode characters enclosed within two
-`U+0022` (double-quote) characters, with the exception of `U+0022` itself,
-which must be _escaped_ by a preceding `U+005C` character (`\`).
+_字符串字面量_ 是位于两个 `U+0022`（双引号）字符内的任意 Unicode 字符序列。当它是 `U+0022` 自身时，须前置 _转义_ 字符 `U+005C`（`\`）。
 
-Line-breaks are allowed in string literals. A line-break is either a newline
-(`U+000A`) or a pair of carriage return and newline (`U+000D`, `U+000A`). Both
-byte sequences are normally translated to `U+000A`, but as a special exception,
-when an unescaped `U+005C` character (`\`) occurs immediately before the
-line-break, the `U+005C` character, the line-break, and all whitespace at the
-beginning of the next line are ignored. Thus `a` and `b` are equal:
+字符串字面量中允许分行。分行符可以换行符（`U+000A`），也可以是回车符和一对换行符（`U+000D`, `U+000A`）。此对字节序列通常转换为 `U+000A`，但有例外：当分行符前置一个未转义的 `U+005C` 字符（`\`）时，将会导致 `U+005C` 字符、换行符和下一行开头的所有空白都被忽略。是故下述示例中，`a` 和 `b` 是等同的：
 
 ```rust
 let a = "foobar";
@@ -163,29 +149,17 @@ let b = "foo\
 assert_eq!(a,b);
 ```
 
-#### Character escapes
+#### 字符转义
 
-Some additional _escapes_ are available in either character or non-raw string
-literals. An escape starts with a `U+005C` (`\`) and continues with one of the
-following forms:
+不管是字符字面量，还是非原生字符串字面量，都有一些额外 _转义_。一个转义以一个 `U+005C`（`\`）开始，并后跟如下形式之一：
 
-* A _7-bit code point escape_ starts with `U+0078` (`x`) and is
-  followed by exactly two _hex digits_ with value up to `0x7F`. It denotes the
-  ASCII character with value equal to the provided hex value. Higher values are
-  not permitted because it is ambiguous whether they mean Unicode code points or
-  byte values.
-* A _24-bit code point escape_ starts with `U+0075` (`u`) and is followed
-  by up to six _hex digits_ surrounded by braces `U+007B` (`{`) and `U+007D`
-  (`}`). It denotes the Unicode code point equal to the provided hex value.
-* A _whitespace escape_ is one of the characters `U+006E` (`n`), `U+0072`
-  (`r`), or `U+0074` (`t`), denoting the Unicode values `U+000A` (LF),
-  `U+000D` (CR) or `U+0009` (HT) respectively.
-* The _null escape_ is the character `U+0030` (`0`) and denotes the Unicode
-  value `U+0000` (NUL).
-* The _backslash escape_ is the character `U+005C` (`\`) which must be
-  escaped in order to denote itself.
+* _7 位代码点转义_ 以 `U+0078`（`x`）开头，后紧跟两位 _十六进制数字_，最大值为 `0x7F`。表示其值等于它所提供的十六进制 ASCII 字符，但不能确定其是 Unicode 代码点还是字节值，所以更大的值是不被允许的。
+* _24 位代码点转义_ 以 `U+0075`（`u`）开头，后跟多达六位 _十六进制数字_，位于大括号 `U+007B`（`{`）和 `U+007D`（`}`）之间。表示其值等于它所提供的十六进制 Unicode 代码点。
+* _空白转义_ 是字符 `U+006E`（`n`），`U+0072`（`r`），或者 `U+0074`（`t`）之一，依次表示 Unicode 值 `U+000A`（LF），`U+000D`（CR），或者 `U+0009`（HT）。
+* _null/空/零值转义_ 是字符 `U+0030`（`0`），表示 Unicode 值 `U+0000`（NUL）。
+* _反斜杠转义_ 是字符 `U+005C`（`\`），必须转义才能表示其自身。
 
-#### Raw string literals
+#### 原生字符串字面量
 
 > **<sup>Lexer</sup>**\
 > RAW_STRING_LITERAL :\
