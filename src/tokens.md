@@ -74,7 +74,7 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 #### 数值
 
-| [数值字面量](#数值字面量)`*` | 实例 | 幂 | 后缀 |
+| [数字字面量](#数字字面量)`*` | 实例 | 幂 | 后缀 |
 |---------------------------|-------|----|-----|
 | 十进制整数 | `98_222` | `N/A` | 整数后缀 |
 | 十六进制整数 | `0xff` | `N/A` | 整数后缀 |
@@ -82,7 +82,7 @@ table production]形式，并以`等宽（monospace）`字体显示。
 | 二进制整数 | `0b1111_0000` | `N/A` | 整数后缀 |
 | 浮点数 | `123.0E+77` | `Optional` | 浮点数后缀 |
 
-`*` 所有数值字面量允许 `_` 作为可视分隔符：`1_234.0E+18f64`
+`*` 所有数字字面量允许 `_` 作为可视分隔符：`1_234.0E+18f64`
 
 #### 后缀
 
@@ -169,19 +169,11 @@ assert_eq!(a,b);
 > &nbsp;&nbsp; &nbsp;&nbsp; `"` ( ~ _IsolatedCR_ )<sup>* (non-greedy)</sup> `"`\
 > &nbsp;&nbsp; | `#` RAW_STRING_CONTENT `#`
 
-Raw string literals do not process any escapes. They start with the character
-`U+0072` (`r`), followed by zero or more of the character `U+0023` (`#`) and a
-`U+0022` (double-quote) character. The _raw string body_ can contain any sequence
-of Unicode characters and is terminated only by another `U+0022` (double-quote)
-character, followed by the same number of `U+0023` (`#`) characters that preceded
-the opening `U+0022` (double-quote) character.
+原生字符串字面量不处理任何转义。它以字符 `U+0072`（`r`）后跟零个或多个字符 `U+0023`（`#`），以及一个 `U+0022`（双引号）字符开始。_原生字符串正文_ 可包含任意 Unicode 字符序列，并仅以另一个 `U+0022`（双引号）字符结尾，后跟与开头的 `U+0022`（双引号）字符前同等数量的 `U+0023`（`#`）字符。
 
-All Unicode characters contained in the raw string body represent themselves,
-the characters `U+0022` (double-quote) (except when followed by at least as
-many `U+0023` (`#`) characters as were used to start the raw string literal) or
-`U+005C` (`\`) do not have any special meaning.
+所有包含在原生字符串正文中的 Unicode 字符都代表他们自身，字符 `U+0022`（双引号）（当后跟的零个或多个 `U+0023`（`#`）字符用于开始原生字符串字面量时除外）或 `U+005C`（`\`）并无特殊含义。
 
-Examples for string literals:
+字符串字面量实例：
 
 ```rust
 "foo"; r"foo";                     // foo
@@ -194,9 +186,9 @@ r##"foo #"# bar"##;                // foo #"# bar
 "\\x52"; r"\x52";                  // \x52
 ```
 
-### Byte and byte string literals
+### 字节和字节串字面量
 
-#### Byte literals
+#### 字节字面量
 
 > **<sup>Lexer</sup>**\
 > BYTE_LITERAL :\
@@ -209,14 +201,9 @@ r##"foo #"# bar"##;                // foo #"# bar
 > &nbsp;&nbsp; &nbsp;&nbsp; `\x` HEX_DIGIT HEX_DIGIT\
 > &nbsp;&nbsp; | `\n` | `\r` | `\t` | `\\` | `\0`
 
-A _byte literal_ is a single ASCII character (in the `U+0000` to `U+007F`
-range) or a single _escape_ preceded by the characters `U+0062` (`b`) and
-`U+0027` (single-quote), and followed by the character `U+0027`. If the character
-`U+0027` is present within the literal, it must be _escaped_ by a preceding
-`U+005C` (`\`) character. It is equivalent to a `u8` unsigned 8-bit integer
-_number literal_.
+_字节字面量_ 是单个 ASCII 字符（在 `U+0000` 到 `U+007F` 范围内）或单个 _转义符_，其前置字符 `U+0062`（`b`）和 `U+0027`（单引号），后跟字符 `U+0027`。如果字面量中存在字符 `U+0027`，则必须由前置字符 `U+005C`（`\`）转义，它相当于一个 `u8`（无符号 8 位整型）_数字字面量_。
 
-#### Byte string literals
+#### 字节串字面量
 
 > **<sup>Lexer</sup>**\
 > BYTE_STRING_LITERAL :\
@@ -225,29 +212,16 @@ _number literal_.
 > ASCII_FOR_STRING :\
 > &nbsp;&nbsp; _any ASCII (i.e 0x00 to 0x7F), except_ `"`, `\` _and IsolatedCR_
 
-A non-raw _byte string literal_ is a sequence of ASCII characters and _escapes_,
-preceded by the characters `U+0062` (`b`) and `U+0022` (double-quote), and
-followed by the character `U+0022`. If the character `U+0022` is present within
-the literal, it must be _escaped_ by a preceding `U+005C` (`\`) character.
-Alternatively, a byte string literal can be a _raw byte string literal_, defined
-below. The type of a byte string literal of length `n` is `&'static [u8; n]`.
+非原生 _字节串字面量_ 是 ASCII 字符和 _转义符_，前置字符`U+0062`（`b`）和 `U+0022`（双引号），以字符 `U+0022` 结尾。若字符 `U+0022` 出现在字节串字面量中，须由前置字符 `U+005C`（`\`）_转义_。或者，字节串字面量可以是 _原生字节串字面量_，定义为：长度为 `n` 的字节串字面量类型是 `&'static [u8; n]`。
 
-Some additional _escapes_ are available in either byte or non-raw byte string
-literals. An escape starts with a `U+005C` (`\`) and continues with one of the
-following forms:
+一些额外的 _转义_ 可以在字节或非原生字节串字面量中使用，转义以 `U+005C`（`\`）开始，并后跟如下形式之一：
 
-* A _byte escape_ escape starts with `U+0078` (`x`) and is
-  followed by exactly two _hex digits_. It denotes the byte
-  equal to the provided hex value.
-* A _whitespace escape_ is one of the characters `U+006E` (`n`), `U+0072`
-  (`r`), or `U+0074` (`t`), denoting the bytes values `0x0A` (ASCII LF),
-  `0x0D` (ASCII CR) or `0x09` (ASCII HT) respectively.
-* The _null escape_ is the character `U+0030` (`0`) and denotes the byte
-  value `0x00` (ASCII NUL).
-* The _backslash escape_ is the character `U+005C` (`\`) which must be
-  escaped in order to denote its ASCII encoding `0x5C`.
+* _字节转义_ 以 `U+0078`（`x`）开始，后跟两个十六进制数，表示十六进制值代表的字节。
+* _空白转义_ 是字符 `U+006E`（`n`）、`U+0072`（`r`），或 `U+0074`（`t`）之一，分别表示字节值 `0x0A`（ASCII LF）、`0x0D`（ASCII CR），或 `0x09`（ASCII HT）。
+* _null/空/零值转义_ 是字符 `U+0030`（`0`），表示字节值 `U+0000`（ASCII NUL）。
+* _反斜杠转义_ 是字符 `U+005C`（`\`），必须被转义以表示其 ASCII 编码 `0x5C`。
 
-#### Raw byte string literals
+#### 原生字节串字面量
 
 > **<sup>Lexer</sup>**\
 > RAW_BYTE_STRING_LITERAL :\
@@ -260,20 +234,11 @@ following forms:
 > ASCII :\
 > &nbsp;&nbsp; _any ASCII (i.e. 0x00 to 0x7F)_
 
-Raw byte string literals do not process any escapes. They start with the
-character `U+0062` (`b`), followed by `U+0072` (`r`), followed by zero or more
-of the character `U+0023` (`#`), and a `U+0022` (double-quote) character. The
-_raw string body_ can contain any sequence of ASCII characters and is terminated
-only by another `U+0022` (double-quote) character, followed by the same number of
-`U+0023` (`#`) characters that preceded the opening `U+0022` (double-quote)
-character. A raw byte string literal can not contain any non-ASCII byte.
+原生字节串字面量不处理任何转义。它们以字符 `U+0062`（`b`）开头，后跟 `U+0072`（`r`），后跟零个或多个字符 `U+0023`（`#`）及 `U+0022`（双引号）字符。_原生字节串正文_ 可包含任意 ASCII 字符序列，并仅以另一个 `U+0022`（双引号）字符结尾，后面与开头 `U+0022`（双引号）字符之前同等数量的 `U+0023`（`#`）字符。原生字节串字面量不能包含任何非 ASCII 字节。
 
-All characters contained in the raw string body represent their ASCII encoding,
-the characters `U+0022` (double-quote) (except when followed by at least as
-many `U+0023` (`#`) characters as were used to start the raw string literal) or
-`U+005C` (`\`) do not have any special meaning.
+原生字节串正文中的所有字符表示其 ASCII 编码，字符 `U+0022`（双引号）（当后跟的零个或多个 `U+0023`（`#`）字符用于开始原生字节串字面量时除外）或 `U+005C`（`\`）并无特殊含义。
 
-Examples for byte string literals:
+字节串字面量实例：
 
 ```rust
 b"foo"; br"foo";                     // foo
@@ -286,12 +251,11 @@ b"\x52"; b"R"; br"R";                // R
 b"\\x52"; br"\x52";                  // \x52
 ```
 
-### 数值字面量
+### 数字字面量
 
-A _number literal_ is either an _integer literal_ or a _floating-point
-literal_. The grammar for recognizing the two kinds of literals is mixed.
+_数字字面量_ 可以是 _整数字面量_，也可以是 _浮点数字面量_，此两类字面量的辨别语法是混合的。
 
-#### Integer literals
+#### 整数字面量
 
 > **<sup>Lexer</sup>**\
 > INTEGER_LITERAL :\
