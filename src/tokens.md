@@ -292,22 +292,13 @@ _数字字面量_ 可以是 _整数字面量_，也可以是 _浮点数字面量
 > &nbsp;&nbsp; &nbsp;&nbsp; `u8` | `u16` | `u32` | `u64` | `u128` | `usize`\
 > &nbsp;&nbsp; | `i8` | `i16` | `i32` | `i64` | `i128` | `isize`
 
-An _integer literal_ has one of four forms:
+整数字面量具备下述 4 种形式之一：
 
-* A _decimal literal_ starts with a *decimal digit* and continues with any
-  mixture of *decimal digits* and _underscores_.
-* A _tuple index_ is either `0`, or starts with a *non-zero decimal digit* and
-  continues with zero or more decimal digits. Tuple indexes are used to refer
-  to the fields of [tuples], [tuple structs], and [tuple variants].
-* A _hex literal_ starts with the character sequence `U+0030` `U+0078`
-  (`0x`) and continues as any mixture (with at least one digit) of hex digits
-  and underscores.
-* An _octal literal_ starts with the character sequence `U+0030` `U+006F`
-  (`0o`) and continues as any mixture (with at least one digit) of octal digits
-  and underscores.
-* A _binary literal_ starts with the character sequence `U+0030` `U+0062`
-  (`0b`) and continues as any mixture (with at least one digit) of binary digits
-  and underscores.
+* _十进制字面量_ 以 _十进制数_ 开头，后跟 _十进制数_ 和 _下划线_ 的任意组合。
+* _元组索引_ 可以是 `0`；也可以以 _非零十进制数_ 开始，其后跟零个或多个十进制数。元组索引用于引用[元组][tuples]，[元组结构体][tuple structs]，以及[元组变量][tuple variants]中的字段。
+* _十六进制字面量_ 以字符序列 `U+0030` `U+0078`（`0x`）开头，后跟十六进制数和下划线的任意组合（至少一个数字）。
+* _八进制字面量_ 以字符序列 `U+0030` `U+006F`（`0o`）开头，后跟八进制数和下划线的任意组合（至少一个数字）。
+* _二进制字面量_ 以字符序列 `U+0030` `U+0062`（`0b`）开头，后跟二进制数和下划线的任意组合（至少一个数字）。
 
 Like any literal, an integer literal may be followed (immediately,
 without any spaces) by an _integer suffix_, which forcibly sets the
