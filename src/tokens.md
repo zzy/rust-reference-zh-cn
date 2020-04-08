@@ -22,11 +22,11 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 字面量是一个包含单独记号（而不是一串记号）的表达式，它立即且直接的表示了它所赋的值，而不是通过名字或其它赋值规则引用它。字面量是[常量表达式](const_eval.md#constant-expressions)的一种形式，所以它（主要）在编译时赋值。
 
-### 实例
+### 示例
 
 #### 字符和字符串
 
-| | 实例 | `#` 集合 | 字符集 | 转义 |
+| | 示例 | `#` 集合 | 字符集 | 转义 |
 |-|------|---------|--------|-----|
 | [字符](#字符字面量) | `'H'` | 0  | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
 | [字符串](#字符串字面量) | `"hello"` | 0 | 全部 Unicode | [引号](#引号转义) & [ASCII](#ascii-转义) & [Unicode](#unicode-转义) |
@@ -74,7 +74,7 @@ table production]形式，并以`等宽（monospace）`字体显示。
 
 #### 数值
 
-| [数字字面量](#数字字面量)`*` | 实例 | 幂 | 后缀 |
+| [数字字面量](#数字字面量)`*` | 示例 | 幂 | 后缀 |
 |---------------------------|-------|----|-----|
 | 十进制整数 | `98_222` | `N/A` | 整数后缀 |
 | 十六进制整数 | `0xff` | `N/A` | 整数后缀 |
@@ -173,7 +173,7 @@ assert_eq!(a,b);
 
 所有包含在原生字符串正文中的 Unicode 字符都代表他们自身，字符 `U+0022`（双引号）（当后跟的零个或多个 `U+0023`（`#`）字符用于开始原生字符串字面量时除外）或 `U+005C`（`\`）并无特殊含义。
 
-字符串字面量实例：
+字符串字面量示例：
 
 ```rust
 "foo"; r"foo";                     // foo
@@ -238,7 +238,7 @@ _字节字面量_ 是单个 ASCII 字符（在 `U+0000` 到 `U+007F` 范围内�
 
 原生字节串正文中的所有字符表示其 ASCII 编码，字符 `U+0022`（双引号）（当后跟的零个或多个 `U+0023`（`#`）字符用于开始原生字节串字面量时除外）或 `U+005C`（`\`）并无特殊含义。
 
-字节串字面量实例：
+字节串字面量示例：
 
 ```rust
 b"foo"; br"foo";                     // foo
@@ -253,9 +253,9 @@ b"\\x52"; br"\x52";                  // \x52
 
 ### 数字字面量
 
-_数字字面量_ 可以是 _整数字面量_，也可以是 _浮点数字面量_，此两类字面量的辨别语法是混合的。
+_数字字面量_ 可以是 _整型字面量_，也可以是 _浮点型字面量_，此两类字面量的辨别语法是混合的。
 
-#### 整数字面量
+#### 整型字面量
 
 > **<sup>Lexer</sup>**\
 > INTEGER_LITERAL :\
@@ -292,7 +292,7 @@ _数字字面量_ 可以是 _整数字面量_，也可以是 _浮点数字面量
 > &nbsp;&nbsp; &nbsp;&nbsp; `u8` | `u16` | `u32` | `u64` | `u128` | `usize`\
 > &nbsp;&nbsp; | `i8` | `i16` | `i32` | `i64` | `i128` | `isize`
 
-整数字面量具备下述 4 种形式之一：
+整型字面量具备下述 4 种形式之一：
 
 * _十进制字面量_ 以 _十进制数_ 开头，后跟 _十进制数_ 和 _下划线_ 的任意组合。
 * _元组索引_ 可以是 `0`；也可以以 _非零十进制数_ 开始，其后跟零个或多个十进制数。元组索引用于引用[元组][tuples]，[元组结构体][tuple structs]，以及[元组变量][tuple variants]中的字段。
@@ -300,24 +300,15 @@ _数字字面量_ 可以是 _整数字面量_，也可以是 _浮点数字面量
 * _八进制字面量_ 以字符序列 `U+0030` `U+006F`（`0o`）开头，后跟八进制数和下划线的任意组合（至少一个数字）。
 * _二进制字面量_ 以字符序列 `U+0030` `U+0062`（`0b`）开头，后跟二进制数和下划线的任意组合（至少一个数字）。
 
-Like any literal, an integer literal may be followed (immediately,
-without any spaces) by an _integer suffix_, which forcibly sets the
-type of the literal. The integer suffix must be the name of one of the
-integral types: `u8`, `i8`, `u16`, `i16`, `u32`, `i32`, `u64`, `i64`,
-`u128`, `i128`, `usize`, or `isize`.
+如同其它字面量，整型字面量后面（紧跟，不带空白）可跟 _整型后缀_，该后缀强制设定了字面量的类型。整型后缀须为如下整型类型之一：`u8`、`i8`、`u16`、`i16`、`u32`、`i32`、`u64`、`i64`、`u128`、`i128`、`usize` 或 `isize`。
 
-The type of an _unsuffixed_ integer literal is determined by type inference:
+_无后缀_ 整型字面量的类型通过类型推断确定：
 
-* If an integer type can be _uniquely_ determined from the surrounding
-  program context, the unsuffixed integer literal has that type.
+* 如果整型类型可以通过程序上下文 _唯一_ 确定，则无后缀整型字面量即为该类型。
+* 如果程序上下文对类型做了约束，则默认为有符号 32 位整型 `i32`。
+* 如果程序上下文过度限制了类型，则将其视为静态类型错误。
 
-* If the program context under-constrains the type, it defaults to the
-  signed 32-bit integer `i32`.
-
-* If the program context over-constrains the type, it is considered a
-  static type error.
-
-Examples of integer literals of various forms:
+不同形式的整型字面量示例：
 
 ```rust
 123;                               // type i32
@@ -339,37 +330,36 @@ let a: u64 = 123;                  // type u64
 0usize;                            // type usize
 ```
 
-Examples of invalid integer literals:
+无效整型字面量示例：
 
 ```rust,compile_fail
-// invalid suffixes
+// 无效后缀
 
 0invalidSuffix;
 
-// uses numbers of the wrong base
+// 错误进制
 
 123AFB43;
 0b0102;
 0o0581;
 
-// integers too big for their type (they overflow)
+// 类型溢出
 
 128_i8;
 256_u8;
 
-// bin, hex, and octal literals must have at least one digit
+// 至少需要一个数字（二进制、十六进制、八进制）
 
 0b_;
 0b____;
 ```
 
-Note that the Rust syntax considers `-1i8` as an application of the [unary minus
-operator] to an integer literal `1i8`, rather than
-a single integer literal.
+注意：Rust 语法将 `-1i8` 视作[算术取负运算符][unary minus
+operator]对整型字面量 `1i8` 的应用，而非单个整型字面量。
 
 [unary minus operator]: expressions/operator-expr.md#negation-operators
 
-#### Floating-point literals
+#### 浮点型字面量
 
 > **<sup>Lexer</sup>**\
 > FLOAT_LITERAL :\
@@ -387,31 +377,20 @@ a single integer literal.
 > FLOAT_SUFFIX :\
 > &nbsp;&nbsp; `f32` | `f64`
 
-A _floating-point literal_ has one of two forms:
+浮点型字面量具有如下两种形式之一：
 
-* A _decimal literal_ followed by a period character `U+002E` (`.`). This is
-  optionally followed by another decimal literal, with an optional _exponent_.
-* A single _decimal literal_ followed by an _exponent_.
+* _十进制字面量_ 后跟一个句点字符 `U+002E`（`.`），之后可选后跟另一个十进制字面量和 _指数_。
+* 单个 _十进制字面量_，后跟 _指数_。
 
-Like integer literals, a floating-point literal may be followed by a
-suffix, so long as the pre-suffix part does not end with `U+002E` (`.`).
-The suffix forcibly sets the type of the literal. There are two valid
-_floating-point suffixes_, `f32` and `f64` (the 32-bit and 64-bit floating point
-types), which explicitly determine the type of the literal.
+如同整型字面量，浮点型字面量也可后跟一个后缀，只要后缀之前部分不以 `U+002E`（`.`）结尾。后缀强制设定了字面量类型。有两种有效的 _浮点型后缀_，`f32` 和 `f64`（32 位和 64 位浮点类型），它们显式地确定了字面量类型。
 
-The type of an _unsuffixed_ floating-point literal is determined by
-type inference:
+_无后缀_ 浮点型字面量的类型通过类型推断确定：
 
-* If a floating-point type can be _uniquely_ determined from the
-  surrounding program context, the unsuffixed floating-point literal
-  has that type.
+* 如果浮点型类型可以通过程序上下文 _唯一_ 确定，则无后缀浮点型字面量即为该类型。
+* 如果程序上下文对类型做了约束，则默认为 `f64`。
+* 如果程序上下文过度限制了类型，则将其视为静态类型错误。
 
-* If the program context under-constrains the type, it defaults to `f64`.
-
-* If the program context over-constrains the type, it is considered a
-  static type error.
-
-Examples of floating-point literals of various forms:
+不同形式的浮点型字面量示例：
 
 ```rust
 123.0f64;        // type f64
@@ -421,23 +400,20 @@ Examples of floating-point literals of various forms:
 let x: f64 = 2.; // type f64
 ```
 
-This last example is different because it is not possible to use the suffix
-syntax with a floating point literal ending in a period. `2.f64` would attempt
-to call a method named `f64` on `2`.
+最后一个例子稍显不同，因为不能对一个以句点结尾的浮点型字面量使用后缀语法，`2.f64` 才会尝试在 `2` 上调用名为 `f64` 的方法。
 
-The representation semantics of floating-point numbers are described in
-["Machine Types"].
+浮点数所代表的语义在[“机器类型”]["Machine Types"]中描述。
 
 ["Machine Types"]: types/numeric.md
 
-### Boolean literals
+### 布尔型字面量
 
 > **<sup>Lexer</sup>**\
 > BOOLEAN_LITERAL :\
 > &nbsp;&nbsp; &nbsp;&nbsp; `true`\
 > &nbsp;&nbsp; | `false`
 
-The two values of the boolean type are written `true` and `false`.
+布尔类型的两个值写为 `true` 和 `false`。
 
 ## Lifetimes and loop labels
 
