@@ -9,9 +9,9 @@
 * [关键字][Keywords]
 * [标识符][identifier]
 * [字面量](#字面量)
-* [生命周期](#lifetimes-and-loop-labels)
-* [标点符号](#punctuation)
-* [分隔符](#delimiters)
+* [生命周期](#生命周期)
+* [运算符](#运算符)
+* [分隔符](#分隔符)
 
 本书语法中，“简单”记号采用[字符串表组合][string
 table production]形式，并以`等宽（monospace）`字体显示。
@@ -413,9 +413,9 @@ let x: f64 = 2.; // type f64
 > &nbsp;&nbsp; &nbsp;&nbsp; `true`\
 > &nbsp;&nbsp; | `false`
 
-布尔类型的两个值写为 `true` 和 `false`。
+布尔类型有两个值：`true` 和 `false`。
 
-## Lifetimes and loop labels
+## 生命周期
 
 > **<sup>Lexer</sup>**\
 > LIFETIME_TOKEN :\
@@ -425,22 +425,19 @@ let x: f64 = 2.; // type f64
 > LIFETIME_OR_LABEL :\
 > &nbsp;&nbsp; &nbsp;&nbsp; `'` [NON_KEYWORD_IDENTIFIER][identifier]
 
-Lifetime parameters and [loop labels] use LIFETIME_OR_LABEL tokens. Any
-LIFETIME_TOKEN will be accepted by the lexer, and for example, can be used in
-macros.
+生命周期参数和[循环标签][loop labels] LIFETIME_OR_LABEL 记号。词法上接受任何 LIFETIME_TOKEN，比如在宏中使用。
 
 [loop labels]: expressions/loop-expr.md
 
-## Punctuation
+## 运算符
 
-Punctuation symbol tokens are listed here for completeness. Their individual
-usages and meanings are defined in the linked pages.
+如下是 Rust 语言运算符的完整列表，它们各自的用法和意义在链接页面中定义。
 
 | Symbol | Name        | Usage |
 |--------|-------------|-------|
-| `+`    | Plus        | [Addition][arith], [Trait Bounds], [Macro Kleene Matcher][macros]
-| `-`    | Minus       | [Subtraction][arith], [Negation]
-| `*`    | Star        | [Multiplication][arith], [Dereference], [Raw Pointers], [Macro Kleene Matcher][macros]
+| `+`    | 加号（Plus） | [算术加法][arith]、[复合类型限制][Trait Bounds]、[宏匹配器][macros]
+| `-`    | 减/负号（Minus） | [算术减法][arith]、[算术取负][Negation]
+| `*`    | 星号（Star） | [算术乘法][arith]、[解引用][Dereference]、[裸指针][Raw Pointers]、[宏匹配器][macros]
 | `/`    | Slash       | [Division][arith]
 | `%`    | Percent     | [Remainder][arith]
 | `^`    | Caret       | [Bitwise and Logical XOR][arith]
@@ -484,17 +481,15 @@ usages and meanings are defined in the linked pages.
 | `$`    | Dollar      | [Macros]
 | `?`    | Question    | [Question mark operator][question], [Questionably sized][sized], [Macro Kleene Matcher][macros]
 
-## Delimiters
+## 分隔符
 
-Bracket punctuation is used in various parts of the grammar. An open bracket
-must always be paired with a close bracket. Brackets and the tokens within
-them are referred to as "token trees" in [macros].  The three types of brackets are:
+括号用于语法的各个部分，且总是成对出现。括号及其内的记号在[宏][macros]中被称作“记号树”。括号有三种类型：
 
-| Bracket | Type            |
+|   括号   | 类型            |
 |---------|-----------------|
-| `{` `}` | Curly braces    |
-| `[` `]` | Square brackets |
-| `(` `)` | Parentheses     |
+| `{` `}` | 大/花括号        |
+| `[` `]` | 中/方括号        |
+| `(` `)` | 小/圆括号        |
 
 
 [Inferred types]: types/inferred.md
