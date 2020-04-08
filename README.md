@@ -4,7 +4,7 @@
 
 本书并非 Rust 语言规范：可能包含特定于 `rustc` 自身的细节，因此不应作为 Rust 语言规范。Rust 语言开发团队计划在未来拿出规范文件，但目前只有本书所述。
 
-> 💥 同步官方 nightly 版本。可在线阅读 [rust-reference.budshome.com](https://rust-reference.budshome.com)，也可下载PDF、ePub。
+> 💥 同步官方 nightly 版本。可[在线阅读 rust-reference.budshome.com](https://rust-reference.budshome.com)，也可下载PDF、ePub。
 
 ## 状态
 
