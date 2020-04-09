@@ -10,7 +10,7 @@
 * [标识符][identifier]
 * [字面量](#字面量)
 * [生命周期](#生命周期)
-* [运算符](#运算符)
+* [运算符及符号](#运算符及符号)
 * [分隔符](#分隔符)
 
 本书语法中，“简单”记号采用[字符串表组合][string
@@ -429,57 +429,57 @@ let x: f64 = 2.; // type f64
 
 [loop labels]: expressions/loop-expr.md
 
-## 运算符
+## 运算符及符号
 
 如下是 Rust 语言运算符的完整列表，它们各自的用法和意义在链接页面中定义。
 
 | Symbol | Name        | Usage |
 |--------|-------------|-------|
-| `+`    | 加号（Plus） | [算术加法][arith]、[复合类型限制][Trait Bounds]、[宏匹配器][macros]
+| `+`    | 加/正号（Plus） | [算术加法][arith]、[复合类型限制][Trait Bounds]、[宏匹配器][macros]
 | `-`    | 减/负号（Minus） | [算术减法][arith]、[算术取负][Negation]
 | `*`    | 星号（Star） | [算术乘法][arith]、[解引用][Dereference]、[裸指针][Raw Pointers]、[宏匹配器][macros]
-| `/`    | Slash       | [Division][arith]
-| `%`    | Percent     | [Remainder][arith]
-| `^`    | Caret       | [Bitwise and Logical XOR][arith]
-| `!`    | Not         | [Bitwise and Logical NOT][negation], [Macro Calls][macros], [Inner Attributes][attributes], [Never Type]
-| `&`    | And         | [Bitwise and Logical AND][arith], [Borrow], [References], [Reference patterns]
-| <code>\|</code> | Or | [Bitwise and Logical OR][arith], [Closures], [Match]
-| `&&`   | AndAnd      | [Lazy AND][lazy-bool], [Borrow], [References], [Reference patterns]
-| <code>\|\|</code> | OrOr | [Lazy OR][lazy-bool], [Closures]
-| `<<`   | Shl         | [Shift Left][arith], [Nested Generics][generics]
-| `>>`   | Shr         | [Shift Right][arith], [Nested Generics][generics]
-| `+=`   | PlusEq      | [Addition assignment][compound]
-| `-=`   | MinusEq     | [Subtraction assignment][compound]
-| `*=`   | StarEq      | [Multiplication assignment][compound]
-| `/=`   | SlashEq     | [Division assignment][compound]
-| `%=`   | PercentEq   | [Remainder assignment][compound]
-| `^=`   | CaretEq     | [Bitwise XOR assignment][compound]
-| `&=`   | AndEq       | [Bitwise And assignment][compound]
-| <code>\|=</code> | OrEq | [Bitwise Or assignment][compound]
-| `<<=`  | ShlEq       | [Shift Left assignment][compound]
-| `>>=`  | ShrEq       | [Shift Right assignment][compound], [Nested Generics][generics]
-| `=`    | Eq          | [Assignment], [Attributes], Various type definitions
-| `==`   | EqEq        | [Equal][comparison]
-| `!=`   | Ne          | [Not Equal][comparison]
-| `>`    | Gt          | [Greater than][comparison], [Generics], [Paths]
-| `<`    | Lt          | [Less than][comparison], [Generics], [Paths]
-| `>=`   | Ge          | [Greater than or equal to][comparison], [Generics]
-| `<=`   | Le          | [Less than or equal to][comparison]
-| `@`    | At          | [Subpattern binding]
-| `_`    | Underscore  | [Wildcard patterns], [Inferred types]
-| `.`    | Dot         | [Field access][field], [Tuple index]
-| `..`   | DotDot      | [Range][range], [Struct expressions], [Patterns]
-| `...`  | DotDotDot   | [Variadic functions][extern], [Range patterns]
-| `..=`  | DotDotEq    | [Inclusive Range][range], [Range patterns]
-| `,`    | Comma       | Various separators
-| `;`    | Semi        | Terminator for various items and statements, [Array types]
-| `:`    | Colon       | Various separators
-| `::`   | PathSep     | [Path separator][paths]
-| `->`   | RArrow      | [Function return type][functions], [Closure return type][closures]
-| `=>`   | FatArrow    | [Match arms][match], [Macros]
-| `#`    | Pound       | [Attributes]
-| `$`    | Dollar      | [Macros]
-| `?`    | Question    | [Question mark operator][question], [Questionably sized][sized], [Macro Kleene Matcher][macros]
+| `/`    | 斜线（Slash） | [算术除法][arith]
+| `%`    | 百分号（Percent） | [算术取模][arith]
+| `^`    | 脱字符（Caret） | [按位异或][arith]
+| `!`    | 叹号（Not）         | [按位非、逻辑非][negation]、[宏调用（展开）][macros]、[内部属性][attributes]、[never 型][Never Type]
+| `&`    | 与（And） | [按位与、逻辑与][arith]、[借用][Borrow]、[引用][References]、[引用模式][Reference patterns]
+| <code>\|</code> | 或（Or） | [按位或、逻辑或][arith]、[闭包][Closures]、[匹配][Match]
+| `&&`   | AndAnd | [Lazy 与][lazy-bool]、[借用][Borrow]、[引用][References]、[引用模式][Reference patterns]
+| <code>\|\|</code> | OrOr | [Lazy 或][lazy-bool]、[闭包][Closures]
+| `<<`   | Shl | [左移][arith]、[嵌套泛型][generics]
+| `>>`   | Shr | [右移][arith], [嵌套泛型][generics]
+| `+=`   | PlusEq      | [算术加法及赋值][compound]
+| `-=`   | MinusEq     | [算术减法及赋值][compound]
+| `*=`   | StarEq      | [算术乘法及赋值][compound]
+| `/=`   | SlashEq     | [算术除法及赋值][compound]
+| `%=`   | PercentEq   | [算术取模及赋值][compound]
+| `^=`   | CaretEq     | [按位异或及赋值][compound]
+| `&=`   | AndEq       | [按位与及赋值][compound]
+| <code>\|=</code> | OrEq | [按位或及赋值][compound]
+| `<<=`  | ShlEq       | [左移及赋值][compound]
+| `>>=`  | ShrEq       | [右移及赋值][compound]、[嵌套泛型][generics]
+| `=`    | 等号（Eq） | [赋值][Assignment]、[属性][Attributes]、类型定义
+| `==`   | EqEq        | [等于][comparison]
+| `!=`   | Ne          | [不等于][comparison]
+| `>`    | Gt          | [大于][comparison]、[泛型][Generics]、[路径][Paths]
+| `<`    | Lt          | [小于][comparison]、[泛型][Generics]、[路径][Paths]
+| `>=`   | Ge          | [大于等于][comparison]、[泛型][Generics]
+| `<=`   | Le          | [小于等于][comparison]
+| `@`    | At          | [模式绑定][Subpattern binding]
+| `_`    | 下划线（Underscore） | [通配符模式][Wildcard patterns]、[类型推导][Inferred types]
+| `.`    | 点号（Dot） | [成员访问][field]、[元组索引][Tuple index]
+| `..`   | DotDot      | [范围][range]、[结构体表达式][Struct expressions]、[模式][Patterns]
+| `...`  | DotDotDot   | [变长参数函数][extern]、[范围模式][Range patterns]
+| `..=`  | DotDotEq    | [闭区间][range]、[范围模式][Range patterns]
+| `,`    | 逗号（Comma） | 参数以及元素分隔符
+| `;`    | 分号（Semi） | 各类项和语句结束符、[数组类型][Array types]
+| `:`    | Colon       | 参数以及元素分隔符
+| `::`   | PathSep     | [路径分隔][paths]
+| `->`   | RArrow      | [函数返回类型][functions]、[闭包返回类型][closures]
+| `=>`   | FatArrow    | [匹配分支][match]、[宏][Macros]
+| `#`    | 井号（Pound） | [属性][Attributes]
+| `$`    | 美元符（Dollar） | [宏][Macros]
+| `?`    | 问号（Question） | [问号运算符][question], [不定大小][sized], [宏匹配器][macros]
 
 ## 分隔符
 
