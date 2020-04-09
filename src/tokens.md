@@ -46,7 +46,7 @@ table production]形式，并以`等宽（monospace）`字体显示。
 | `\r` | 回车符 |
 | `\t` | 制表符 |
 | `\\` | 反斜线 |
-| `\0` | Null/空/零值（译注：Rust 中没有 Null） |
+| `\0` | Null/空/零值（译者注：Rust 中没有 Null） |
 
 #### 字节转义
 
@@ -57,7 +57,7 @@ table production]形式，并以`等宽（monospace）`字体显示。
 | `\r` | 回车符 |
 | `\t` | 制表符 |
 | `\\` | 反斜线 |
-| `\0` | Null/空/零值（译注：Rust 中没有 Null） |
+| `\0` | Null/空/零值（译者注：Rust 中没有 Null） |
 
 #### Unicode 转义
 
