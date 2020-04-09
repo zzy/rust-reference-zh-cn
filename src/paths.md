@@ -1,12 +1,12 @@
-# Paths
+# 路径
 
-A *path* is a sequence of one or more path segments _logically_ separated by
-a namespace <span class="parenthetical">qualifier (`::`)</span>. If a path
-consists of only one segment, it refers to either an [item] or a [variable] in
-a local control scope. If a path has multiple segments, it always refers to an
-item.
+> [paths.md](https://github.com/rust-lang/reference/blob/master/src/paths.md)
+> <br />
+> commit a4cdf6d138a4b369df2ed8f0de61008edf76b56b
 
-Two examples of simple paths consisting of only identifier segments:
+_路径_ 是一个或多个由<span class="parenthetical">命名空间限定符（`::`）</span>_逻辑_ 分隔的路径片段序列。如果路径仅由一个路径片段组成，则它引用当前控制域内的[项][item]或[变量][variable]。如果路径包含多个路径片段，则常是引用具体项。
+
+两个仅由标识符部分组成的简单路径的例子：
 
 <!-- ignore: syntax fragment -->
 ```rust,ignore
@@ -14,9 +14,9 @@ x;
 x::y::z;
 ```
 
-## Types of paths
+## 路径类型
 
-### Simple Paths
+### 简单路径
 
 > **<sup>Syntax</sup>**\
 > _SimplePath_ :\
@@ -25,8 +25,7 @@ x::y::z;
 > _SimplePathSegment_ :\
 > &nbsp;&nbsp; [IDENTIFIER] | `super` | `self` | `crate` | `$crate`
 
-Simple paths are used in [visibility] markers, [attributes], [macros], and [`use`] items.
-Examples:
+简单路径常用于[可见性][visibility]标记、[属性][attributes]、[宏][macros]，以及 [`use`] 声明项。例如：
 
 ```rust
 use std::io::{self, Write};
@@ -36,7 +35,7 @@ mod m {
 }
 ```
 
-### Paths in expressions
+### 表达式路径
 
 > **<sup>Syntax</sup>**\
 > _PathInExpression_ :\
@@ -70,18 +69,16 @@ mod m {
 > _GenericArgsBinding_ :\
 > &nbsp;&nbsp; [IDENTIFIER] `=` [_Type_]
 
-Paths in expressions allow for paths with generic arguments to be specified. They are
-used in various places in [expressions] and [patterns].
+表达式路径允许为路径指定泛型参数，被用在各种[表达式][expressions]和[模式][patterns]中。
 
-The `::` token is required before the opening `<` for generic arguments to avoid
-ambiguity with the less-than operator. This is colloquially known as "turbofish" syntax.
+记号 `::` 出现在泛型参数开端的尖括号 `<` 之前，以避免小于号的歧义，俗称“涡轮鱼（turbofish）”语法。
 
 ```rust
 (0..10).collect::<Vec<_>>();
 Vec::<u8>::with_capacity(1024);
 ```
 
-## Qualified paths
+## 限定路径
 
 > **<sup>Syntax</sup>**\
 > _QualifiedPathInExpression_ :\
@@ -93,9 +90,7 @@ Vec::<u8>::with_capacity(1024);
 > _QualifiedPathInType_ :\
 > &nbsp;&nbsp; _QualifiedPathType_ (`::` _TypePathSegment_)<sup>+</sup>
 
-Fully qualified paths allow for disambiguating the path for [trait implementations] and
-for specifying [canonical paths](#canonical-paths). When used in a type specification, it
-supports using the type syntax specified below.
+完全限定的路径允许消除 [trait 实现][trait implementations]的路径歧义和指定[规范路径](#canonical-paths)，在使用时支持类型语法。详述如下：
 
 ```rust
 struct S;
@@ -115,7 +110,7 @@ S::f();  // Calls the inherent impl.
 <S as T2>::f();  // Calls the T2 trait function.
 ```
 
-### Paths in types
+### 类型路径
 
 > **<sup>Syntax</sup>**\
 > _TypePath_ :\
@@ -130,11 +125,9 @@ S::f();  // Calls the inherent impl.
 > _TypePathFnInputs_ :\
 > [_Type_] (`,` [_Type_])<sup>\*</sup> `,`<sup>?</sup>
 
-Type paths are used within type definitions, trait bounds, type parameter bounds,
-and qualified paths.
+类型路径用于类型定义、trait 约束、类型参数约束，以及限定路径。
 
-Although the `::` token is allowed before the generics arguments, it is not required
-because there is no ambiguity like there is in _PathInExpression_.
+尽管在泛型参数之前允许使用记号 `::`，但其不是必需的。因为在类型路径中，没有如同限定路径中 _PathInExpression_ 那样的歧义。
 
 ```rust
 # mod ops {
@@ -152,10 +145,9 @@ fn i<'a>() -> impl Iterator<Item = ops::Example<'a>> {
 type G = std::boxed::Box<dyn std::ops::FnOnce(isize) -> isize>;
 ```
 
-## Path qualifiers
+## 路径限定符
 
-Paths can be denoted with various leading qualifiers to change the meaning of
-how it is resolved.
+路径可以通过多种前导限定符来改变其解析的方式。
 
 ### `::`
 

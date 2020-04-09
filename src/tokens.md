@@ -474,7 +474,7 @@ let x: f64 = 2.; // type f64
 | `,`    | 逗号（Comma） | 参数以及元素分隔符
 | `;`    | 分号（Semi） | 各类项和语句结束符、[数组类型][Array types]
 | `:`    | Colon       | 参数以及元素分隔符
-| `::`   | PathSep     | [路径分隔][paths]
+| `::`   | PathSep     | [路径分隔符][paths]
 | `->`   | RArrow      | [函数返回类型][functions]、[闭包返回类型][closures]
 | `=>`   | FatArrow    | [匹配分支][match]、[宏][Macros]
 | `#`    | 井号（Pound） | [属性][Attributes]
@@ -487,9 +487,9 @@ let x: f64 = 2.; // type f64
 
 |   括号   | 类型            |
 |---------|-----------------|
-| `{` `}` | 大/花括号        |
-| `[` `]` | 中/方括号        |
-| `(` `)` | 小/圆括号        |
+| `{` `}` | 花/大括号        |
+| `[` `]` | 方/中括号        |
+| `(` `)` | 圆/小括号        |
 
 
 [Inferred types]: types/inferred.md
