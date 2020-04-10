@@ -90,7 +90,7 @@ Vec::<u8>::with_capacity(1024);
 > _QualifiedPathInType_ :\
 > &nbsp;&nbsp; _QualifiedPathType_ (`::` _TypePathSegment_)<sup>+</sup>
 
-完全限定的路径允许消除 [trait 实现][trait implementations]的路径歧义和指定[规范路径](#canonical-paths)，在使用时支持类型语法。详述如下：
+完全限定的路径允许消除 [trait 实现][trait implementations]的路径歧义和指定[规范路径](#规范路径)，在使用时支持类型语法。详述如下：
 
 ```rust
 struct S;
@@ -151,15 +151,11 @@ type G = std::boxed::Box<dyn std::ops::FnOnce(isize) -> isize>;
 
 ### `::`
 
-Paths starting with `::` are considered to be global paths where the segments of the path
-start being resolved from the crate root. Each identifier in the path must resolve to an
-item.
+以 `::` 开头的路径被认为是全局路径，路径段从 crate 根位置开始解析。路径中的每个标识符都必须被解析为一个项。
 
-> **Edition Differences**: In the 2015 Edition, the crate root contains a variety of
-> different items, including external crates, default crates such as `std` and `core`, and
-> items in the top level of the crate (including `use` imports).
+> **版本差异**：2015 版本中，crate 根包含多种不同的项，包括：外部 crate、默认 crate（如 `std`、`core`），并且各项可以用作 crate（包括 `use`）最高级别。
 >
-> Beginning with the 2018 Edition, paths starting with `::` can only reference crates.
+> 从 2018 版本始，以 `::` 开头的路径仅能引用crate。
 
 ```rust
 mod a {
@@ -176,8 +172,7 @@ mod b {
 
 ### `self`
 
-`self` resolves the path relative to the current module. `self` can only be used as the
-first segment, without a preceding `::`.
+`self` 解析相对于当前模块的路径，`self` 仅可以用作路径段开头，没有前置 `::`。
 
 ```rust
 fn foo() {}
@@ -189,10 +184,9 @@ fn bar() {
 
 ### `Self`
 
-`Self`, with a capital "S", is used to refer to the implementing type within
-[traits] and [implementations].
+`Self`（大写“S”）用于引用 [traits] 和[实现][implementations]的类型。
 
-`Self` can only be used as the first segment, without a preceding `::`.
+`Self` 仅可以用作路径段开头，没有前置 `::`。
 
 ```rust
 trait T {
@@ -218,8 +212,7 @@ impl T for S {
 
 ### `super`
 
-`super` in a path resolves to the parent module. It may only be used in leading
-segments of the path, possibly after an initial `self` segment.
+路径中的 `super` 解析为父模块。它仅能被用在路径的前导段，可以置于 `self` 路径段之后。
 
 ```rust
 mod a {
@@ -233,8 +226,7 @@ mod b {
 # fn main() {}
 ```
 
-`super` may be repeated several times after the first `super` or `self` to refer to
-ancestor modules.
+`super` 可以在第一个 `super` 或 `self` 之后重复多次，以引用祖先模块。
 
 ```rust
 mod a {
@@ -254,8 +246,7 @@ mod a {
 
 ### `crate`
 
-`crate` resolves the path relative to the current crate. `crate` can only be used as the
-first segment, without a preceding `::`.
+`crate` 解析相对于当前 crate 的路径。`crate` 仅能用作路径端开头，没有前置 `::`。
 
 ```rust
 fn foo() {}
@@ -269,10 +260,7 @@ mod a {
 
 ### `$crate`
 
-`$crate` is only used within [macro transcribers], and can only be used as the first
-segment, without a preceding `::`. `$crate` will expand to a path to access items from the
-top level of the crate where the macro is defined, regardless of which crate the macro is
-invoked.
+`$crate` 仅用在[宏转换器][macro transcribers]中，且仅能用作路径段开头，没有前置 `::`。`$crate` 将扩展为从定义宏的 crate 的顶层访问 crate 各项的路径，而不用去考虑被调用宏所属的 crate。
 
 ```rust
 pub fn increment(x: u32) -> u32 {
@@ -286,7 +274,7 @@ macro_rules! inc {
 # fn main() { }
 ```
 
-## Canonical paths
+## 规范路径
 
 Items defined in a module or implementation have a *canonical path* that
 corresponds to where within its crate it is defined. All other paths to these
