@@ -276,12 +276,11 @@ macro_rules! inc {
 
 ## 规范路径
 
-Items defined in a module or implementation have a *canonical path* that
-corresponds to where within its crate it is defined. All other paths to these
-items are aliases. The canonical path is defined as a *path prefix* appended by
-the path segment the item itself defines.
+定义在模块或者实现中的项具有一个 _规范路径_，该路径对应于其在 crate 中定义的位置。_规范路径_ 外所有其它指向这些项的路径都是别名。规范路径被定义为一个由其本身定义的路径段附加的 _路径前缀_。
 
-[Implementations] and [use declarations] do not have canonical paths, although
+[实现][Implementations]和 [use 声明][use declarations]没有规范路径，
+
+[实现][Implementations] and [use declarations] do not have canonical paths, although
 the items that implementations define do have them. Items defined in
 block expressions do not have canonical paths. Items defined in a module that
 does not have a canonical path do not have a canonical path. Associated items
