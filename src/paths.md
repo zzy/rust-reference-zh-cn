@@ -278,26 +278,11 @@ macro_rules! inc {
 
 定义在模块或者实现中的项具有一个 _规范路径_，该路径对应于其在 crate 中定义的位置。_规范路径_ 外所有其它指向这些项的路径都是别名。规范路径被定义为一个由其本身定义的路径段附加的 _路径前缀_。
 
-[实现][Implementations]和 [use 声明][use declarations]没有规范路径，
+尽管实现所定义的项有规范路径，但[实现][Implementations]和 [use 声明][use declarations]没有规范路径。块表达式中定义的项没有规范路径；在不具有规范路径的模块中定义的项也没有规范路径；在引用没有规范路径的项的实现中所定义的关联项（例如实现类型、trait 的实现、类型参数，或者类型参数上的绑定），都是没有规范路径的。
 
-[实现][Implementations] and [use declarations] do not have canonical paths, although
-the items that implementations define do have them. Items defined in
-block expressions do not have canonical paths. Items defined in a module that
-does not have a canonical path do not have a canonical path. Associated items
-defined in an implementation that refers to an item without a canonical path,
-e.g. as the implementing type, the trait being implemented, a type parameter or
-bound on a type parameter, do not have canonical paths.
+模块的路径前缀是该模块的规范路径。对于裸实现，被实现的项的规范路径使用<span class="parenthetical">尖括号（`<>`）</span> 包围。对于 [trait 实现][trait implementations]，在被实现的项的规范路径后面，首先跟随 `as`，然后再跟随 trait 的规范路径，整个规范路径都使用<span class="parenthetical">尖括号（`<>`）</span> 包围。
 
-The path prefix for modules is the canonical path to that module. For bare
-implementations, it is the canonical path of the item being implemented
-surrounded by <span class="parenthetical">angle (`<>`)</span> brackets. For
-[trait implementations], it is the canonical path of the item being implemented
-followed by `as` followed by the canonical path to the trait all surrounded in
-<span class="parenthetical">angle (`<>`)</span> brackets.
-
-The canonical path is only meaningful within a given crate. There is no global
-namespace across crates; an item's canonical path merely identifies it within
-the crate.
+规范路径只有在给定的 crate 中才有意义。不同 crate 之间没有全局的命名空间；项的规范路也径仅在其 crate 中可标识。 
 
 ```rust
 // Comments show the canonical path of the item.
