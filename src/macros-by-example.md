@@ -43,26 +43,13 @@
 > _MacroTranscriber_ :\
 > &nbsp;&nbsp; [_DelimTokenTree_]
 
-`macro_rules` allows users to define syntax extension in a declarative way.  We
-call such extensions "macros by example" or simply "macros".
+`声明宏`允许用户以声明的方式定义语法扩展，我们称这种扩展为“示例宏（macros by example）”，或简单的称作“宏（macros）”。
 
-Each macro by example has a name, and one or more _rules_. Each rule has two
-parts: a _matcher_, describing the syntax that it matches, and a _transcriber_,
-describing the syntax that will replace a successfully matched invocation. Both
-the matcher and the transcriber must be surrounded by delimiters. Macros can
-expand to expressions, statements, items (including traits, impls, and foreign
-items), types, or patterns.
+每个声明宏有其名字，以及一个或多个 _规则_。每个规则包含两个部分：一个是 _匹配器_——描述声明宏的匹配语法；另一个是 _转换器_——描述声明宏被成功匹配和调用后的替换语法。匹配器和转换器都必须由分隔符包围。宏可以扩展为表达式、语句、项（包括 trait、实现，以及外部项）、类型，或者模式。
 
-## Transcribing
+## 转换
 
-When a macro is invoked, the macro expander looks up macro invocations by name,
-and tries each macro rule in turn. It transcribes the first successful match; if
-this results in an error, then future matches are not tried. When matching, no
-lookahead is performed; if the compiler cannot unambiguously determine how to
-parse the macro invocation one token at a time, then it is an error. In the
-following example, the compiler does not look ahead past the identifier to see
-if the following token is a `)`, even though that would allow it to parse the
-invocation unambiguously:
+当宏被调用时，声明宏的扩展程序根据名称查找宏调用，并依次尝试每个宏规则。声明宏会根据第一个成功的匹配进行转换；即使转换结果导致错误，也不会尝试后续的匹配。声明宏执行匹配时，不执行预判；如果编译器无法确定如何解析一个标记的宏调用，则会导致错误。下述示例中，编译器不会预判传入的标识符以查看其跟随标记是否为 `)`——尽管预判将允许编译器明确地解析调用：
 
 ```rust,compile_fail
 macro_rules! ambiguity {
