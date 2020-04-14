@@ -1,4 +1,8 @@
-# Macros By Example
+# 声明宏
+
+> [macros-by-example.md](https://github.com/rust-lang/reference/blob/master/src/macros-by-example.md)
+> <br />
+> commit bdf9fd191fe3c83d04e7143a9aa4075056cd945e
 
 > **<sup>Syntax</sup>**\
 > _MacroRulesDefinition_ :\
