@@ -25,7 +25,7 @@ x::y::z;
 > _SimplePathSegment_ :\
 > &nbsp;&nbsp; [IDENTIFIER] | `super` | `self` | `crate` | `$crate`
 
-简单路径常用于[可见性][visibility]标记、[属性][attributes]、[宏][macros]，以及 [`use`] 声明项。例如：
+简单路径常用于[可见性][visibility]标记、[属性][attributes]、[声明宏][macros]，以及 [`use`] 声明项。例如：
 
 ```rust
 use std::io::{self, Write};
