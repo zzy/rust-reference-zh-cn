@@ -49,7 +49,7 @@
 
 ## 转换
 
-当宏被调用时，声明宏的扩展程序根据名称查找宏调用，并依次尝试每个宏规则。声明宏会根据第一个成功的匹配进行转换；即使转换结果导致错误，也不会尝试后续的匹配。声明宏执行匹配时，不执行预判；如果编译器无法确定如何解析一个标记的宏调用，则会导致错误。下述示例中，编译器不会预判传入的标识符以查看其跟随标记是否为 `)`——尽管预判将允许编译器明确地解析调用：
+当宏被调用时，声明宏的扩展程序根据名称查找宏调用，并依次尝试每个宏规则。声明宏会根据第一个成功的匹配进行转换；即使转换结果导致错误，也不会尝试后续的匹配。声明宏执行匹配时，不执行预判；如果编译器无法确定如何解析一个标记的宏调用，则会导致错误。下述示例中，编译器不会预判传入的标识符以查看其跟随标记是否为“`)`”——尽管预判将允许编译器明确地解析调用：
 
 ```rust,compile_fail
 macro_rules! ambiguity {
@@ -59,20 +59,9 @@ macro_rules! ambiguity {
 ambiguity!(error); // Error: local ambiguity
 ```
 
-In both the matcher and the transcriber, the `$` token is used to invoke special
-behaviours from the macro engine (described below in [Metavariables] and
-[Repetitions]). Tokens that aren't part of such an invocation are matched and
-transcribed literally, with one exception. The exception is that the outer
-delimiters for the matcher will match any pair of delimiters. Thus, for
-instance, the matcher `(())` will match `{()}` but not `{{}}`. The character
-`$` cannot be matched or transcribed literally.
+在匹配器和转换器中，`$` 标记用于调用宏引擎中的特殊行为（下文的[元变量][Metavariables]和[重复][Repetitions]中有详述）。不属于这种调用的标记是按字面意思匹配和转换的——只有一个例外：匹配器的外部分隔符将匹配任何一对分隔符。因此，比如匹配器 `(())` 将匹配 `{()}` 而不是 `{{}}`。字符 `$` 不能被匹配或按照字面意义转换。
 
-When forwarding a matched fragment to another macro-by-example, matchers in
-the second macro will see an opaque AST of the fragment type. The second macro
-can't use literal tokens to match the fragments in the matcher, only a
-fragment specifier of the same type. The `ident`, `lifetime`, and `tt`
-fragment types are an exception, and *can* be matched by literal tokens. The
-following illustrates this restriction:
+当将匹配片段发送到另一个声明宏时，第二个宏中的匹配器将看到此匹配片段类型的不完全抽象语法树（AST）。第二个宏不能根据标记的字面意义来匹配匹配器中的片段，只能使用同一类型的片段分类符。匹配片段的类型 `ident`、`lifetime`、`tt` 是例外状况，_可以_ 通过标记的字面意义进行匹配。如下通过例子阐述上述限制：
 
 ```rust,compile_fail
 macro_rules! foo {
@@ -87,8 +76,7 @@ macro_rules! bar {
 foo!(3);
 ```
 
-The following illustrates how tokens can be directly matched after matching a
-`tt` fragment:
+下述例子说明如何在匹配 `tt` 片段后直接匹配标记：
 
 ```rust
 // compiles OK
@@ -103,7 +91,7 @@ macro_rules! bar {
 foo!(3);
 ```
 
-## Metavariables
+## 元变量
 
 In the matcher, `$` _name_ `:` _fragment-specifier_ matches a Rust syntax
 fragment of the kind specified and binds it to the metavariable `$`_name_. Valid
@@ -130,7 +118,7 @@ the syntax element that matched them. The keyword metavariable `$crate` can be
 used to refer to the current crate; see [Hygiene] below. Metavariables can be
 transcribed more than once or not at all.
 
-## Repetitions
+## 重复
 
 In both the matcher and transcriber, repetitions are indicated by placing the
 tokens to be repeated inside `$(`…`)`, followed by a repetition operator,
