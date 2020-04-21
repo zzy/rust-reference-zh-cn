@@ -93,24 +93,21 @@ foo!(3);
 
 ## 元变量
 
-In the matcher, `$` _name_ `:` _fragment-specifier_ matches a Rust syntax
-fragment of the kind specified and binds it to the metavariable `$`_name_. Valid
-fragment specifiers are:
+在匹配器中，`$`_名字_ `:` _片段分类符_ 匹配指定类型的 Rust 语法片段，并将其绑定到元变量 `$`_名字_。有效的片段分类符是：
 
-  * `item`: an [_Item_]
-  * `block`: a [_BlockExpression_]
-  * `stmt`: a [_Statement_] without the trailing semicolon (except for item
-    statements that require semicolons)
-  * `pat`: a [_Pattern_]
-  * `expr`: an [_Expression_]
-  * `ty`: a [_Type_]
-  * `ident`: an [IDENTIFIER_OR_KEYWORD]
-  * `path`: a [_TypePath_] style path
-  * `tt`: a [_TokenTree_]&nbsp;(a single [token] or tokens in matching delimiters `()`, `[]`, or `{}`)
-  * `meta`: an [_Attr_], the contents of an attribute
-  * `lifetime`: a [LIFETIME_TOKEN]
-  * `vis`: a possibly empty [_Visibility_] qualifier
-  * `literal`: matches `-`<sup>?</sup>[_LiteralExpression_]
+  * `item`：[项][_Item_]
+  * `block`：[块表达式][_BlockExpression_]
+  * `stmt`：末尾没有分号的[语句][_Statement_]（需要分号的项语句除外）
+  * `pat`：[模式][_Pattern_]
+  * `expr`：[表达式][_Expression_]
+  * `ty`：[类型][_Type_]
+  * `ident`：[标识符/关键字][IDENTIFIER_OR_KEYWORD]
+  * `path`：[类型路径][_TypePath_]风格的路径
+  * `tt`：[标记树][_TokenTree_]&nbsp;（匹配分隔符 `()`、`[]`、`{}` 中的单个或多个[标记][token])
+  * `meta`：[属性][_Attr_]，属性的内容
+  * `lifetime`：[生命周期标记][LIFETIME_TOKEN]
+  * `vis`：可能为空的[可见性][_Visibility_]限定符
+  * `literal`：匹配“`-`”<sup>?</sup>[字面量表达式][_LiteralExpression_]
 
 In the transcriber, metavariables are referred to simply by `$`_name_, since
 the fragment kind is specified in the matcher. Metavariables are replaced with
