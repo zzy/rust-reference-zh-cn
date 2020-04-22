@@ -109,11 +109,8 @@ foo!(3);
   * `vis`：可能为空的[可见性][_Visibility_]限定符
   * `literal`：匹配“`-`”<sup>?</sup>[字面量表达式][_LiteralExpression_]
 
-In the transcriber, metavariables are referred to simply by `$`_name_, since
-the fragment kind is specified in the matcher. Metavariables are replaced with
-the syntax element that matched them. The keyword metavariable `$crate` can be
-used to refer to the current crate; see [Hygiene] below. Metavariables can be
-transcribed more than once or not at all.
+
+在转换器中，因为片段类型是在匹配器中指定的，所以元变量仅被 `$`_名称_ 简单引用。元变量将被替换为与片段类型相匹配的语法元素；元变量关键字 `$crate` 可用于引用当前 crate（详细参见[辅助][Hygiene]）；元变量可以被多次转换，也可以根本不转换。 
 
 ## 重复
 
