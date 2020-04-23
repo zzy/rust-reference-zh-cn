@@ -49,7 +49,7 @@
 
 ## 转换
 
-当宏被调用时，声明宏的扩展程序根据名称查找宏调用，并依次尝试每个宏规则。声明宏会根据第一个成功的匹配进行转换；即使转换结果导致错误，也不会尝试后续的匹配。声明宏执行匹配时，不执行预判；如果编译器无法确定如何解析一个标记的宏调用，则会导致错误。下述示例中，编译器不会预判传入的标识符以查看其跟随标记是否为“`)`”——尽管预判将允许编译器明确地解析调用：
+当宏被调用时，声明宏的扩展程序根据名称查找宏调用，并依次尝试每个宏规则。声明宏会根据第一个成功的匹配进行转换；即使转换结果导致错误，也不会尝试后续的匹配。声明宏执行匹配时，不执行预判；如果编译器无法确定如何解析一个标记的宏调用，则会导致错误。下述示例中，编译器不会预判传入的标识符以查看其跟随记号是否为“`)`”——尽管预判将允许编译器明确地解析调用：
 
 ```rust,compile_fail
 macro_rules! ambiguity {
@@ -59,9 +59,9 @@ macro_rules! ambiguity {
 ambiguity!(error); // Error: local ambiguity
 ```
 
-在匹配器和转换器中，`$` 标记用于调用宏引擎中的特殊行为（下文的[元变量][Metavariables]和[重复][Repetitions]中有详述）。不属于这种调用的标记是按字面意思匹配和转换的——只有一个例外：匹配器的外部分隔符将匹配任何一对分隔符。因此，比如匹配器 `(())` 将匹配 `{()}` 而不是 `{{}}`。字符 `$` 不能被匹配或按照字面意义转换。
+在匹配器和转换器中，`$` 记号用于调用宏引擎中的特殊行为（下文的[元变量][Metavariables]和[重复][Repetitions]中有详述）。不属于这种调用的记号是按字面意思匹配和转换的——只有一个例外：匹配器的外部分隔符将匹配任何一对分隔符。因此，比如匹配器 `(())` 将匹配 `{()}` 而不是 `{{}}`。字符 `$` 不能被匹配或按照字面意义转换。
 
-当将匹配片段发送到另一个声明宏时，第二个宏中的匹配器将看到此匹配片段类型的不完全抽象语法树（AST）。第二个宏不能根据标记的字面意义来匹配匹配器中的片段，只能使用同一类型的片段分类符。匹配片段的类型 `ident`、`lifetime`、`tt` 是例外状况，_可以_ 通过标记的字面意义进行匹配。如下通过例子阐述上述限制：
+当将匹配片段发送到另一个声明宏时，第二个宏中的匹配器将看到此匹配片段类型的不完全抽象语法树（AST）。第二个宏不能根据记号的字面意义来匹配匹配器中的片段，只能使用同一类型的片段分类符。匹配片段的类型 `ident`、`lifetime`、`tt` 是例外状况，_可以_ 通过记号的字面意义进行匹配。如下通过例子阐述上述限制：
 
 ```rust,compile_fail
 macro_rules! foo {
@@ -76,7 +76,7 @@ macro_rules! bar {
 foo!(3);
 ```
 
-下述例子说明如何在匹配 `tt` 片段后直接匹配标记：
+下述例子说明如何在匹配 `tt` 片段后直接匹配记号：
 
 ```rust
 // compiles OK
@@ -103,7 +103,7 @@ foo!(3);
   * `ty`：[类型][_Type_]
   * `ident`：[标识符/关键字][IDENTIFIER_OR_KEYWORD]
   * `path`：[类型路径][_TypePath_]风格的路径
-  * `tt`：[标记树][_TokenTree_]&nbsp;（匹配分隔符 `()`、`[]`、`{}` 中的单个或多个[标记][token])
+  * `tt`：[记号树][_TokenTree_]&nbsp;（匹配分隔符 `()`、`[]`、`{}` 中的单个或多个[记号][token])
   * `meta`：[属性][_Attr_]，属性的内容
   * `lifetime`：[生命周期标记][LIFETIME_TOKEN]
   * `vis`：可能为空的[可见性][_Visibility_]限定符
@@ -114,29 +114,20 @@ foo!(3);
 
 ## 重复
 
-In both the matcher and transcriber, repetitions are indicated by placing the
-tokens to be repeated inside `$(`…`)`, followed by a repetition operator,
-optionally with a separator token between. The separator token can be any token
-other than a delimiter or one of the repetition operators, but `;` and `,` are
-the most common. For instance, `$( $i:ident ),*` represents any number of
-identifiers separated by commas. Nested repetitions are permitted.
+在匹配器和转换器中，通过将要重复的记号放在 `$(`…`)` 内来代表重复，可选后跟一个分隔记号，然后后跟重复运算符。分隔记号可以是除分隔符或某个重复运算符之外的任何记号，分号 `;` 和逗号 `,` 是最常用的。例如：`$( $i:ident ),*` 表示用逗号分隔的任何数量的标识符，且允许嵌套式重复。 
 
-The repetition operators are:
+重复运算符包括：
 
-- `*` — indicates any number of repetitions.
-- `+` — indicates any number but at least one.
-- `?` — indicates an optional fragment with zero or one occurrences.
+- `*` — 代表任意数量的重复——即 `0` 次或`多`次重复。
+- `+` — 代表至少 `1` 次的重复。
+- `?` — 代表出现 `0` 次或者 `1` 次的可选片段。
 
-Since `?` represents at most one occurrence, it cannot be used with a
-separator.
+因为 `?` 最多代表出现一个匹配项，所以不能和分隔符一起使用。
 
-The repeated fragment both matches and transcribes to the specified number of
-the fragment, separated by the separator token. Metavariables are matched to
-every repetition of their corresponding fragment. For instance, the `$( $i:ident
-),*` example above matches `$i` to all of the identifiers in the list.
+重复的片段可匹配并转换为指定数量的片段，由分隔符分隔。元变量被匹配到与其相符的每个重复匹配。例如：上述示例 `$( $i:ident
+),*` 将匹配 `$i` 与列表中的所有标识符相符。
 
-During transcription, additional restrictions apply to repetitions so that the
-compiler knows how to expand them properly:
+在转换过程中，会有附加的限制用于重复操作，以便于编译器知道如何正确地展开重复的记号：
 
 1.  A metavariable must appear in exactly the same number, kind, and nesting
     order of repetitions in the transcriber as it did in the matcher. So for the
