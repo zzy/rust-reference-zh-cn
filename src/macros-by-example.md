@@ -129,23 +129,11 @@ foo!(3);
 
 在转换过程中，会有附加的限制用于重复操作，以便于编译器知道如何正确地展开重复的记号：
 
-1.  A metavariable must appear in exactly the same number, kind, and nesting
-    order of repetitions in the transcriber as it did in the matcher. So for the
-    matcher `$( $i:ident ),*`, the transcribers `=> { $i }`,
-    `=> { $( $( $i)* )* }`, and `=> { $( $i )+ }` are all illegal, but
-    `=> { $( $i );* }` is correct and replaces a comma-separated list of
-    identifiers with a semicolon-separated list.
-1.  Second, each repetition in the transcriber must contain at least one
-    metavariable to decide how many times to expand it. If multiple
-    metavariables appear in the same repetition, they must be bound to the same
-    number of fragments. For instance, `( $( $i:ident ),* ; $( $j:ident ),* ) =>
-    ( $( ($i,$j) ),*` must bind the same number of `$i` fragments as `$j`
-    fragments. This means that invoking the macro with `(a, b, c; d, e, f`) is
-    legal and expands to `((a,d), (b,e), (c,f))`, but `(a, b, c; d, e)` is
-    illegal because it does not have the same number. This requirement applies
-    to every layer of nested repetitions.
+1. 首先，元变量在转换器中出现的数量、种类，以及重复的嵌套顺序，与其在匹配器中出现的完全相同。所以若匹配器中出现 `$( $i:ident ),*`，那么转换器中出现的 `=> { $i }`、`=> { $( $( $i)* )* }`，以及 `=> { $( $i )+ }` 都是不合法的。而 `=> { $( $i );* }` 是正确的，并用分号分隔的列表替换逗号分隔的标识符列表。
+1. 其次，转换器中的每个重复则必须包含至少一个元变量，从而决定其扩展的次数。如果在同一个重复中出现多个元变量，则它们必须被绑定到相同数量的片段上。例如：`( $( $i:ident ),* ; $( $j:ident ),* ) =>
+    ( $( ($i,$j) ),*` 必须绑定到与 `$i` 片段同等数量的 `$j` 片段，这意味着使用 `(a, b, c; d, e, f)` 调用宏是合法的，并且可扩展为 `((a,d)、(b,e)、(c,f))`。但是 `(a, b, c; d, e)` 不合法的，因为其数量不同。此要求适用于嵌套重复的每一层。
 
-## Scoping, Exporting, and Importing
+## 作用域、导出，以及导入
 
 For historical reasons, the scoping of macros by example does not work entirely like
 items. Macros have two forms of scope: textual scope, and path-based scope.
