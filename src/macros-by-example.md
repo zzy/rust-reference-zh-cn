@@ -2,7 +2,7 @@
 
 > [macros-by-example.md](https://github.com/rust-lang/reference/blob/master/src/macros-by-example.md)
 > <br />
-> commit bdf9fd191fe3c83d04e7143a9aa4075056cd945e
+> commit bdf9fd191fe3c83d04e7143a9aa4075056cd945e 2019-12-22
 
 > **<sup>Syntax</sup>**\
 > _MacroRulesDefinition_ :\

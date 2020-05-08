@@ -9,7 +9,7 @@
 ## 状态
 
 - 对照源码位置：https://github.com/rust-lang/reference/tree/master/src
-- 每章开头有官方链接和 commit hash，若发现与官方不一致，欢迎 Issue 或 PR :bug:
+- 每章开头有官方链接、commit hash，以及提交日期。若发现与官方不一致，欢迎 Issue 或 PR :bug:
 
 ## 依赖
 
