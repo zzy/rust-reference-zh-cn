@@ -2,7 +2,7 @@
 
 > [macros-by-example.md](https://github.com/rust-lang/reference/blob/master/src/macros-by-example.md)
 > <br />
-> commit bdf9fd191fe3c83d04e7143a9aa4075056cd945e 2019-12-22
+> commit - bdf9fd191fe3c83d04e7143a9aa4075056cd945e - 2019-12-22
 
 > **<sup>Syntax</sup>**\
 > _MacroRulesDefinition_ :\
@@ -135,31 +135,23 @@ foo!(3);
 
 ## 作用域、导出，以及导入
 
-For historical reasons, the scoping of macros by example does not work entirely like
-items. Macros have two forms of scope: textual scope, and path-based scope.
-Textual scope is based on the order that things appear in source files, or even
-across multiple files, and is the default scoping. It is explained further below.
-Path-based scope works exactly the same way that item scoping does. The scoping,
-exporting, and importing of macros is controlled largely by attributes.
+由于历史原因，声明宏的作用域并不完全像其它 Rust 数据项那样工作。声明宏有两种形式的作用域：文本作用域和基于路径的作用域。文本作用域是默认的作用域规则，基于源文件中代码出现的顺序，甚至是在多个文件中出现的顺序——下文将进一步解释文本作用域。基于路径的作用域的工作方式与其它 Rust 数据项作用域的工作方式完全相同。声明宏中，作用域、导出，以及导入主要由属性控制。
 
-When a macro is invoked by an unqualified identifier (not part of a multi-part
-path), it is first looked up in textual scoping. If this does not yield any
-results, then it is looked up in path-based scoping. If the macro's name is
-qualified with a path, then it is only looked up in path-based scoping.
+当声明宏被非限定标识符（不是多重路径的一部分）调用时，首先在文本作用域中查找。如果文本作用域中没有任何结果，则继续在基于路径的作用域中查找。如果声明宏的名称限定为路径，则仅在基于路径的作用域中查找。
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
-use lazy_static::lazy_static; // Path-based import.
+use lazy_static::lazy_static; // 基于路径的导入
 
-macro_rules! lazy_static { // Textual definition.
+macro_rules! lazy_static { // 文本定义
     (lazy) => {};
 }
 
-lazy_static!{lazy} // Textual lookup finds our macro first.
-self::lazy_static!{} // Path-based lookup ignores our macro, finds imported one.
+lazy_static!{lazy} // 首先，文本查找，发现声明宏
+self::lazy_static!{} // 基于路径的查找，则忽略文本定义的宏，找到导入的宏
 ```
 
-### Textual Scope
+### 文本作用域
 
 Textual scope is based largely on the order that things appear in source files,
 and works similarly to the scope of local variables declared with `let` except
