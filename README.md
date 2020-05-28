@@ -21,8 +21,8 @@
 首先，克隆本仓库，并进入文件夹：
 
 ``` Bash
-git clone https://github.com/zzy/rust-reference-zh.git
-cd rust-reference-zh
+git clone https://github.com/zzy/rust-reference-zh-cn.git
+cd rust-reference-zh-cn
 ```
 
 其次，测试代码，并捕获编译错误：
@@ -44,11 +44,11 @@ mdbook build
 <table>
   <tr>
     <td align="center"><a href="https://budshome.com"><img src="src/imgs/contributors/zzy.jpg" width="100px;" alt=""/><br /><sub><b>Zhang Zhongyu</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="src/imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
   </tr>
 </table>
 
@@ -58,4 +58,4 @@ mdbook build
 
 欢迎 fork[《Rust 参考手册》中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
 
-[《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh
+[《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh-cn

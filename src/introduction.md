@@ -89,11 +89,11 @@
 <table>
   <tr>
     <td align="center"><a href="https://budshome.com"><img src="imgs/contributors/zzy.jpg" width="100px;" alt=""/><br /><sub><b>Zhang Zhongyu</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
-    <td align="center"><a href="https://github.com/zzy/rust-reference-zh"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
+    <td align="center"><a href="https://github.com/zzy/rust-reference-zh-cn"><img src="imgs/contributors/anonymous.jpg" width="100px;" alt=""/><br /><sub><b>欢迎您</b></sub></a></td>
   </tr>
 </table>
 
@@ -106,7 +106,7 @@
 [Rust 程序设计语言]: https://rust-lang.budshome.com
 [github issues]: https://github.com/rust-lang/reference/issues
 [标准库]: https://doc.rust-lang.org/std
-[《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh
+[《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh-cn
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
 [cargo book]: https://cargo.budshome.com
