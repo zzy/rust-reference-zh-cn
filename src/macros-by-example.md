@@ -153,13 +153,7 @@ self::lazy_static!{} // 基于路径的查找，则忽略文本定义的宏，�
 
 ### 文本作用域
 
-Textual scope is based largely on the order that things appear in source files,
-and works similarly to the scope of local variables declared with `let` except
-it also applies at the module level. When `macro_rules!` is used to define a
-macro, the macro enters the scope after the definition (note that it can still
-be used recursively, since names are looked up from the invocation site), up
-until its surrounding scope, typically a module, is closed. This can enter child
-modules and even span across multiple files:
+文本作用域主要基于源代码中声明的顺序，其工作方式与使用 `let` 声明的局部变量的作用域类似，只不过它也适用于模块级。当使用 `macro_rules!` 定义宏时，宏在定义之后进入其作用域（注意，由于名称是从调用位置查找的，因此它仍然可以递归使用），直到其周围的作用域——通常为模块——关闭为止。文本作用域可应用于子模块，甚至涵盖多个文件：
 
 <!-- ignore: requires external modules -->
 ```rust,ignore
@@ -182,8 +176,7 @@ mod has_macro {
 m!{} // OK: appears after declaration of m in src/lib.rs
 ```
 
-It is not an error to define a macro multiple times; the most recent declaration
-will shadow the previous one unless it has gone out of scope.
+可以多次或重复定义一个宏，这并无不妥；除非超出作用域，否则最新的宏声明将遮蔽以前的宏声明。
 
 ```rust
 macro_rules! m {
@@ -210,8 +203,7 @@ mod inner {
 m!(1);
 ```
 
-Macros can be declared and used locally inside functions as well, and work
-similarly:
+宏也可以局部声明和使用在函数内部，工作方式类似：
 
 ```rust
 fn foo() {
@@ -226,11 +218,9 @@ fn foo() {
 // m!(); // Error: m is not in scope.
 ```
 
-### The `macro_use` attribute
+### `macro_use` 属性
 
-The *`macro_use` attribute* has two purposes. First, it can be used to make a
-module's macro scope not end when the module is closed, by applying it to a
-module:
+*`macro_use` 属性*有两个用途。首先，它可以用于在模块关闭时，使模块的宏作用域不结束，方法是将 `macro_use` 应用于模块：
 
 ```rust
 #[macro_use]
@@ -243,14 +233,7 @@ mod inner {
 m!();
 ```
 
-Second, it can be used to import macros from another crate, by attaching it to
-an `extern crate` declaration appearing in the crate's root module. Macros
-imported this way are imported into the prelude of the crate, not textually,
-which means that they can be shadowed by any other name. While macros imported
-by `#[macro_use]` can be used before the import statement, in case of a
-conflict, the last macro imported wins. Optionally, a list of macros to import
-can be specified using the [_MetaListIdents_] syntax; this is not supported
-when `#[macro_use]` is applied to a module.
+其次，它可以用于从另一个 crate 导入宏，方法是在 crate 根模块中，将 `macro_use` 附加到 `extern crate` 声明。以这种方式导入的宏会被导入到 crate 的预处理中，而不是文本导入，这意味着它们可以被任何其他名称遮蔽。虽然可以在导入语句之前使用 `#[macro_use]` 导入宏，但如果发生冲突，则最后导入的宏将被应用。可选地，可以使用 [_MetaListIdents_] 语法指定要导入的宏列表；`#[macro_use]` 应用于模块时，则不支持此操作。
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
@@ -261,14 +244,11 @@ lazy_static!{}
 // self::lazy_static!{} // Error: lazy_static is not defined in `self`
 ```
 
-Macros to be imported with `#[macro_use]` must be exported with
-`#[macro_export]`, which is described below.
+使用 `#[macro_use]` 导入的宏必须使用 `#[macro_export]` 导出，下文详述。
 
-### Path-Based Scope
+### 基于路径的作用域
 
-By default, a macro has no path-based scope. However, if it has the
-`#[macro_export]` attribute, then it is declared in the crate root scope and can
-be referred to normally as such:
+默认情况下，宏没有基于路径的作用域。但是，如果它具有 `#[macro_export]` 属性，那么它被声明在 crate 根作用域，并且通常可以被引用。如下所示：
 
 ```rust
 self::m!();
@@ -287,10 +267,9 @@ mod mac {
 }
 ```
 
-Macros labeled with `#[macro_export]` are always `pub` and can be referred to
-by other crates, either by path or by `#[macro_use]` as described above.
+标记为 `#[macro_export]` 的宏始终是 `pub`，并且可以由其他 crate 引用。如上文所述：可以通过路径或通过 `#[macro_use]` 来引用。
 
-## Hygiene
+## 卫生（Hygiene）
 
 By default, all identifiers referred to in a macro are expanded as-is, and are
 looked up at the macro's invocation site. This can lead to issues if a macro

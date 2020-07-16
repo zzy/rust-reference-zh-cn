@@ -1,24 +1,8 @@
-/*
-.parenthetical class used to keep e.g. "less-than symbol (<)" from wrapping
-the end parenthesis onto its own line. Use in a span between the last word and
-the parenthetical. So for this example, you'd use
-```less-than <span class="parenthetical">symbol (`<`)</span>```
-*/
+
 .parenthetical {
     white-space: nowrap;
 }
 
-/*
-Warnings and notes:
-
-Write the <div>s on their own line. E.g.
-
-<div class="warning">
-
-Warning: This is bad!
-
-</div>
-*/
 main .warning p {
     padding: 10px 20px;
     margin: 20px 0;

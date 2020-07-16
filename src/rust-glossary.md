@@ -1,6 +1,8 @@
 # Rust 语言术语中英文对照表
 
-> 引用自 [Rust 中文翻译项目组 - Rust 语言术语中英文对照表](https://github.com/rust-lang-cn/english-chinese-glossary-of-rust/blob/master/rust-glossary.md)。
+> [Rust 语言术语中英文对照表 - Rust 中文翻译项目组](https://github.com/rust-lang-cn/english-chinese-glossary-of-rust/blob/master/rust-glossary.md)
+> <br />
+> commit - f6f1b5bf29afb4a8ec0dd97f2b7307bddbb69942 - 2020-02-27
 
 English 英文                     | Chinese 中文                  | Note 备注
 -------------------------------  |-----------------------------  |----------
