@@ -271,15 +271,11 @@ mod mac {
 
 ## 卫生（Hygiene）
 
-By default, all identifiers referred to in a macro are expanded as-is, and are
-looked up at the macro's invocation site. This can lead to issues if a macro
-refers to an item or macro which isn't in scope at the invocation site. To
-alleviate this, the `$crate` metavariable can be used at the start of a path to
-force lookup to occur inside the crate defining the macro.
+默认情况下，宏中引用的所有标识符都按原样展开，并在宏的调用位置查找。如果宏引用的项或宏不在调用位置的作用域内，则可能会导致问题。为了缓解这种情况，可以在路径的开头使用 `$crate` 元变量，以强制在定义宏的 crate 内部进行查找。
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
-//// Definitions in the `helper_macro` crate.
+//// 宏定义在 `helper_macro` crate 中
 #[macro_export]
 macro_rules! helped {
     // () => { helper!() } // This might lead to an error due to 'helper' not being in scope.
@@ -291,7 +287,7 @@ macro_rules! helper {
     () => { () }
 }
 
-//// Usage in another crate.
+//// 在其它 crate 使用
 // Note that `helper_macro::helper` is not imported!
 use helper_macro::helped;
 
@@ -300,8 +296,7 @@ fn unit() {
 }
 ```
 
-Note that, because `$crate` refers to the current crate, it must be used with a
-fully qualified module path when referring to non-macro items:
+请注意，由于 `$crate` 引用了当前的 crate，因此在引用非宏项时，它必须与完全限定的模块路径一起使用： 
 
 ```rust
 pub mod inner {
@@ -314,11 +309,7 @@ pub mod inner {
 }
 ```
 
-Additionally, even though `$crate` allows a macro to refer to items within its
-own crate when expanding, its use has no effect on visibility. An item or macro
-referred to must still be visible from the invocation site. In the following
-example, any attempt to invoke `call_foo!()` from outside its crate will fail
-because `foo()` is not public.
+此外，尽管 `$crate` 允许宏在扩展时引用其自身 crate 中的项目，但它的使用对可见性没有影响。引用的项或宏，仍然必须从调用位置可见。在下面的例子中，任何试图从其 crate 外部调用 `call_foo!()` 都将失败，因为 `foo()` 不是公有的。
 
 ```rust
 #[macro_export]
@@ -329,19 +320,10 @@ macro_rules! call_foo {
 fn foo() {}
 ```
 
-> **Version & Edition Differences**: Prior to Rust 1.30, `$crate` and
-> `local_inner_macros` (below) were unsupported. They were added alongside
-> path-based imports of macros (described above), to ensure that helper macros
-> did not need to be manually imported by users of a macro-exporting crate.
-> Crates written for earlier versions of Rust that use helper macros need to be
-> modified to use `$crate` or `local_inner_macros` to work well with path-based
-> imports.
+> **版本/版次差异**：在 Rust 1.30 之前，`$crate` 和 `local_inner_macros` 不受支持。它们与基于路径的宏导入（如上所述）一起添加，以确保辅助宏不需要由宏导出 crate 的用户手动导入。为 Rust 早期版本编写的 crate 要使用辅助宏，需要修改为使用 `$crate` 或者 `local_inner_macros`，以便与基于路径的导入一起工作。
 
-When a macro is exported, the `#[macro_export]` attribute can have the
-`local_inner_macros` keyword added to automatically prefix all contained macro
-invocations with `$crate::`. This is intended primarily as a tool to migrate
-code written before `$crate` was added to the language to work with Rust 2018's
-path-based imports of macros. Its use is discouraged in new code.
+导出宏时，`#[macro_export]` 属性可以具有
+`local_inner_macros` 关键字，以自动为包含的所有宏调用添加  `$crate::` 前缀。这主要是作为一个工具，来移植在 `$crate` 添加到 Rust 语言之前所编写的代码，以便于与 Rust 2018 的基于路径的宏导入一起工作。在新版本/版次的代码中不鼓励使用它。
 
 ```rust
 #[macro_export(local_inner_macros)]
@@ -355,48 +337,27 @@ macro_rules! helper {
 }
 ```
 
-## Follow-set Ambiguity Restrictions
+## 遵循的歧义限制
 
-The parser used by the macro system is reasonably powerful, but it is limited in
-order to prevent ambiguity in current or future versions of the language. In
-particular, in addition to the rule about ambiguous expansions, a nonterminal
-matched by a metavariable must be followed by a token which has been decided can
-be safely used after that kind of match.
+宏系统使用的解析器相当强大，但是为了防止当前或将来版本的语言出现歧义，它受到了限制。特别是，除了关于歧义性展开的规则外，由元变量匹配的非终结符，后面必须跟有一个已确定可以在这种匹配之后安全使用的标记。
 
-As an example, a macro matcher like `$i:expr [ , ]` could in theory be accepted
-in Rust today, since `[,]` cannot be part of a legal expression and therefore
-the parse would always be unambiguous. However, because `[` can start trailing
-expressions, `[` is not a character which can safely be ruled out as coming
-after an expression. If `[,]` were accepted in a later version of Rust, this
-matcher would become ambiguous or would misparse, breaking working code.
-Matchers like `$i:expr,` or `$i:expr;` would be legal, however, because `,` and
-`;` are legal expression separators. The specific rules are:
+例如，像 `$i:expr [ , ]` 这样的宏匹配器，在现今的 Rust 中理论上是可以接受的，因为 `[,]` 不能是合法表达式的一部分，因此解析总是清晰的。但是，因为 `[` 可以开始尾随表达式，`[` 不是一个可以安全排除在表达式后面的字符。如果在 Rust 的更高版本中接受了 `[,]`，那么这个匹配器就会产生歧义或是无法正确解析，破坏了工作代码。但是，像 `$i:expr,` 或者 `$i:expr;` 这样的匹配符是合法的，因为 `,` 和
+`;` 是合法的表达式分隔符。具体规则是：
 
-  * `expr` and `stmt` may only be followed by one of: `=>`, `,`, or `;`.
-  * `pat` may only be followed by one of: `=>`, `,`, `=`, `|`, `if`, or `in`.
-  * `path` and `ty` may only be followed by one of: `=>`, `,`, `=`, `|`, `;`,
-    `:`, `>`, `>>`, `[`, `{`, `as`, `where`, or a macro variable of `block`
-    fragment specifier.
-  * `vis` may only be followed by one of: `,`, an identifier other than a
-    non-raw `priv`, any token that can begin a type, or a metavariable with a
-    `ident`, `ty`, or `path` fragment specifier.
-  * All other fragment specifiers have no restrictions.
+  * `expr` 和 `stmt` 后面只可以跟随一个：`=>`，`,` 或者 `;`。
+  * `pat` 后面只可以跟随一个：`=>`，`,`，`=`，`|`，`if` 或者 `in`。
+  * `path` 和 `ty` 后面只可以跟随一个：`=>`，`,`，`=`，`|`，`;`，`:`，`>`，`>>`，`[`，`{`，`as`，`where` 或者一个`块`片段说明符的宏变量。
+  * `vis` 后面只可以跟随一个：`,`，一个非原生的标识符 `priv`，任何可以用 `ident`，`ty` 或者`路径`片段说明符开始的类型或元变量的标记。
+  * 其他所有的片段说明符没有限制。
 
-When repetitions are involved, then the rules apply to every possible number of
-expansions, taking separators into account. This means:
+当涉及到重复时，规则适用于所有可能的展开，同时考虑到分隔符。这意味着：
 
-  * If the repetition includes a separator, that separator must be able to
-    follow the contents of the repetition.
-  * If the repetition can repeat multiple times (`*` or `+`), then the contents
-    must be able to follow themselves.
-  * The contents of the repetition must be able to follow whatever comes
-    before, and whatever comes after must be able to follow the contents of the
-    repetition.
-  * If the repetition can match zero times (`*` or `?`), then whatever comes
-    after must be able to follow whatever comes before.
+  * 如果重复包含分隔符，则该分隔符必须能够跟随重复的内容。
+  * 如果重复可以重复多次（`*` 或者 `+`），那么内容必须能够遵循自身。
+  * 重复的内容必须能够遵循前面的内容，之后的内容必须能够遵循重复的内容。
+  * 如果重复能够匹配零次（`*` 或者 `?`），那么后面的内容必须能够遵循前面的内容。
 
-
-For more detail, see the [formal specification].
+有关更多详细信息，请参阅[正式规范][formal specification]。
 
 [Hygiene]: #hygiene
 [IDENTIFIER]: identifiers.md
