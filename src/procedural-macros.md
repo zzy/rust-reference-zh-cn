@@ -1,71 +1,46 @@
-## Procedural Macros
+# 过程宏
 
-*Procedural macros* allow creating syntax extensions as execution of a function.
-Procedural macros come in one of three flavors:
+> [procedural-macros.md](https://github.com/rust-lang/reference/blob/master/src/procedural-macros.md)
+> <br />
+> commit - 77c9d41656ab5cb55e9545bf6a6563b260208609 - 2020-05-21
 
-* [Function-like macros] - `custom!(...)`
-* [Derive macros] - `#[derive(CustomDerive)]`
-* [Attribute macros] - `#[CustomAttribute]`
+*过程宏*允许在执行函数时创建语法扩展。过程宏有三种类型：
 
-Procedural macros allow you to run code at compile time that operates over Rust
-syntax, both consuming and producing Rust syntax. You can sort of think of
-procedural macros as functions from an AST to another AST.
+* [类函数宏][Function-like macros] - `custom!(...)`
+* [派生宏][Derive macros] - `#[derive(CustomDerive)]`
+* [属性宏][Attribute macros] - `#[CustomAttribute]`
 
-Procedural macros must be defined in a crate with the [crate type] of
-`proc-macro`.
+过程宏允许您在编译时运行对 Rust 语法进行操作的代码，同时使用并生成 Rust 语法。您可以将过程宏看作是从一个 AST 到另一个 AST 的函数。
 
-> **Note**: When using Cargo, Procedural macro crates are defined with the
-> `proc-macro` key in your manifest:
+过程宏必须在 crate 中定义，其 [crate 类型][crate type]为 `proc-macro`。
+
+> **注**：使用 Cargo 时，过程宏 crates 使用清单中的 `proc-macro` 建定义：
 >
 > ```toml
 > [lib]
 > proc-macro = true
 > ```
 
-As functions, they must either return syntax, panic, or loop endlessly. Returned
-syntax either replaces or adds the syntax depending on the kind of procedural
-macro. Panics are caught by the compiler and are turned into a compiler error.
-Endless loops are not caught by the compiler which hangs the compiler.
+作为函数，它们必须要么返回语法、panic，要么无休止地循环。返回的语法根据过程宏的类型替换或添加语法。编译器捕获 panic 并将其转化为编译器错误。编译器不会捕获无休止地循环，而是被挂起。
 
-Procedural macros run during compilation, and thus have the same resources that
-the compiler has. For example, standard input, error, and output are the same
-that the compiler has access to. Similarly, file access is the same. Because
-of this, procedural macros have the same security concerns that [Cargo's
-build scripts] have.
+过程宏在编译期间运行，因此具有与编译器相同的资源。例如，过程宏与编译器可以访问的标准输入、错误和输出是相同的。类似地，文件访问也是一样的。因此，过程宏与 [Cargo 构建脚本][Cargo's
+build scripts]具有相同的安全问题。
 
-Procedural macros have two ways of reporting errors. The first is to panic. The
-second is to emit a [`compile_error`] macro invocation.
+过程宏有两种报告错误的方法。首先是 panic，第二种是发起一个[编译错误][`compile_error`]宏调用。
 
-### The `proc_macro` crate
+### `proc_macro` crate
 
-Procedural macro crates almost always will link to the compiler-provided
-[`proc_macro` crate]. The `proc_macro` crate provides types required for
-writing procedural macros and facilities to make it easier.
+过程宏 crates 几乎总是链接到编译器提供的 [`proc_macro` crate]。`proc_macro` crate 提供编写过程宏所需的类型和工具，以使其更容易。
 
-This crate primarily contains a [`TokenStream`] type. Procedural macros operate
-over *token streams* instead of AST nodes, which is a far more stable interface
-over time for both the compiler and for procedural macros to target. A
-*token stream* is roughly equivalent to `Vec<TokenTree>` where a `TokenTree`
-can roughly be thought of as lexical token. For example `foo` is an `Ident`
-token, `.` is a `Punct` token, and `1.2` is a `Literal` token. The `TokenStream`
-type, unlike `Vec<TokenTree>`, is cheap to clone.
+`proc_macro` crate 主要包含 [`TokenStream`] 类型。过程宏在*标记流*上操作，而不是在 AST 节点上操作，对于编译器和过程宏来说，这是一个随着时间推移更加稳定的接口。*标记流*大致相当于 `Vec<TokenTree>`，其中 `TokenTree` 可以粗略地看作是词法标记。例如，`foo` 是一个 `Ident` 标记，`.` 是一个 `Punct` 标记，而 `1.2` 是一个`字面量`标记。与 `Vec<TokenTree>` 不同，`TokenStream` 类型的克隆成本较低。
 
-All tokens have an associated `Span`. A `Span` is an opaque value that cannot
-be modified but can be manufactured. `Span`s represent an extent of source
-code within a program and are primarily used for error reporting. You can modify
-the `Span` of any token.
+所有的标记都有一个关联的 `Span`。`Span` 是一个不透明的值，可以生成但不能修改。`Span` 表示程序中源代码的范围，主要用于错误报告。您可以修改任何标记的 `Span`。
 
-### Procedural macro hygiene
+### 卫生（hygiene）过程宏
 
-Procedural macros are *unhygienic*. This means they behave as if the output
-token stream was simply written inline to the code it's next to. This means that
-it's affected by external items and also affects external imports.
+过程宏是*不卫生的*。这意味着它们表现地好像输出标记流是直接内联写入代码一样。这意味着它受到外部项的影响，也会影响外部对它的导入。
 
-Macro authors need to be careful to ensure their macros work in as many contexts
-as possible given this limitation. This often includes using absolute paths to
-items in libraries (for example, `::std::option::Option` instead of `Option`) or
-by ensuring that generated functions have names that are unlikely to clash with
-other functions (like `__internal_foo` instead of `foo`).
+鉴于此限制，宏编写者需要小心，以确保他们编写的宏在尽可能多的上下文中工作。这通常包括对库中的项使用绝对路径（例如，`::std::option::Option` 而不是 `Option`），或者确保生成的函数具有不太可能与其他函数冲突的名称（比如，`__internal_foo` 而不是 `foo`）。
 
 ### Function-like procedural macros
 
@@ -106,12 +81,10 @@ fn main() {
 }
 ```
 
-Function-like procedural macros may expand to a [type] or any number of
-[items], including [`macro_rules`] definitions. They may be invoked in a [type
-expression], [item] position (except as a [statement]), including items in
-[`extern` blocks], inherent and trait [implementations], and [trait
-definitions]. They cannot be used in a [statement], [expression], or
-[pattern].
+Function-like procedural macros may be invoked in any macro invocation
+position, which includes [statements], [expressions], [patterns], [type
+expressions], [item] positions, including items in [`extern` blocks], inherent
+and trait [implementations], and [trait definitions].
 
 ### Derive macros
 
@@ -290,18 +263,18 @@ fn invoke4() {}
 [crate type]: linkage.md
 [derive macro helper attributes]: #derive-macro-helper-attributes
 [enum]: items/enumerations.md
-[expression]: expressions.md
+[expressions]: expressions.md
 [function]: items/functions.md
 [implementations]: items/implementations.md
 [inert]: attributes.md#active-and-inert-attributes
 [item]: items.md
 [items]: items.md
 [module]: items/modules.md
-[pattern]: patterns.md
+[patterns]: patterns.md
 [public]: visibility-and-privacy.md
-[statement]: statements.md
+[statements]: statements.md
 [struct]: items/structs.md
 [trait definitions]: items/traits.md
-[type expression]: types.md#type-expressions
+[type expressions]: types.md#type-expressions
 [type]: types.md
 [union]: items/unions.md
