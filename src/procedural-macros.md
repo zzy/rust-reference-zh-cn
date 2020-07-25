@@ -32,13 +32,13 @@ build scripts]具有相同的安全问题。
 
 过程宏 crates 几乎总是链接到编译器提供的 [`proc_macro` crate]。`proc_macro` crate 提供编写过程宏所需的类型和工具，以使其更容易。
 
-`proc_macro` crate 主要包含 [`TokenStream`] 类型。过程宏在 *标记流* 上操作，而不是在 AST 节点上操作，对于编译器和过程宏来说，这是一个随着时间推移更加稳定的接口。*标记流* 大致相当于 `Vec<TokenTree>`，其中 `TokenTree` 可以粗略地看作是词法标记。例如，`foo` 是一个 `Ident` 标记，`.` 是一个 `Punct` 标记，而 `1.2` 是一个`字面量`标记。与 `Vec<TokenTree>` 不同，`TokenStream` 类型的克隆成本较低。
+`proc_macro` crate 主要包含 [`TokenStream`] 类型。过程宏在 *记号流* 上操作，而不是在 AST 节点上操作，对于编译器和过程宏来说，这是一个随着时间推移更加稳定的接口。*记号流* 大致相当于 `Vec<TokenTree>`，其中 `TokenTree` 可以粗略地看作是词法标记。例如，`foo` 是一个 `Ident` 标记，`.` 是一个 `Punct` 标记，而 `1.2` 是一个`字面量`标记。与 `Vec<TokenTree>` 不同，`TokenStream` 类型的克隆成本较低。
 
-所有的标记都有一个关联的 `Span`。`Span` 是一个不透明的值，可以生成但不能修改。`Span` 表示程序中源代码的范围，主要用于错误报告。您可以修改任何标记的 `Span`。
+所有的标记都有一个关联的 `Span`。`Span` 是一个不透明的值，可以生成但不能修改。`Span` 表示程序中源代码的作用域，主要用于错误报告。您可以修改任何标记的 `Span`。
 
 ### 卫生（hygiene）过程宏
 
-过程宏是 *不卫生的*。这意味着它们表现地好像输出标记流是直接内联写入代码一样。这意味着它受到外部项的影响，也会影响外部对它的导入。
+过程宏是 *不卫生的*。这意味着它们表现地好像输出记号流是直接内联写入代码一样。这意味着它受到外部项的影响，也会影响外部对它的导入。
 
 鉴于此限制，宏编写者需要小心，以确保他们编写的宏在尽可能多的上下文中工作。这通常包括对库中的项使用绝对路径（例如，`::std::option::Option` 而不是 `Option`），或者确保生成的函数具有不太可能与其他函数冲突的名称（比如，`__internal_foo` 而不是 `foo`）。
 
@@ -77,24 +77,18 @@ fn main() {
 ```
 
 类函数过程宏可以在任何宏调用位置被调用，宏调用位置包括：[语句][statements]、[表达式][expressions]、[模式][patterns]、[类型表达式][type
-expressions]、[项][item]位置（包括[外部块][`extern` blocks]中的项）、内置和 trait [实现][implementations]，以及 [trait 定义][trait definitions]。
+expressions]、[项][item]位置（包括[`外部`块][`extern` blocks]中的项）、内置和 trait [实现][implementations]，以及 [trait 定义][trait definitions]。
 
 ### 派生宏
 
-*Derive macros* define new inputs for the [`derive` attribute]. These macros
-can create new [items] given the token stream of a [struct], [enum], or [union].
-They can also define [derive macro helper attributes].
+*派生宏* 定义[`派生`属性][`derive` attribute]的新输入。这些宏可以在给定[结构体][struct]、[枚举][enum]，或[联合][union]的记号流的情况下创建新[项][items]。它们还可以定义[派生宏助手属性][derive macro helper attributes]。
 
-Custom derive macros are defined by a [public]&#32;[function] with the
-`proc_macro_derive` attribute and a signature of `(TokenStream) -> TokenStream`.
+自定义派生宏由带有 `proc_macro_derive` 属性和 `(TokenStream) -> TokenStream` 签名的[公有][public]可见性[函数][function]定义。
 
-The input [`TokenStream`] is the token stream of the item that has the `derive`
-attribute on it. The output [`TokenStream`] must be a set of items that are
-then appended to the [module] or [block] that the item from the input
-[`TokenStream`] is in.
+输入 [`TokenStream`] 是具有`派生`属性的项的记号流。输出 [`TokenStream`] 必须是一组项，然后附加到来自输入
+[`TokenStream`] 的项所在的[模块][module]或[块][block]。
 
-The following is an example of a derive macro. Instead of doing anything
-useful with its input, it just appends a function `answer`.
+下面是派生宏的一个示例。它没有对输入执行任何有用的操作，只是附加一个函数`返回值`。
 
 <!-- ignore: test doesn't support proc-macro -->
 ```rust,ignore
@@ -108,7 +102,7 @@ pub fn derive_answer_fn(_item: TokenStream) -> TokenStream {
 }
 ```
 
-And then using said derive macro:
+然后使用上述派生宏：
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
@@ -123,19 +117,15 @@ fn main() {
 }
 ```
 
-#### Derive macro helper attributes
+#### 派生宏助手属性
 
-Derive macros can add additional [attributes] into the scope of the [item]
-they are on. Said attributes are called *derive macro helper attributes*. These
-attributes are [inert], and their only purpose is to be fed into the derive
-macro that defined them. That said, they can be seen by all macros.
+派生宏可以将附加[属性][attributes]添加到它们所在[项][item]的作用域中。所述附加属性被称为 *派生宏助手属性*。这些属性是[惰性的][inert]，它们的唯一目的是注入到定义它们的派生宏中。也就是说，所有宏都可以看到它们。
 
-The way to define helper attributes is to put an `attributes` key in the
-`proc_macro_derive` macro with a comma separated list of identifiers that are
-the names of the helper attributes.
+定义助手属性的方法是在
+`proc_macro_derive` 宏中放入一个`属性`键，该宏带有一个逗号分隔的标识符列表，这些标识符是助手属性的名称。
 
-For example, the following derive macro defines a helper attribute
-`helper`, but ultimately doesn't do anything with it.
+例如，下面的派生宏定义了一个助手属性
+`helper`，但根本不会对其执行任何操作。
 
 <!-- ignore: test doesn't support proc-macro -->
 ```rust,ignore
@@ -149,7 +139,7 @@ pub fn derive_helper_attr(_item: TokenStream) -> TokenStream {
 }
 ```
 
-And then usage on the derive macro on a struct:
+然后在结构体的派生宏中使用：
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
@@ -161,21 +151,15 @@ struct Struct {
 
 ### 属性宏
 
-*Attribute macros* define new [outer attributes][attributes] which can be
-attached to [items], including items in [`extern` blocks], inherent and trait
-[implementations], and [trait definitions].
+*属性宏* 定义可以附加到项[items]的新[外部属性][attributes]，包括[`外部`块][`extern` blocks]中的项、内置和 trait 
+[实现][implementations]，以及 [trait 定义][trait definitions]。
 
-Attribute macros are defined by a [public]&#32;[function] with the
-`proc_macro_attribute` [attribute] that has a signature of `(TokenStream,
-TokenStream) -> TokenStream`. The first [`TokenStream`] is the delimited token
-tree following the attribute's name, not including the outer delimiters. If
-the attribute is written as a bare attribute name, the attribute
-[`TokenStream`] is empty. The second [`TokenStream`] is the rest of the [item]
-including other [attributes] on the [item]. The returned [`TokenStream`]
-replaces the [item] with an arbitrary number of [items].
+属性宏由带有
+`proc_macro_attribute` [属性][attribute]的[公有][public]可见性[函数][function]定义，该属性的签名为 `(TokenStream,
+TokenStream) -> TokenStream`。第一个 [`TokenStream`] 是属性名称后面带分隔符的标记树，不包括外部分隔符。如果该属性作为裸属性名写入，则属性 [`TokenStream`] 为空。第二个 [`TokenStream`]
+是[项][item]的其余部分，包括该[项][item]的其他属性。返回的 [`TokenStream`] 将[项][item]替换为任意数量的[项][items]。
 
-For example, this attribute macro takes the input stream and returns it as is,
-effectively being the no-op of attributes.
+例如，这个属性宏接受输入流并按原样返回，实际上对属性并无操作。
 
 <!-- ignore: test doesn't support proc-macro -->
 ```rust,ignore
@@ -189,9 +173,7 @@ pub fn return_as_is(_attr: TokenStream, item: TokenStream) -> TokenStream {
 }
 ```
 
-This following example shows the stringified [`TokenStream`s] that the attribute
-macros see. The output will show in the output of the compiler. The output is
-shown in the comments after the function prefixed with "out:".
+下面的示例显示了属性宏看到的字符串化[记号流][`TokenStream`s]。输出将显示在编译器的输出中。输出显示在以 “out:” 为前缀的函数后面的注释中。
 
 <!-- ignore: test doesn't support proc-macro -->
 ```rust,ignore
@@ -254,7 +236,7 @@ fn invoke4() {}
 [attributes]: attributes.md
 [block]: expressions/block-expr.md
 [crate type]: linkage.md
-[derive macro helper attributes]: #derive-macro-helper-attributes
+[derive macro helper attributes]: #派生宏助手属性
 [enum]: items/enumerations.md
 [expressions]: expressions.md
 [function]: items/functions.md
