@@ -32,28 +32,23 @@ build scripts]具有相同的安全问题。
 
 过程宏 crates 几乎总是链接到编译器提供的 [`proc_macro` crate]。`proc_macro` crate 提供编写过程宏所需的类型和工具，以使其更容易。
 
-`proc_macro` crate 主要包含 [`TokenStream`] 类型。过程宏在*标记流*上操作，而不是在 AST 节点上操作，对于编译器和过程宏来说，这是一个随着时间推移更加稳定的接口。*标记流*大致相当于 `Vec<TokenTree>`，其中 `TokenTree` 可以粗略地看作是词法标记。例如，`foo` 是一个 `Ident` 标记，`.` 是一个 `Punct` 标记，而 `1.2` 是一个`字面量`标记。与 `Vec<TokenTree>` 不同，`TokenStream` 类型的克隆成本较低。
+`proc_macro` crate 主要包含 [`TokenStream`] 类型。过程宏在 *标记流* 上操作，而不是在 AST 节点上操作，对于编译器和过程宏来说，这是一个随着时间推移更加稳定的接口。*标记流* 大致相当于 `Vec<TokenTree>`，其中 `TokenTree` 可以粗略地看作是词法标记。例如，`foo` 是一个 `Ident` 标记，`.` 是一个 `Punct` 标记，而 `1.2` 是一个`字面量`标记。与 `Vec<TokenTree>` 不同，`TokenStream` 类型的克隆成本较低。
 
 所有的标记都有一个关联的 `Span`。`Span` 是一个不透明的值，可以生成但不能修改。`Span` 表示程序中源代码的范围，主要用于错误报告。您可以修改任何标记的 `Span`。
 
 ### 卫生（hygiene）过程宏
 
-过程宏是*不卫生的*。这意味着它们表现地好像输出标记流是直接内联写入代码一样。这意味着它受到外部项的影响，也会影响外部对它的导入。
+过程宏是 *不卫生的*。这意味着它们表现地好像输出标记流是直接内联写入代码一样。这意味着它受到外部项的影响，也会影响外部对它的导入。
 
 鉴于此限制，宏编写者需要小心，以确保他们编写的宏在尽可能多的上下文中工作。这通常包括对库中的项使用绝对路径（例如，`::std::option::Option` 而不是 `Option`），或者确保生成的函数具有不太可能与其他函数冲突的名称（比如，`__internal_foo` 而不是 `foo`）。
 
-### Function-like procedural macros
+### 类函数过程宏
 
-*Function-like procedural macros* are procedural macros that are invoked using
-the macro invocation operator (`!`).
+*类函数过程宏* 是使用宏调用运算符（`!`）调用的过程宏。
 
-These macros are defined by a [public]&#32;[function] with the `proc_macro`
-[attribute] and a signature of `(TokenStream) -> TokenStream`. The input
-[`TokenStream`] is what is inside the delimiters of the macro invocation and the
-output [`TokenStream`] replaces the entire macro invocation.
+这些宏由带有 `proc_macro` [属性][attribute]和 `(TokenStream) -> TokenStream` 签名的[公有][public]可见性[函数][function]定义。输入 [`TokenStream`] 是宏调用的分隔符内的内容，输出 [`TokenStream`] 替换整个宏调用。
 
-For example, the following macro definition ignores its input and outputs a
-function `answer` into its scope.
+例如，以下宏定义忽略其输入，并将函数`返回值`输出到其作用域中。
 
 <!-- ignore: test doesn't support proc-macro -->
 ```rust,ignore
@@ -67,7 +62,7 @@ pub fn make_answer(_item: TokenStream) -> TokenStream {
 }
 ```
 
-And then we use it a binary crate to print "42" to standard output.
+然后，我们用它来打印 “42” 到标准输出。
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
@@ -81,12 +76,10 @@ fn main() {
 }
 ```
 
-Function-like procedural macros may be invoked in any macro invocation
-position, which includes [statements], [expressions], [patterns], [type
-expressions], [item] positions, including items in [`extern` blocks], inherent
-and trait [implementations], and [trait definitions].
+类函数过程宏可以在任何宏调用位置被调用，宏调用位置包括：[语句][statements]、[表达式][expressions]、[模式][patterns]、[类型表达式][type
+expressions]、[项][item]位置（包括[外部块][`extern` blocks]中的项）、内置和 trait [实现][implementations]，以及 [trait 定义][trait definitions]。
 
-### Derive macros
+### 派生宏
 
 *Derive macros* define new inputs for the [`derive` attribute]. These macros
 can create new [items] given the token stream of a [struct], [enum], or [union].
@@ -166,7 +159,7 @@ struct Struct {
 }
 ```
 
-### Attribute macros
+### 属性宏
 
 *Attribute macros* define new [outer attributes][attributes] which can be
 attached to [items], including items in [`extern` blocks], inherent and trait
@@ -246,10 +239,10 @@ fn invoke4() {}
 // out: item: "fn invoke4() {}"
 ```
 
-[Attribute macros]: #attribute-macros
+[Attribute macros]: #属性宏
 [Cargo's build scripts]: ../cargo/reference/build-scripts.html
-[Derive macros]: #derive-macros
-[Function-like macros]: #function-like-procedural-macros
+[Derive macros]: #派生宏
+[Function-like macros]: #类函数过程宏
 [`TokenStream`]: ../proc_macro/struct.TokenStream.html
 [`TokenStream`s]: ../proc_macro/struct.TokenStream.html
 [`compile_error`]: ../std/macro.compile_error.html
