@@ -1,4 +1,8 @@
-# Crates and source files
+# crate 和源文件
+
+> [crates-and-source-files.md](https://github.com/rust-lang/reference/blob/master/src/crates-and-source-files.md)
+> <br />
+> commit - 277587a55aa24d8f6a66ddb43493e150c916ef43 - 2020-07-02
 
 > **<sup>Syntax</sup>**\
 > _Crate_ :\
