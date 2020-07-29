@@ -1,4 +1,8 @@
-# Conditional compilation
+# 条件编译
+
+> [conditional-compilation.md](https://github.com/rust-lang/reference/blob/master/src/conditional-compilation.md)
+> <br />
+> commit - 1f020897ee959d5b90c6e84316998153e6d03178 - 2020-06-15
 
 > **<sup>Syntax</sup>**\
 > _ConfigurationPredicate_ :\
@@ -63,6 +67,10 @@ configuration option from within the source code of the crate being compiled.
 
 > **Note**: For `rustc`, arbitrary-set configuration options are set using the
 > [`--cfg`] flag.
+
+> **Note**: Configuration options with the key `feature` are a convention used
+> by [Cargo][cargo-feature] for specifying compile-time options and optional
+> dependencies.
 
 <div class="warning">
 
@@ -266,7 +274,7 @@ either be found at `linux.rs` or `windows.rs` based on the target.
 
 <!-- ignore: `mod` needs multiple files -->
 ```rust,ignore
-#[cfg_attr(linux, path = "linux.rs")]
+#[cfg_attr(target_os = "linux", path = "linux.rs")]
 #[cfg_attr(windows, path = "windows.rs")]
 mod os;
 ```
@@ -286,9 +294,9 @@ fn bewitched() {}
 ```
 
 > **Note**: The `cfg_attr` can expand to another `cfg_attr`. For example,
-> `#[cfg_attr(linux, cfg_attr(feature = "multithreaded", some_other_attribute))]`
+> `#[cfg_attr(target_os = "linux", cfg_attr(feature = "multithreaded", some_other_attribute))]`
 > is valid. This example would be equivalent to
-> `#[cfg_attr(all(linux, feature ="multithreaded"), some_other_attribute)]`.
+> `#[cfg_attr(all(target_os = "linux", feature ="multithreaded"), some_other_attribute)]`.
 
 The `cfg_attr` attribute is allowed anywhere attributes are allowed.
 
@@ -326,5 +334,6 @@ println!("I'm running on a {} machine!", machine_kind);
 [`target_feature` attribute]: attributes/codegen.md#the-target_feature-attribute
 [attribute]: attributes.md
 [attributes]: attributes.md
+[cargo-feature]: ../cargo/reference/features.html
 [crate type]: linkage.md
 [static C runtime]: linkage.md#static-and-dynamic-c-runtimes
