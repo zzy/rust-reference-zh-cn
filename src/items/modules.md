@@ -1,4 +1,8 @@
-# Modules
+# 模块
+
+> [items/modules.md](https://github.com/rust-lang/reference/blob/master/src/items/modules.md)
+> <br />
+> commit - f8e76ee9368f498f7f044c719de68c7d95da9972 - 2019-11-08
 
 > **<sup>Syntax:</sup>**\
 > _Module_ :\
