@@ -1,4 +1,8 @@
-# Items
+# 项
+
+> [items.md](https://github.com/rust-lang/reference/blob/master/src/items.md)
+> <br />
+> commit - b0e0ad6490d6517c19546b1023948986578fc378 - 2019-07-16
 
 > **<sup>Syntax:<sup>**\
 > _Item_:\
