@@ -1,5 +1,5 @@
 # 模块
-
+·
 > [items/modules.md](https://github.com/rust-lang/reference/blob/master/src/items/modules.md)
 > <br />
 > commit - f8e76ee9368f498f7f044c719de68c7d95da9972 - 2019-11-08
@@ -12,13 +12,11 @@
 > &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [_Item_]<sup>\*</sup>\
 > &nbsp;&nbsp; &nbsp;&nbsp; `}`
 
-A module is a container for zero or more [items].
+模块是零个或多个[项][items]的容器。
 
-A _module item_ is a module, surrounded in braces, named, and prefixed with the
-keyword `mod`. A module item introduces a new, named module into the tree of
-modules making up a crate. Modules can nest arbitrarily.
+*模块项* 是一个模块，包含在大括号中，需要命名，并以关键字 `mod` 作为前缀。模块项将一个新的命名模块引入到组成 crate 的模块树中。模块可以任意嵌套。
 
-An example of a module:
+模块示例：
 
 ```rust
 mod math {
@@ -38,22 +36,14 @@ mod math {
 }
 ```
 
-Modules and types share the same namespace. Declaring a named type with the
-same name as a module in scope is forbidden: that is, a type definition, trait,
-struct, enumeration, union, type parameter or crate can't shadow the name of a
-module in scope, or vice versa. Items brought into scope with `use` also have
-this restriction.
+模块和类型共享相同的命名空间。禁止在作用域中声明与模块同名的命名类型，即：类型定义、trait、结构体、枚举、联合体、类型参数或 crate 不能遮蔽作用域中模块的名称，反之亦然。使用 `use` 纳入作用域的项同样有此限制。
 
-## Module Source Filenames
+## 模块的源文件名字
 
-A module without a body is loaded from an external file. When the module does
-not have a `path` attribute, the path to the file mirrors the logical [module
-path]. Ancestor module path components are directories, and the module's
-contents are in a file with the name of the module plus the `.rs` extension.
-For example, the following module structure can have this corresponding
-filesystem structure:
+从外部文件加载没有主体的模块。当模块没有 `path` 属性时，文件的路径将镜像逻辑[模块路径][module
+path]。原型模块路径组件是目录，且模块的内容位于一个具有模块名称和 `.rs` 扩展名的文件中。例如，如下模块结构具有相应的文件系统结构：
 
-Module Path               | Filesystem Path  | File Contents
+模块路径                   | 文件系统路径      | 文件内容
 ------------------------- | ---------------  | -------------
 `crate`                   | `lib.rs`         | `mod util;`
 `crate::util`             | `util.rs`        | `mod config;`
