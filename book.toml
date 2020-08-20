@@ -2,7 +2,7 @@
 title = "Rust 参考手册 - The Rust Language Reference"
 authors = ["zzy"]
 language = "zh"
-description = "Rust 参考手册, Rust 编程手册, Rust 编程语言, Rust 开发手册, Rust 开发指南"
+description = "rust-reference 中文, Rust 参考手册, Rust 编程手册, Rust 编程语言, Rust 开发手册, Rust 开发指南"
 src = "src"
 multilingual = true
 
