@@ -1,5 +1,7 @@
 # Rust 参考手册
 
+> 💥 暂翻译至[模块](https://books.budshome.com/rust-reference/items/modules.html)一节。
+
 本书是 Rust 编程语言的主要参考。
 
 本书并非 Rust 语言规范：可能包含特定于 `rustc` 自身的细节，因此不应作为 Rust 语言规范。Rust 语言开发团队计划在未来拿出规范文件，但目前只有本书所述。

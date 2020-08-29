@@ -1,5 +1,7 @@
 # 介绍
 
+> 💥 暂翻译至[模块](https://books.budshome.com/rust-reference/items/modules.html)一节。
+
 > [introduction.md](https://github.com/rust-lang/reference/blob/master/src/introduction.md)
 > <br />
 > commit 1995d18b04a59368f4a91c600876ad987521d833
