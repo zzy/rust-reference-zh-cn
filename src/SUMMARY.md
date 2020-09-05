@@ -3,7 +3,7 @@
 <!--
 > [SUMMARY.md](https://github.com/rust-lang/reference/blob/master/src/SUMMARY.md)
 > <br />
-> commit 363a64a939bf246d7373776826e14065e912131f
+> commit 363a64a939bf246d7373776826e14065e912131f - 2019.05.12
 -->
 
 [介绍](introduction.md)
