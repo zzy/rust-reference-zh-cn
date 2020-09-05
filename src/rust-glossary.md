@@ -2,7 +2,7 @@
 
 > [Rust 语言术语中英文对照表 - Rust 中文翻译项目组](https://github.com/rust-lang-cn/english-chinese-glossary-of-rust/blob/master/rust-glossary.md)
 > <br />
-> commit - f6f1b5bf29afb4a8ec0dd97f2b7307bddbb69942 - 2020-02-27
+> commit - d8f17c45d691957093bc39fcedf3578b7c800087 - 2020.08.18
 
 English 英文                     | Chinese 中文                  | Note 备注
 -------------------------------  |-----------------------------  |----------
@@ -35,7 +35,7 @@ automated test                   | 自动测试，自动化测试          |
 baroque macro                    | 巴洛克宏                      |
 benchmark                        | 基准                          |
 binary                           | 二进制的                      |
-binary excutable                 | 二进制的可执行文件            |
+binary executable                | 二进制的可执行文件            |
 bind                             | 绑定                          |
 block                            | 语句块，代码块                |
 boolean                          | 布尔型，布尔值                |
@@ -148,7 +148,7 @@ functional                       | 函数式                        |
 garbage collector                | 垃圾回收                      |
 generalize                       | 泛化，泛型化                  |
 generator                        | 生成器                        |
-genericf                         | 泛型                          |
+generic                          | 泛型                          |
 generic type                     | 泛型类型                      |
 growable                         | 可增长的                      |
 guard                            | 守卫                          |
@@ -180,7 +180,7 @@ inherited mutability             | 承袭可变性                    |
 inheritance                      | 继承                          |
 integrated development <br>environment(IDE) | 集成开发环境       | 中文著作中通常直接写成 IDE
 integration-style test           | 集成测试                      |
-interior mutablity               | 内部可变性                    |
+interior mutability              | 内部可变性                    |
 installer                        | 安装程序，安装器              |
 instance                         | 实例                          |
 instance method                  | 实例方法                      |
@@ -240,7 +240,7 @@ mutiple patterns                 | 多重模式                      |
 **N**                            |                               |
 nest                             | 嵌套                          |
 Nightly Rust                     | Rust 开发版                   | nightly本意是“每夜，每天晚上”，<br>指代码每天都更新
-NLL                              | 非词法生命周期                | non lexecal lifetime 的缩写，<br>一般不译
+NLL                              | 非词法生命周期                | non lexical lifetime 的缩写，<br>一般不译
 non-copy type                    | 非复制类型                    |
 non-generic                      | 非泛型                        |
 no-op                            | 空操作，空运算                | (此词出现在类型转换章节中）
@@ -290,6 +290,7 @@ RC                               | 引用计数                      | reference
 Reader                           | 读取器                        |
 recursive macro                  | 递归宏                        |
 reference                        | 引用                          |
+reference cycle                  | 引用循环                      |
 release                          | 发布                          |
 resource                         | 资源                          |
 resource leak                    | 资源泄露                      |
@@ -321,7 +322,7 @@ square                           | 平方，二次方，二次幂          |
 square brackets                  | 中括号，“[”和“]”              |
 src                              | （不译）                      | source 的缩写，指源代码
 stack                            | 栈                            |
-stack unwind                     | 栈中国                        |
+stack unwind                     | 栈解开、栈展开                |
 statement                        | 语句                          |
 statically allocated             | 静态分配                      |
 statically allocated string      | 静态分配的字符串              |
