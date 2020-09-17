@@ -107,14 +107,14 @@
 
 欢迎 fork[《Rust 参考手册》中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
 
-[Rust 程序设计语言]: https://rust-lang.budshome.com
+[Rust 程序设计语言]: https://books.budshome.com/rust-lang
 [github issues]: https://github.com/rust-lang/reference/issues
 [标准库]: https://doc.rust-lang.org/std
 [《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh-cn
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
-[cargo book]: https://cargo.budshome.com
-[cargo reference]: https://cargo.budshome.com/reference
+[cargo book]: https://books.budshome.com/cargo
+[cargo reference]: https://books.budshome.com/cargo/reference
 [expressions chapter]: expressions.md
 [lifetime of temporaries]: expressions.md#temporary-lifetimes
 [linkage]: linkage.md
