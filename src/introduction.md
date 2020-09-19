@@ -1,8 +1,8 @@
 # 介绍
 
-> 💥 暂翻译至[模块](https://books.budshome.com/rust-reference/items/modules.html)一节。
+> 💥 暂翻译至[模块](https://rust-reference.budshome.com/items/modules.html)一节。
 
-# 目前忙于[《舌尖上的 Rust》](https://books.budshome.com/rust-cookbook)，因此本书暂停。
+# 目前忙于[《舌尖上的 Rust》](http://rust-cookbook.budshome.com)，因此本书暂停。
 
 > [introduction.md](https://github.com/rust-lang/reference/blob/master/src/introduction.md)
 > <br />
@@ -107,14 +107,14 @@
 
 欢迎 fork[《Rust 参考手册》中文翻译仓库]，欢迎提交问题，欢迎发送 PR。
 
-[Rust 程序设计语言]: https://books.budshome.com/rust-lang
+[Rust 程序设计语言]: https://rust-lang.budshome.com
 [github issues]: https://github.com/rust-lang/reference/issues
 [标准库]: https://doc.rust-lang.org/std
 [《Rust 参考手册》中文翻译仓库]: https://github.com/zzy/rust-reference-zh-cn
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
 [_Expression_]: expressions.md
-[cargo book]: https://books.budshome.com/cargo
-[cargo reference]: https://books.budshome.com/cargo/reference
+[cargo book]: https://cargo.budshome.com
+[cargo reference]: https://cargo.budshome.com/reference
 [expressions chapter]: expressions.md
 [lifetime of temporaries]: expressions.md#temporary-lifetimes
 [linkage]: linkage.md

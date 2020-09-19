@@ -1,12 +1,12 @@
 # Rust 参考手册
 
-> 💥 暂翻译至[模块](https://books.budshome.com/rust-reference/items/modules.html)一节。
+> 💥 暂翻译至[模块](https://rust-reference.budshome.com/items/modules.html)一节。
 
 本书是 Rust 编程语言的主要参考。
 
 本书并非 Rust 语言规范：可能包含特定于 `rustc` 自身的细节，因此不应作为 Rust 语言规范。Rust 语言开发团队计划在未来拿出规范文件，但目前只有本书所述。
 
-> 💥 同步官方 nightly 版本。可[在线阅读 books.budshome.com/rust-reference](https://books.budshome.com/rust-reference)，也可下载PDF、ePub。
+> 💥 同步官方 nightly 版本。可[在线阅读 rust-reference.budshome.com](https://rust-reference.budshome.com)，也可下载PDF、ePub。
 
 ## 状态
 
@@ -16,7 +16,7 @@
 ## 依赖
 
 - rustc （Rust 编译器）；
-- mdBook （安装命令：`cargo install mdbook`,若需要请[阅读 mdBook 中文文档](https://books.budshome.com/mdbook))。
+- mdBook （安装命令：`cargo install mdbook`,若需要请[阅读 mdBook 中文文档](https://mdbook.budshome.com))。
 
 ## 构建
 
