@@ -1,8 +1,8 @@
 # 介绍
 
-> 💥 暂翻译至[模块](https://rust-reference.budshome.com/items/modules.html)一节。
-
-# 目前忙于[《舌尖上的 Rust》](http://rust-cookbook.budshome.com)，因此本书暂停。
+> 💥 暂翻译至[模块](https://rust-reference.budshome.com/items/modules.html)一节。<br>
+> 欢迎您，一起参与。
+# 暂忙于[《Rust 生态实践指南》](http://rust-crate-guide.budshome.com)，本书暂停。
 
 > [introduction.md](https://github.com/rust-lang/reference/blob/master/src/introduction.md)
 > <br />
