@@ -1,8 +1,7 @@
 # Rust 参考手册
 
 > 💥 暂翻译至[模块](https://rust-reference.budshome.com/items/modules.html)一节。<br>
-> 欢迎您，一起参与。
-# 暂忙于[《Rust 生态实践指南》](http://rust-crate-guide.budshome.com)，本书暂停。
+> 欢迎您参与，我将第一时间合并 PR。谢谢！
 
 本书是 Rust 编程语言的主要参考。
 
